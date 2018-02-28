@@ -39,13 +39,13 @@ public class CommonDaoImpl<T> extends CommonDAO<T> {
 	}
 
 	@Override
-	T getObjectByName(String nom) {
+	public T getObjectByName(String nom) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	List<T> getList() {
+	public List<T> getList() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,9 +1,11 @@
 package com.infotel.gestionbiblio.dao;
+
+
 import java.util.List;
 
-import com.formation.entity.AuthorModel;
-import com.infotel.gestionbiblio.dao.Author;
 import com.infotel.gestionbiblio.dao.CommonDAO;
+import com.infotel.gestionbiblio.dao.inter.IAuthor;
+import com.infotel.gestionbiblio.entity.Author;
 
 /**
  * 
@@ -13,13 +15,9 @@ import com.infotel.gestionbiblio.dao.CommonDAO;
  * @author migu
  *
  */ 
-public class AuthorDao extends CommonDAO<AuthorModel> implements IAuthor {
+public class AuthorDao extends CommonDAO<Author> implements IAuthor {
 
-	@Override
-	public void insert(T monObjet) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
 	public void delete() {
@@ -34,21 +32,27 @@ public class AuthorDao extends CommonDAO<AuthorModel> implements IAuthor {
 	}
 
 	@Override
-	public T getById(int id) {
+	public Author getById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	T getObjectByName(String nom) {
+	Author getObjectByName(String nom) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	List<T> getList() {
+	List<Author> getList() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void insert(Author t) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
