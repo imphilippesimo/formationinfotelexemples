@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource({ "classpath:persistence-mysql.properties" })
 @ComponentScan({ "com.formation.infotel" })
 public class ConteneurSpringFullJava {
-
+ 
 	@Autowired
 	private Environment env;
 

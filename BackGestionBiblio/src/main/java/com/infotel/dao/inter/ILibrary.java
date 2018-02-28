@@ -1,5 +1,6 @@
-package com.formation.dao.inter;
+package com.infotel.dao.inter;
 
 public interface ILibrary {
 
 }
+ 

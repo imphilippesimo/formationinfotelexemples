@@ -12,7 +12,7 @@ import com.infotel.gestionbiblio.dao.CommonDAO;
 /**
  * @author migu
  *
- */
+ */ 
 public class AuthorDao extends CommonDAO<AuthorModel> implements IAuthor {
 
 	@Override

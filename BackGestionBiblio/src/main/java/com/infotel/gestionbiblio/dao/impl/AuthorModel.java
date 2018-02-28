@@ -8,5 +8,5 @@ package com.infotel.gestionbiblio.dao.impl;
  *
  */
 public class AuthorModel {
-
+ 
 }

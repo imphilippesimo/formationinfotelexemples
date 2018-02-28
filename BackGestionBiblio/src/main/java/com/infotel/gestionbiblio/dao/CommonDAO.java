@@ -4,7 +4,7 @@ import java.util.List;
 
 
 public abstract class CommonDAO<T> {
-	
+	 
 	public abstract  void insert(T t);
 	
 	public abstract  void delete();

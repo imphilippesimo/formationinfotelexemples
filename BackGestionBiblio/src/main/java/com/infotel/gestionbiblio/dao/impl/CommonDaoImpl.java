@@ -13,7 +13,7 @@ public class CommonDaoImpl<T> extends CommonDAO<T> {
 	 
 	@Autowired
 	SessionFactory sessionF;
-
+ 
 	@Override
 	public void insert(T monObjet) {
 		sessionF.getCurrentSession().save(monObjet);
