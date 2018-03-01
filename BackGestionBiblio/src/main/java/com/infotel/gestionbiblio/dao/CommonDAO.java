@@ -3,7 +3,8 @@ package com.infotel.gestionbiblio.dao;
 import java.util.List;
 
 
-public abstract class CommonDAO<T> {
+public abstract class CommonDAO<T> 
+{
 	 
 	public abstract  void insert(T t);
 	

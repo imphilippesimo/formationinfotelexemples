@@ -8,10 +8,6 @@ import com.infotel.gestionbiblio.dao.inter.IAuthor;
 import com.infotel.gestionbiblio.entity.Author;
 
 /**
- * 
- */
-
-/**
  * @author migu
  *
  */ 
