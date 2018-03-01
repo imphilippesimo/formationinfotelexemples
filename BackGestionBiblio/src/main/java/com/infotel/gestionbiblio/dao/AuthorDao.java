@@ -34,13 +34,13 @@ public class AuthorDao extends CommonDAO<Author> implements IAuthor {
 	}
 
 	@Override
-	Author getObjectByName(String nom) {
+	public Author getObjectByName(String nom) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	List<Author> getList() {
+	public List<Author> getList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
