@@ -3,19 +3,24 @@ package com.infotel.gestionbiblio.dao;
 import java.util.List;
 
 
-public abstract class CommonDAO<T> 
+public interface CommonDAO<T> 
 {
-	 
-	public abstract  void insert(T t);
-	
-	public abstract  void delete();
+ 
+	public void insert(final T monObjet);
 
-	public abstract  void update();
 
-	public abstract  T getById(int id);
+	public void delete(final T object); 
+
+
+	public void update(final T object);
+
+
+	public T getById(int id);
+
 
 	public abstract T getObjectByName(String nom);
 
-	public abstract List<T> getList();
+	public List<T> getList();
+
 
 }

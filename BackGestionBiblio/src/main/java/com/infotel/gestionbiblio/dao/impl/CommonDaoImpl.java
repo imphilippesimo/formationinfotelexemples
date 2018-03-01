@@ -5,49 +5,54 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+
 import com.infotel.gestionbiblio.dao.CommonDAO;
 
-public class CommonDaoImpl<T> extends CommonDAO<T> {
+public abstract class CommonDaoImpl<T> implements CommonDAO<T> {
 
-	 private Class<T> type;
+	 
 	 
 	@Autowired
-	SessionFactory sessionF;
+	SessionFactory sessionFactory;
+	
+	private Class<T> type;
+	
+    public CommonDaoImpl() 
+    {
+        Type t = getClass().getGenericSuperclass();
+        ParameterizedType pt = (ParameterizedType) t;
+        type = (Class) pt.getActualTypeArguments()[0];
+    }
  
-	@Override
-	public void insert(T monObjet) {
-		sessionF.getCurrentSession().save(monObjet);
+	public void insert(final T monObjet) 
+	{
+		sessionFactory.getCurrentSession().save(monObjet);
 		
 	}
 
-	@Override
-	public void delete() {
-		// TODO Auto-generated method stub
-		
+	public void delete(final T object) 
+	{
+		sessionFactory.getCurrentSession().delete(object);
 	}
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
+	public void update(final T object)
+	{
+		sessionFactory.getCurrentSession().delete(object);
 	}
 
-	@Override
-	public T getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public T getById(int id) 
+	{
+		return sessionFactory.getCurrentSession().get(type, id);
 	}
 
-	@Override
-	public T getObjectByName(String nom) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public abstract T getObjectByName(String nom);
 
-	@Override
-	public List<T> getList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<T> getList() 
+	{
+		List<T> list=sessionFactory.getCurrentSession().createQuery("from Product").getResultList();
+		return list;
 	}
 	
 	
