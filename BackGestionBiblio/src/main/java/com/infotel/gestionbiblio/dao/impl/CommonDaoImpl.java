@@ -39,7 +39,7 @@ public abstract class CommonDaoImpl<T> implements CommonDAO<T> {
 
 	public void update(final T object)
 	{
-		sessionFactory.getCurrentSession().delete(object);
+		sessionFactory.getCurrentSession().update(object);
 	}
 
 	public T getById(int id) 
