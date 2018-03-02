@@ -1,32 +1,50 @@
 package com.infotel.gestionbiblio.entity;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 
 @Entity
-public class Borrow {
+public class Borrow implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Date borrowDate, returnDate;
 
-	@OneToMany(mappedBy = "borrow")
-	private List<BookCopy> borrowBookCopy;
-	@OneToMany(mappedBy = "borrow")
-	private List<Member> borrowMember;
+    @JoinColumn(name = "member", referencedColumnName = "idAdresse")
+    @ManyToOne(optional = false)
+    private Member member;
+    @JoinColumn(name = "bookCopy", referencedColumnName = "idPersonne")
+    @ManyToOne(optional = false)
+    private BookCopy bookCopy;
+	
+	@EmbeddedId
+	protected BorrowPK borrowPK = new BorrowPK();
+	
+	@Temporal(TemporalType.DATE)
+	private Date emprunt;
+
+	@Temporal(TemporalType.DATE)
+	private Date retour;
 
 	public Borrow() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Borrow(Date borrowDate, Date returnDate, List<BookCopy> borrowBookCopy, List<Member> borrowMember) {
+	public Borrow(Date borrowDate, Date returnDate, BookCopy borrowBookCopy, Member borrowMember) {
 		this.borrowDate = borrowDate;
 		this.returnDate = returnDate;
-		this.borrowBookCopy = borrowBookCopy;
-		this.borrowMember = borrowMember;
+		this.bookCopy = borrowBookCopy;
+		this.member = borrowMember;
 	}
 
 	public Date getBorrowDate() {
@@ -45,26 +63,68 @@ public class Borrow {
 		this.returnDate = returnDate;
 	}
 
-	public List<BookCopy> getBorrowBookCopy() {
-		return borrowBookCopy;
+	public BookCopy getBorrowBookCopy() {
+		return bookCopy;
 	}
 
-	public void setBorrowBookCopy(List<BookCopy> borrowBookCopy) {
-		this.borrowBookCopy = borrowBookCopy;
+	public void setBorrowBookCopy(BookCopy borrowBookCopy) {
+		this.bookCopy = borrowBookCopy;
 	}
 
-	public List<Member> getBorrowMember() {
-		return borrowMember;
+	public Member getBorrowMember() {
+		return member;
 	}
 
-	public void setBorrowMember(List<Member> borrowMember) {
-		this.borrowMember = borrowMember;
+	public void setBorrowMember(Member borrowMember) {
+		this.member = borrowMember;
+	}
+
+	
+	
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
+	public BookCopy getBookCopy() {
+		return bookCopy;
+	}
+
+	public void setBookCopy(BookCopy bookCopy) {
+		this.bookCopy = bookCopy;
+	}
+
+	public BorrowPK getBorrowPK() {
+		return borrowPK;
+	}
+
+	public void setBorrowPK(BorrowPK borrowPK) {
+		this.borrowPK = borrowPK;
+	}
+
+	public Date getEmprunt() {
+		return emprunt;
+	}
+
+	public void setEmprunt(Date emprunt) {
+		this.emprunt = emprunt;
+	}
+
+	public Date getRetour() {
+		return retour;
+	}
+
+	public void setRetour(Date retour) {
+		this.retour = retour;
 	}
 
 	@Override
 	public String toString() {
-		return "Borrow [borrowDate=" + borrowDate + ", returnDate=" + returnDate + ", borrowBookCopy=" + borrowBookCopy
-				+ ", borrowMember=" + borrowMember + "]";
+		return "Borrow [borrowDate=" + borrowDate + ", returnDate=" + returnDate + ", borrowBookCopy=" + bookCopy
+				+ ", borrowMember=" + member + "]";
 	}
 
 }

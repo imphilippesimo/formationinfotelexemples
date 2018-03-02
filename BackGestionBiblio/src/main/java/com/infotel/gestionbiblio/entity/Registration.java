@@ -1,5 +1,6 @@
 package com.infotel.gestionbiblio.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -9,7 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Registration {
+public class Registration  implements Serializable
+{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 

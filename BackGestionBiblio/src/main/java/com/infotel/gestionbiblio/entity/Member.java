@@ -1,12 +1,23 @@
 package com.infotel.gestionbiblio.entity;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 
 @Entity
-public class Member {
+public class Member  implements Serializable
+{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 
@@ -14,8 +25,9 @@ public class Member {
 	private String memberLastname, memberFirstname, memberEmail, memberPassword, memberAddress, memberCity,
 			memberPostalCode, memberPhone;
 
-	@ManyToOne
-	private Borrow borrow;
+	@OneToMany(mappedBy = "member")
+	private List<Borrow> borrows = new ArrayList<Borrow>();
+	
 	@ManyToOne
 	private BookBasket bookBasket;
 	@ManyToOne
@@ -26,7 +38,7 @@ public class Member {
 	}
 
 	public Member(String memberLastname, String memberFirstname, String memberEmail, String memberPassword,
-			String memberAddress, String memberCity, String memberPostalCode, String memberPhone, Borrow borrow,
+			String memberAddress, String memberCity, String memberPostalCode, String memberPhone, List<Borrow> borrow,
 			BookBasket bookBasket, Registration registration) {
 		this.memberLastname = memberLastname;
 		this.memberFirstname = memberFirstname;
@@ -36,7 +48,7 @@ public class Member {
 		this.memberCity = memberCity;
 		this.memberPostalCode = memberPostalCode;
 		this.memberPhone = memberPhone;
-		this.borrow = borrow;
+		this.borrows = borrow;
 		this.bookBasket = bookBasket;
 		this.registration = registration;
 	}
@@ -113,12 +125,12 @@ public class Member {
 		this.memberId = memberId;
 	}
 
-	public Borrow getBorrow() {
-		return borrow;
+	public List<Borrow> getBorrow() {
+		return borrows;
 	}
 
-	public void setBorrow(Borrow borrow) {
-		this.borrow = borrow;
+	public void setBorrow(List<Borrow> borrows) {
+		this.borrows = borrows;
 	}
 
 	public BookBasket getBookBasket() {
@@ -142,7 +154,7 @@ public class Member {
 		return "Member [memberLastname=" + memberLastname + ", memberFirstname=" + memberFirstname + ", memberEmail="
 				+ memberEmail + ", memberPassword=" + memberPassword + ", memberAddress=" + memberAddress
 				+ ", memberCity=" + memberCity + ", memberPostalCode=" + memberPostalCode + ", memberPhone="
-				+ memberPhone + ", borrow=" + borrow + ", bookBasket=" + bookBasket + ", registration=" + registration
+				+ memberPhone + ", borrow=" + borrows + ", bookBasket=" + bookBasket + ", registration=" + registration
 				+ "]";
 	}
 

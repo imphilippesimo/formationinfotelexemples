@@ -1,5 +1,6 @@
 package com.infotel.gestionbiblio.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -7,8 +8,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Library {
+public class Library implements Serializable 
+{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int libraryCode;
 	private String libraryName, libraryAddress;
 

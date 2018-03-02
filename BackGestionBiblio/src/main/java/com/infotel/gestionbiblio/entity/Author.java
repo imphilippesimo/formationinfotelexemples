@@ -1,5 +1,6 @@
 package com.infotel.gestionbiblio.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Author {
+public class Author implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private int authorId;

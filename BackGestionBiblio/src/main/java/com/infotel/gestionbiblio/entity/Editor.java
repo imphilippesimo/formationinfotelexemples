@@ -1,5 +1,6 @@
 package com.infotel.gestionbiblio.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,7 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Editor {
+public class Editor implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private int editorId;
