@@ -30,10 +30,10 @@ public class Catalog  implements Serializable
 		// TODO Auto-generated constructor stub
 	}
 
-	public Catalog(String catalogName, List<Book> bookCatalog, Library library) {
+	public Catalog(String catalogName, List<Book> bookCatalog) {
 		this.catalogName = catalogName;
 		this.bookCatalog = bookCatalog;
-		this.library = library;
+	//	this.library = library;
 	}
 
 	public int getCatalogId() {

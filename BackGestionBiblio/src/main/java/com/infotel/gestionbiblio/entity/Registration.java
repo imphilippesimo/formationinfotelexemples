@@ -30,7 +30,7 @@ public class Registration  implements Serializable
 		// TODO Auto-generated constructor stub
 	}
 
-	public Registration(Date registrationDate, List<Member> registrationMember, List<Library> registrationLibrary) {
+	public Registration(Date registrationDate, List<Member> registrationMember) {
 		this.registrationDate = registrationDate;
 		this.registrationMember = registrationMember;
 		this.registrationLibrary = registrationLibrary;
