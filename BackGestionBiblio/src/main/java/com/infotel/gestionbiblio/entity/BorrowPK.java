@@ -4,5 +4,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class BorrowPK {
+private Member member;
+private BookCopy bookcopy;
 
 }

@@ -1,8 +1,11 @@
 package com.infotel.gestionbiblio.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Category {
@@ -10,14 +13,18 @@ public class Category {
 	@GeneratedValue
 	private int categoryId;
 	private String categoryName, CategoryDescription;
-	
+
+	@OneToMany(mappedBy = "category")
+	private List<Book> bookCategory;
+
 	public Category() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Category(String categoryName, String categoryDescription) {
+	public Category(String categoryName, String categoryDescription, List<Book> bookCategory) {
 		this.categoryName = categoryName;
 		CategoryDescription = categoryDescription;
+		this.bookCategory = bookCategory;
 	}
 
 	public int getCategoryId() {
@@ -44,9 +51,18 @@ public class Category {
 		CategoryDescription = categoryDescription;
 	}
 
+	public List<Book> getBookCategory() {
+		return bookCategory;
+	}
+
+	public void setBookCategory(List<Book> bookCategory) {
+		this.bookCategory = bookCategory;
+	}
+
 	@Override
 	public String toString() {
-		return "Category [categoryName=" + categoryName + ", CategoryDescription=" + CategoryDescription + "]";
+		return "Category [categoryName=" + categoryName + ", CategoryDescription=" + CategoryDescription
+				+ ", bookCategory=" + bookCategory + "]";
 	}
-	
+
 }

@@ -1,48 +1,70 @@
 package com.infotel.gestionbiblio.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Catalog {
-@Id
-@GeneratedValue
-private int catalogId;
-private String catalogName;
+	@Id
+	@GeneratedValue
+	private int catalogId;
+	private String catalogName;
 
-public Catalog() {
-	// TODO Auto-generated constructor stub
-}
+	@OneToMany
+	private List<Book> bookCatalog;
+	@ManyToOne
+	private Library library;
 
-public Catalog(String catalogName) {
-	this.catalogName = catalogName;
-}
+	public Catalog() {
+		// TODO Auto-generated constructor stub
+	}
 
-public int getCatalogId() {
-	return catalogId;
-}
+	public Catalog(String catalogName, List<Book> bookCatalog, Library library) {
+		this.catalogName = catalogName;
+		this.bookCatalog = bookCatalog;
+		this.library = library;
+	}
 
-public void setCatalogId(int catalogId) {
-	this.catalogId = catalogId;
-}
+	public int getCatalogId() {
+		return catalogId;
+	}
 
-public String getCatalogName() {
-	return catalogName;
-}
+	public void setCatalogId(int catalogId) {
+		this.catalogId = catalogId;
+	}
 
-public void setCatalogName(String catalogName) {
-	this.catalogName = catalogName;
-}
+	public String getCatalogName() {
+		return catalogName;
+	}
 
-@Override
-public String toString() {
-	return "Catalog [catalogName=" + catalogName + "]";
-}
+	public void setCatalogName(String catalogName) {
+		this.catalogName = catalogName;
+	}
 
+	public List<Book> getBookCatalog() {
+		return bookCatalog;
+	}
 
+	public void setBookCatalog(List<Book> bookCatalog) {
+		this.bookCatalog = bookCatalog;
+	}
 
+	public Library getLibrary() {
+		return library;
+	}
 
+	public void setLibrary(Library library) {
+		this.library = library;
+	}
 
+	@Override
+	public String toString() {
+		return "Catalog [catalogName=" + catalogName + ", bookCatalog=" + bookCatalog + ", library=" + library + "]";
+	}
 
 }

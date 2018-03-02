@@ -1,8 +1,13 @@
 package com.infotel.gestionbiblio.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Book {
@@ -11,13 +16,25 @@ public class Book {
 	private boolean popularBook;
 	private float bookPrice;
 	private Date publicationDate;
-	
+
+	@ManyToOne
+	private Category category;
+	@ManyToOne
+	private Editor editor;
+	@ManyToOne
+	private Catalog catalog;
+	@OneToMany(mappedBy = "book")
+	private List<BookCopy> bookCopy;
+	@ManyToMany
+	private List<Author> author = new ArrayList<Author>();
+
 	public Book() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Book(int iSBN, String bookTitre, String bookDescription, String imagePath, boolean popularBook,
-			float bookPrice, Date publicationDate) {
+			float bookPrice, Date publicationDate, Category category, Editor editor, Catalog catalog,
+			List<BookCopy> bookCopy, List<Author> author) {
 		ISBN = iSBN;
 		this.bookTitre = bookTitre;
 		this.bookDescription = bookDescription;
@@ -25,6 +42,11 @@ public class Book {
 		this.popularBook = popularBook;
 		this.bookPrice = bookPrice;
 		this.publicationDate = publicationDate;
+		this.category = category;
+		this.editor = editor;
+		this.catalog = catalog;
+		this.bookCopy = bookCopy;
+		this.author = author;
 	}
 
 	public int getISBN() {
@@ -83,12 +105,52 @@ public class Book {
 		this.publicationDate = publicationDate;
 	}
 
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Editor getEditor() {
+		return editor;
+	}
+
+	public void setEditor(Editor editor) {
+		this.editor = editor;
+	}
+
+	public Catalog getCatalog() {
+		return catalog;
+	}
+
+	public void setCatalog(Catalog catalog) {
+		this.catalog = catalog;
+	}
+
+	public List<BookCopy> getBookCopy() {
+		return bookCopy;
+	}
+
+	public void setBookCopy(List<BookCopy> bookCopy) {
+		this.bookCopy = bookCopy;
+	}
+
+	public List<Author> getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(List<Author> author) {
+		this.author = author;
+	}
+
 	@Override
 	public String toString() {
 		return "Book [ISBN=" + ISBN + ", bookTitre=" + bookTitre + ", bookDescription=" + bookDescription
 				+ ", imagePath=" + imagePath + ", popularBook=" + popularBook + ", bookPrice=" + bookPrice
-				+ ", publicationDate=" + publicationDate + "]";
+				+ ", publicationDate=" + publicationDate + ", category=" + category + ", editor=" + editor
+				+ ", catalog=" + catalog + ", bookCopy=" + bookCopy + ", author=" + author + "]";
 	}
-	
-	
+
 }

@@ -1,46 +1,70 @@
 package com.infotel.gestionbiblio.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Borrow {
 
-private Date borrowDate, returnDate;
+	private Date borrowDate, returnDate;
 
-public Borrow() {
-	// TODO Auto-generated constructor stub
-}
+	@OneToMany(mappedBy = "borrow")
+	private List<BookCopy> borrowBookCopy;
+	@OneToMany(mappedBy = "borrow")
+	private List<Member> borrowMember;
 
-public Borrow(Date borrowDate, Date returnDate) {
-	this.borrowDate = borrowDate;
-	this.returnDate = returnDate;
-}
+	public Borrow() {
+		// TODO Auto-generated constructor stub
+	}
 
-public Date getBorrowDate() {
-	return borrowDate;
-}
+	public Borrow(Date borrowDate, Date returnDate, List<BookCopy> borrowBookCopy, List<Member> borrowMember) {
+		this.borrowDate = borrowDate;
+		this.returnDate = returnDate;
+		this.borrowBookCopy = borrowBookCopy;
+		this.borrowMember = borrowMember;
+	}
 
-public void setBorrowDate(Date borrowDate) {
-	this.borrowDate = borrowDate;
-}
+	public Date getBorrowDate() {
+		return borrowDate;
+	}
 
-public Date getReturnDate() {
-	return returnDate;
-}
+	public void setBorrowDate(Date borrowDate) {
+		this.borrowDate = borrowDate;
+	}
 
-public void setReturnDate(Date returnDate) {
-	this.returnDate = returnDate;
-}
+	public Date getReturnDate() {
+		return returnDate;
+	}
 
-@Override
-public String toString() {
-	return "Borrow [borrowDate=" + borrowDate + ", returnDate=" + returnDate + "]";
-}
+	public void setReturnDate(Date returnDate) {
+		this.returnDate = returnDate;
+	}
 
+	public List<BookCopy> getBorrowBookCopy() {
+		return borrowBookCopy;
+	}
 
+	public void setBorrowBookCopy(List<BookCopy> borrowBookCopy) {
+		this.borrowBookCopy = borrowBookCopy;
+	}
+
+	public List<Member> getBorrowMember() {
+		return borrowMember;
+	}
+
+	public void setBorrowMember(List<Member> borrowMember) {
+		this.borrowMember = borrowMember;
+	}
+
+	@Override
+	public String toString() {
+		return "Borrow [borrowDate=" + borrowDate + ", returnDate=" + returnDate + ", borrowBookCopy=" + borrowBookCopy
+				+ ", borrowMember=" + borrowMember + "]";
+	}
 
 }

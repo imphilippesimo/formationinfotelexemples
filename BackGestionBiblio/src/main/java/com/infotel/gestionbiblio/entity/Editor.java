@@ -1,61 +1,68 @@
 package com.infotel.gestionbiblio.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Editor {
-@Id
-@GeneratedValue
-private int editorId;
-private String editorName, editorAddress;
+	@Id
+	@GeneratedValue
+	private int editorId;
+	private String editorName, editorAddress;
 
-public Editor() {
-	// TODO Auto-generated constructor stub
-}
+	@OneToMany(mappedBy = "editor")
+	private List<Book> bookEditor;
 
+	public Editor() {
+		// TODO Auto-generated constructor stub
+	}
 
+	public Editor(String editorName, String editorAddress, List<Book> bookEditor) {
+		this.editorName = editorName;
+		this.editorAddress = editorAddress;
+		this.bookEditor = bookEditor;
+	}
 
-public Editor(String editorName, String editorAddress) {
-	this.editorName = editorName;
-	this.editorAddress = editorAddress;
-}
+	public int getEditorId() {
+		return editorId;
+	}
 
+	public void setEditorId(int editorId) {
+		this.editorId = editorId;
+	}
 
+	public String getEditorName() {
+		return editorName;
+	}
 
-public int getEditorId() {
-	return editorId;
-}
+	public void setEditorName(String editorName) {
+		this.editorName = editorName;
+	}
 
-public void setEditorId(int editorId) {
-	this.editorId = editorId;
-}
+	public String getEditorAddress() {
+		return editorAddress;
+	}
 
-public String getEditorName() {
-	return editorName;
-}
+	public void setEditorAddress(String editorAddress) {
+		this.editorAddress = editorAddress;
+	}
 
-public void setEditorName(String editorName) {
-	this.editorName = editorName;
-}
+	public List<Book> getBookEditor() {
+		return bookEditor;
+	}
 
-public String getEditorAddress() {
-	return editorAddress;
-}
+	public void setBookEditor(List<Book> bookEditor) {
+		this.bookEditor = bookEditor;
+	}
 
-public void setEditorAddress(String editorAddress) {
-	this.editorAddress = editorAddress;
-}
-
-
-
-@Override
-public String toString() {
-	return "Editor [editorName=" + editorName + ", editorAddress=" + editorAddress + "]";
-}
-
-
-
+	@Override
+	public String toString() {
+		return "Editor [editorName=" + editorName + ", editorAddress=" + editorAddress + ", bookEditor=" + bookEditor
+				+ "]";
+	}
 
 }

@@ -1,53 +1,79 @@
 package com.infotel.gestionbiblio.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Library {
 
-private int libraryCode;
-private String libraryName, libraryAddress;
+	private int libraryCode;
+	private String libraryName, libraryAddress;
 
-public Library() {
-	// TODO Auto-generated constructor stub
-}
+	@OneToMany(mappedBy = "library")
+	private List<Catalog> libraryCatalog;
+	@ManyToOne
+	private Registration registration;
 
-public Library(int libraryCode, String libraryName, String libraryAddress) {
-	this.libraryCode = libraryCode;
-	this.libraryName = libraryName;
-	this.libraryAddress = libraryAddress;
-}
+	public Library() {
+		// TODO Auto-generated constructor stub
+	}
 
-public int getLibraryCode() {
-	return libraryCode;
-}
+	public Library(int libraryCode, String libraryName, String libraryAddress, List<Catalog> libraryCatalog,
+			Registration registration) {
+		this.libraryCode = libraryCode;
+		this.libraryName = libraryName;
+		this.libraryAddress = libraryAddress;
+		this.libraryCatalog = libraryCatalog;
+		this.registration = registration;
+	}
 
-public void setLibraryCode(int libraryCode) {
-	this.libraryCode = libraryCode;
-}
+	public int getLibraryCode() {
+		return libraryCode;
+	}
 
-public String getLibraryName() {
-	return libraryName;
-}
+	public void setLibraryCode(int libraryCode) {
+		this.libraryCode = libraryCode;
+	}
 
-public void setLibraryName(String libraryName) {
-	this.libraryName = libraryName;
-}
+	public String getLibraryName() {
+		return libraryName;
+	}
 
-public String getLibraryAddress() {
-	return libraryAddress;
-}
+	public void setLibraryName(String libraryName) {
+		this.libraryName = libraryName;
+	}
 
-public void setLibraryAddress(String libraryAddress) {
-	this.libraryAddress = libraryAddress;
-}
+	public String getLibraryAddress() {
+		return libraryAddress;
+	}
 
-@Override
-public String toString() {
-	return "Library [libraryCode=" + libraryCode + ", libraryName=" + libraryName + ", libraryAddress=" + libraryAddress
-			+ "]";
-}
+	public void setLibraryAddress(String libraryAddress) {
+		this.libraryAddress = libraryAddress;
+	}
+
+	public List<Catalog> getLibraryCatalog() {
+		return libraryCatalog;
+	}
+
+	public void setLibraryCatalog(List<Catalog> libraryCatalog) {
+		this.libraryCatalog = libraryCatalog;
+	}
+
+	public Registration getRegistration() {
+		return registration;
+	}
+
+	public void setRegistration(Registration registration) {
+		this.registration = registration;
+	}
+
+	@Override
+	public String toString() {
+		return "Library [libraryCode=" + libraryCode + ", libraryName=" + libraryName + ", libraryAddress="
+				+ libraryAddress + ", libraryCatalog=" + libraryCatalog + ", registration=" + registration + "]";
+	}
 
 }
