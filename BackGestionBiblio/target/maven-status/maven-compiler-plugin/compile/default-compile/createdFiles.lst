@@ -1,0 +1,13 @@
+com\infotel\gestionbiblio\dao\impl\CategoryDaoImpl.class
+com\infotel\gestionbiblio\dao\impl\AuthorDaoImpl.class
+com\infotel\gestionbiblio\dao\impl\BookCopyDaoImpl.class
+com\infotel\gestionbiblio\dao\impl\BookDaoImpl.class
+com\infotel\gestionbiblio\dao\impl\MemberDaoImpl.class
+com\infotel\gestionbiblio\dao\impl\CatalogDaoImpl.class
+com\infotel\gestionbiblio\dao\impl\CommonDaoImpl.class
+com\infotel\gestionbiblio\dao\impl\RegistrationDaoImpl.class
+com\infotel\gestionbiblio\dao\impl\BookBasketDaoImpl.class
+com\infotel\gestionbiblio\dao\impl\LibraryDaoImpl.class
+com\infotel\gestionbiblio\dao\impl\BorrowDaoImpl.class
+com\infotel\gestionbiblio\dao\impl\EditorDaoImpl.class
+com\infotel\gestionbiblio\dao\impl\BookshelfDaoImpl.class
