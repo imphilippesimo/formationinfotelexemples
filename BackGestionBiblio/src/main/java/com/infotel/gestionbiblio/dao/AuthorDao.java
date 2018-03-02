@@ -11,7 +11,7 @@ import com.infotel.gestionbiblio.entity.Author;
  * @author migu
  *
  */ 
-public class AuthorDao extends CommonDAO<Author> implements IAuthor {
+public class AuthorDao implements CommonDAO<Author>, IAuthor {
 
 
 
