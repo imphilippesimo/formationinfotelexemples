@@ -11,11 +11,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQuery(name="book.listOrderRecent", query="from Book order by publicationDate ASC")
+@NamedQueries({
+    //@NamedQuery(name="member.isAdmin", query="FROM Member WHERE administrateur=1 AND memberEmail=:email AND memberPassword=:password"),
+    //@NamedQuery(name="member.isMember", query="FROM Member WHERE administrateur=0 AND memberEmail=:email AND memberPassword=:password")
+	@NamedQuery(name="book.selectCatRecommended", query="FROM Book WHERE catalog=recommended")
+})
+//@NamedQuery(name="book.listOrderRecent", query="from Book order by publicationDate ASC")
 public class Book  implements Serializable
 {
 	@Id
