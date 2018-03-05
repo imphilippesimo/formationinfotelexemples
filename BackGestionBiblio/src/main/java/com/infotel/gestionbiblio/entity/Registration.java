@@ -6,8 +6,11 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Registration  implements Serializable
@@ -16,25 +19,32 @@ public class Registration  implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
-	@GeneratedValue
-
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int registrationId;
+	
+	@Temporal(TemporalType.DATE)
 	private Date registrationDate;
-	@OneToMany(mappedBy = "registration")
-	private List<Member> registrationMember;
-	@OneToMany(mappedBy = "registration")
-	private List<Library> registrationLibrary;
+	
+	@OneToOne
+	private Member registrationMember;
+	
+	@OneToOne
+	private Library registrationLibrary;
 
 	public Registration() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Registration(Date registrationDate, List<Member> registrationMember) {
+
+	public Registration(Date registrationDate, Member registrationMember, Library registrationLibrary) {
+		super();
 		this.registrationDate = registrationDate;
 		this.registrationMember = registrationMember;
 		this.registrationLibrary = registrationLibrary;
 	}
+
 
 	public int getRegistrationId() {
 		return registrationId;
@@ -52,19 +62,19 @@ public class Registration  implements Serializable
 		this.registrationDate = registrationDate;
 	}
 
-	public List<Member> getRegistrationMember() {
+	public Member getRegistrationMember() {
 		return registrationMember;
 	}
 
-	public void setRegistrationMember(List<Member> registrationMember) {
+	public void setRegistrationMember(Member registrationMember) {
 		this.registrationMember = registrationMember;
 	}
 
-	public List<Library> getRegistrationLibrary() {
+	public Library getRegistrationLibrary() {
 		return registrationLibrary;
 	}
 
-	public void setRegistrationLibrary(List<Library> registrationLibrary) {
+	public void setRegistrationLibrary(Library registrationLibrary) {
 		this.registrationLibrary = registrationLibrary;
 	}
 

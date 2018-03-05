@@ -3,10 +3,12 @@ package com.infotel.gestionbiblio.dao.impl;
 import java.util.List;
 
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import com.infotel.gestionbiblio.dao.inter.BookDao;
 import com.infotel.gestionbiblio.entity.Book;
 
+@Repository
 public class BookDaoImpl extends CommonDaoImpl<Book> implements BookDao {
 
 	Book book;

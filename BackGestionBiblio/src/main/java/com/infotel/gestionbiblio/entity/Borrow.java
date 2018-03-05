@@ -1,11 +1,17 @@
 package com.infotel.gestionbiblio.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
-import javax.persistence.EmbeddedId;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -18,34 +24,40 @@ public class Borrow implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Temporal(TemporalType.DATE)
 	private Date borrowDate, returnDate;
 
-    @JoinColumn(name = "member", referencedColumnName = "idAdresse")
-    @ManyToOne(optional = false)
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	int idBorrow;
+	
+	
+    @JoinColumn(name = "member", referencedColumnName = "idMember")
+    @OneToOne
     private Member member;
-    @JoinColumn(name = "bookCopy", referencedColumnName = "idPersonne")
-    @ManyToOne(optional = false)
-    private BookCopy bookCopy;
+    
+    @OneToMany
+    @JoinColumn(name = "bookCopy", referencedColumnName = "idBorrow")
+     private List<BookCopy> bookCopys=new ArrayList<>();
 	
-	@EmbeddedId
-	protected BorrowPK borrowPK = new BorrowPK();
 	
-	@Temporal(TemporalType.DATE)
-	private Date emprunt;
-
-	@Temporal(TemporalType.DATE)
-	private Date retour;
+	
 
 	public Borrow() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Borrow(Date borrowDate, Date returnDate, BookCopy borrowBookCopy, Member borrowMember) {
+
+
+	public Borrow(Date borrowDate, Date returnDate, Member member, List<BookCopy> bookCopys) {
+		super();
 		this.borrowDate = borrowDate;
 		this.returnDate = returnDate;
-		this.bookCopy = borrowBookCopy;
-		this.member = borrowMember;
+		this.member = member;
+		this.bookCopys = bookCopys;
 	}
+
+
 
 	public Date getBorrowDate() {
 		return borrowDate;
@@ -63,13 +75,19 @@ public class Borrow implements Serializable{
 		this.returnDate = returnDate;
 	}
 
-	public BookCopy getBorrowBookCopy() {
-		return bookCopy;
+
+
+	public List<BookCopy> getBookCopys() {
+		return bookCopys;
 	}
 
-	public void setBorrowBookCopy(BookCopy borrowBookCopy) {
-		this.bookCopy = borrowBookCopy;
+
+
+	public void setBookCopys(List<BookCopy> bookCopys) {
+		this.bookCopys = bookCopys;
 	}
+
+
 
 	public Member getBorrowMember() {
 		return member;
@@ -89,42 +107,16 @@ public class Borrow implements Serializable{
 		this.member = member;
 	}
 
-	public BookCopy getBookCopy() {
-		return bookCopy;
-	}
 
-	public void setBookCopy(BookCopy bookCopy) {
-		this.bookCopy = bookCopy;
-	}
-
-	public BorrowPK getBorrowPK() {
-		return borrowPK;
-	}
-
-	public void setBorrowPK(BorrowPK borrowPK) {
-		this.borrowPK = borrowPK;
-	}
-
-	public Date getEmprunt() {
-		return emprunt;
-	}
-
-	public void setEmprunt(Date emprunt) {
-		this.emprunt = emprunt;
-	}
-
-	public Date getRetour() {
-		return retour;
-	}
-
-	public void setRetour(Date retour) {
-		this.retour = retour;
-	}
+	
 
 	@Override
 	public String toString() {
-		return "Borrow [borrowDate=" + borrowDate + ", returnDate=" + returnDate + ", borrowBookCopy=" + bookCopy
-				+ ", borrowMember=" + member + "]";
+		return "Borrow [borrowDate=" + borrowDate + ", returnDate=" + returnDate 
+				+ ", member=" + member + ", bookCopy=" + bookCopys + "]";
 	}
+
+
+
 
 }

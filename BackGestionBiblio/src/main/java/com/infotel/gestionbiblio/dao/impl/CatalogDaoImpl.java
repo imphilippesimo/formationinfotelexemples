@@ -3,10 +3,12 @@ package com.infotel.gestionbiblio.dao.impl;
 import java.util.List;
 
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import com.infotel.gestionbiblio.dao.inter.CatalogDao;
 import com.infotel.gestionbiblio.entity.Catalog;
 
+@Repository
 public class CatalogDaoImpl extends CommonDaoImpl<Catalog> implements CatalogDao {
 
 	Catalog catalog;

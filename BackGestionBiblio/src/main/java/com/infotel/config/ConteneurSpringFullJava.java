@@ -1,11 +1,7 @@
 package com.infotel.config;
-
-
 import java.util.Properties;
 
 import javax.sql.DataSource;
-
-//import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
@@ -23,59 +19,58 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-mysql.properties" })
-@ComponentScan({ "com.formation.infotel" })
+@ComponentScan({ "com.infotel" })
 public class ConteneurSpringFullJava {
- 
-	@Autowired
-	private Environment env;
 
+    @Autowired
+    private Environment env;
 
+    @Bean
+    public LocalSessionFactoryBean sessionFactory() {
+        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+        sessionFactory.setDataSource(restDataSource());
+        sessionFactory.setPackagesToScan(new String[] { "com.infotel.gestionbiblio.entity" });
+        sessionFactory.setHibernateProperties(hibernateProperties());
 
-	@Bean
-	public DataSource restDataSource() 
-	{
-		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
-		dataSource.setUrl(env.getProperty("jdbc.url"));
-		dataSource.setUsername(env.getProperty("jdbc.user"));
-		dataSource.setPassword(env.getProperty("jdbc.pass"));
+        return sessionFactory;
+    }
 
-		return dataSource;
-	}
+    @Bean
+    public DataSource restDataSource() {
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
+        dataSource.setUrl(env.getProperty("jdbc.url"));
+        dataSource.setUsername(env.getProperty("jdbc.user"));
+        dataSource.setPassword(env.getProperty("jdbc.pass"));
 
-	@Bean
-	@Autowired
-	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) 
-	{
+        return dataSource;
+    }
 
-		HibernateTransactionManager txManager = new HibernateTransactionManager();
-		txManager.setSessionFactory(sessionFactory);
+    @Bean
+    @Autowired
+    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
 
-		return txManager;
-	}
+        HibernateTransactionManager txManager = new HibernateTransactionManager();
+        txManager.setSessionFactory(sessionFactory);
 
-	@Bean
-	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() 
-	{
-		return new PersistenceExceptionTranslationPostProcessor();
-	}
+        return txManager;
+    }
 
-	Properties hibernateProperties() 
-	{
-		return new Properties() 
-		{
+    @Bean
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
+        return new PersistenceExceptionTranslationPostProcessor();
+    }
 
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 6965401092561767043L;
+    Properties hibernateProperties() {
+        return new Properties() {
+			private static final long serialVersionUID = 1L;
 
 			{
-				setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-				setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
-				setProperty("hibernate.globally_quoted_identifiers", "true");
-			}
-		};
-	}
+                setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+                setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+                setProperty("hibernate.globally_quoted_identifiers", "true");
+            }
+        };
+    }
 
 }
