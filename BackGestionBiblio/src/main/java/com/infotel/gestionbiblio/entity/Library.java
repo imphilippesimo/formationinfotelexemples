@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -15,25 +17,26 @@ public class Library implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int idLibrary;
 	private int libraryCode;
 	private String libraryName, libraryAddress;
 
 	@OneToMany(mappedBy = "library")
 	private List<Catalog> libraryCatalog;
-	@ManyToOne
-	private Registration registration;
+
 
 	public Library() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Library(int libraryCode, String libraryName, String libraryAddress, List<Catalog> libraryCatalog,
-			Registration registration) {
+	public Library(int libraryCode, String libraryName, String libraryAddress, List<Catalog> libraryCatalog) {
 		this.libraryCode = libraryCode;
 		this.libraryName = libraryName;
 		this.libraryAddress = libraryAddress;
 		this.libraryCatalog = libraryCatalog;
-		this.registration = registration;
 	}
 
 	public int getLibraryCode() {
@@ -68,18 +71,11 @@ public class Library implements Serializable
 		this.libraryCatalog = libraryCatalog;
 	}
 
-	public Registration getRegistration() {
-		return registration;
-	}
-
-	public void setRegistration(Registration registration) {
-		this.registration = registration;
-	}
 
 	@Override
 	public String toString() {
 		return "Library [libraryCode=" + libraryCode + ", libraryName=" + libraryName + ", libraryAddress="
-				+ libraryAddress + ", libraryCatalog=" + libraryCatalog + ", registration=" + registration + "]";
+				+ libraryAddress + ", libraryCatalog=" + libraryCatalog + ", registration=" + "]";
 	}
 
 }

@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import com.infotel.gestionbiblio.dao.inter.BookCopyDao;
 import com.infotel.gestionbiblio.entity.Author;
 import com.infotel.gestionbiblio.entity.BookCopy;
 
+@Repository
 public class BookCopyDaoImpl extends CommonDaoImpl<BookCopy> implements BookCopyDao {
 
 	BookCopy bookCopy;

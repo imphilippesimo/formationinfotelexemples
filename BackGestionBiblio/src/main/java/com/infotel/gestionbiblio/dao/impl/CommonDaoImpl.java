@@ -4,27 +4,31 @@ import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 import com.infotel.gestionbiblio.dao.CommonDAO;
 
-public abstract class CommonDaoImpl<T> implements CommonDAO<T> {
-
-	 
+@Repository
+public class CommonDaoImpl<T> implements CommonDAO<T> 
+{
 	 
 	@Autowired
 	SessionFactory sessionFactory;
 	
 	private Class<T> type;
 	
+	
     public CommonDaoImpl() 
     {
-        Type t = getClass().getGenericSuperclass();
-        ParameterizedType pt = (ParameterizedType) t;
-        type = (Class) pt.getActualTypeArguments()[0];
+   /*     Type t = getClass().getGenericSuperclass();
+        ParameterizedType pt = (ParameterizedType) t;*/
+        type = (Class) this.getClass();
     }
+    
+    
  
 	public void insert(final T monObjet) 
 	{
@@ -47,7 +51,10 @@ public abstract class CommonDaoImpl<T> implements CommonDAO<T> {
 		return sessionFactory.getCurrentSession().get(type, id);
 	}
 
-	public abstract T getObjectByName(String nom);
+	public T getObjectByName(String nom)
+	{
+		return null;
+	}
 
 	public List<T> getList() 
 	{

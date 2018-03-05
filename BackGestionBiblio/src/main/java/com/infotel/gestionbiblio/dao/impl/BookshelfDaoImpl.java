@@ -3,10 +3,12 @@ package com.infotel.gestionbiblio.dao.impl;
 import java.util.List;
 
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import com.infotel.gestionbiblio.dao.inter.BookshelfDao;
 import com.infotel.gestionbiblio.entity.Bookshelf;
 
+@Repository
 public class BookshelfDaoImpl extends CommonDaoImpl<Bookshelf> implements BookshelfDao {
 
 	Bookshelf bookshelf;

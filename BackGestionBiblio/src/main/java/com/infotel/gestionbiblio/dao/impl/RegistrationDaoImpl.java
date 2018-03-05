@@ -2,9 +2,12 @@ package com.infotel.gestionbiblio.dao.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.infotel.gestionbiblio.dao.inter.RegistrationDao;
 import com.infotel.gestionbiblio.entity.Registration;
 
+@Repository
 public class RegistrationDaoImpl extends CommonDaoImpl<Registration> implements RegistrationDao 
 {
 	Registration registration;

@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import com.infotel.gestionbiblio.dao.inter.BookBasketDao;
 import com.infotel.gestionbiblio.entity.Author;
 import com.infotel.gestionbiblio.entity.BookBasket;
 
+@Repository
 public class BookBasketDaoImpl extends CommonDaoImpl<BookBasket> implements BookBasketDao {
 
 	BookBasket bookBasket;
