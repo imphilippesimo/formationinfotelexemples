@@ -7,9 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name="member.isAdmin", query="FROM Member WHERE administrateur=1 AND memberEmail=:email AND memberPassword=:password"),
+	@NamedQuery(name="member.isMember", query="FROM Member WHERE administrateur=0 AND memberEmail=:email AND memberPassword=:password")
+})
 public class Member  implements Serializable
 {
 	/**
@@ -22,6 +28,8 @@ public class Member  implements Serializable
 	private int idMember;
 	private String memberLastname, memberFirstname, memberEmail, memberPassword, memberAddress, memberCity,
 			memberPostalCode, memberPhone;
+	
+	private boolean administrateur=false;
 
 
 	public Member() {
@@ -112,14 +120,22 @@ public class Member  implements Serializable
 		this.idMember = memberId;
 	}
 
-	
+	public boolean isAdministrateur() {
+		return administrateur;
+	}
+
+	public void setAdministrateur(boolean administrateur) {
+		this.administrateur = administrateur;
+	}
 
 	@Override
 	public String toString() {
-		return "Member [memberLastname=" + memberLastname + ", memberFirstname=" + memberFirstname + ", memberEmail="
-				+ memberEmail + ", memberPassword=" + memberPassword + ", memberAddress=" + memberAddress
-				+ ", memberCity=" + memberCity + ", memberPostalCode=" + memberPostalCode + ", memberPhone="
-				+ memberPhone + "]";
+		return "Member [idMember=" + idMember + ", memberLastname=" + memberLastname + ", memberFirstname="
+				+ memberFirstname + ", memberEmail=" + memberEmail + ", memberPassword=" + memberPassword
+				+ ", memberAddress=" + memberAddress + ", memberCity=" + memberCity + ", memberPostalCode="
+				+ memberPostalCode + ", memberPhone=" + memberPhone + ", administrateur=" + administrateur + "]";
 	}
+
+
 
 }
