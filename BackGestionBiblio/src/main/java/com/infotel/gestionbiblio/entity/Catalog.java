@@ -7,12 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+//Affiche la liste des périodiques
+@NamedQuery(name="catalog.selectperiodique", query="FROM catalog WHERE name='periodique'")
+
 public class Catalog  implements Serializable
 {
 	/**
@@ -25,6 +29,7 @@ public class Catalog  implements Serializable
 	private String catalogName;
 
 	@OneToMany
+	@JoinColumn(name="ID_CATALOG", referencedColumnName="catalogId")
 	private List<Book> bookCatalog;
 	@ManyToOne
 	private Library library;
