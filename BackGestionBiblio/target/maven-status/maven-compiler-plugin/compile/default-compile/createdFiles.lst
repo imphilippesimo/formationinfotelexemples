@@ -3,7 +3,6 @@ com\infotel\gestionbiblio\dao\inter\BookBasketDao.class
 com\infotel\gestionbiblio\dao\inter\BookCopyDao.class
 com\infotel\gestionbiblio\entity\Author.class
 com\infotel\gestionbiblio\dao\inter\CategoryDao.class
-com\infotel\gestionbiblio\entity\BorrowPK.class
 com\infotel\gestionbiblio\dao\inter\AuthorDao.class
 com\infotel\gestionbiblio\entity\Library.class
 com\formation\gestionbiblio\main\Principal.class

@@ -26,6 +26,7 @@ public class Catalog  implements Serializable
 
 	@OneToMany
 	private List<Book> bookCatalog;
+	
 	@ManyToOne
 	private Library library;
 
