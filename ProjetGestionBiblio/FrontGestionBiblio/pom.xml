@@ -2,12 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>FrontGestionBiblio</artifactId>
+	<groupId>com.infotel.gestionbiblio</groupId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<parent>
-    <groupId>com.infotel.gestionbiblio</groupId>
-    <artifactId>GestionBiblio</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
+		<groupId>com.infotel.gestionbiblio</groupId>
+		<artifactId>GestionBiblio</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 	<properties>
 		<springframework.version>4.2.6.RELEASE</springframework.version>
 		<apachetiles.version>3.0.5</apachetiles.version>
