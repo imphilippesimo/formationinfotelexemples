@@ -54,7 +54,7 @@ public class AppController
 		 * Editor("eni","2 rue du machin", books)); books.get(0).setImagePath("/");
 		 * books.get(0).setISBN(1245784518); books.get(0).setPopularBook(true);
 		 * books.get(0).setPublicationDate(new Date());
-		 * 
+		 *  
 		 * catalog.setBookCatalog(books); authors.get(0).setBook(books);
 		 * bookCopy.get(0).setBook(books.get(0));
 		 * 
