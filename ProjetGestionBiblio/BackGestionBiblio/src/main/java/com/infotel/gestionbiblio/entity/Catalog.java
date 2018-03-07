@@ -80,7 +80,7 @@ public class Catalog  implements Serializable
 
 	@Override
 	public String toString() {
-		return "Catalog [catalogName=" + catalogName + ", bookCatalog=" + bookCatalog + ", library=" + library + "]";
+		return "Catalog [catalogName=" + catalogName + ", library=" + library + "]";
 	}
 
 }

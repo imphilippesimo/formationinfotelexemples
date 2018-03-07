@@ -69,8 +69,7 @@ public class BookCopy implements Serializable
 
 	@Override
 	public String toString() {
-		return "BookCopy [bookCopyTitle=" + bookCopyTitle + ", book=" + book + ", bookshelf=" 
-				+ ", bookBasket=" + ", borrow=" + "]";
+		return "BookCopy [bookCopyTitle=" + bookCopyTitle 	+ "]";
 	}
 
 }

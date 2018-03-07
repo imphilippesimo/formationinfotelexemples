@@ -68,8 +68,7 @@ public class Editor implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Editor [editorName=" + editorName + ", editorAddress=" + editorAddress + ", bookEditor=" + bookEditor
-				+ "]";
+		return "Editor [editorName=" + editorName + ", editorAddress=" + editorAddress + "]";
 	}
 
 }
