@@ -1,2 +1,2 @@
-<br/><br/>
-<h1>Gestion de bibliotheque</h1>
+<br />
+<h1 class="titre">Gestionnaire de bibliothèque</h1>
