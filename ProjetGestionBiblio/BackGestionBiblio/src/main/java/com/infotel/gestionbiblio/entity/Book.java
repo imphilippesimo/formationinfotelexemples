@@ -33,7 +33,7 @@ public class Book  implements Serializable
 	private static final long serialVersionUID = 1L;
 	private int ISBN;
 	private String bookTitre, bookDescription, imagePath;
-	private boolean popularBook;
+	private boolean popularBook, periodicBook;
 	private float bookPrice;
 	private Date publicationDate;
 
@@ -52,14 +52,17 @@ public class Book  implements Serializable
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 	public Book(int iSBN, String bookTitre, String bookDescription, String imagePath, boolean popularBook,
-			float bookPrice, Date publicationDate, Category category, Editor editor, Catalog catalog,
-			List<BookCopy> bookCopy, List<Author> author) {
+			boolean periodicBook, float bookPrice, Date publicationDate, Category category, Editor editor,
+			Catalog catalog, List<BookCopy> bookCopy, List<Author> author) {
 		ISBN = iSBN;
 		this.bookTitre = bookTitre;
 		this.bookDescription = bookDescription;
 		this.imagePath = imagePath;
 		this.popularBook = popularBook;
+		this.periodicBook = periodicBook;
 		this.bookPrice = bookPrice;
 		this.publicationDate = publicationDate;
 		this.category = category;
@@ -68,6 +71,8 @@ public class Book  implements Serializable
 		this.bookCopy = bookCopy;
 		this.author = author;
 	}
+
+
 
 	public int getISBN() {
 		return ISBN;
@@ -165,12 +170,40 @@ public class Book  implements Serializable
 		this.author = author;
 	}
 
+	public int getIdBook() {
+		return idBook;
+	}
+
+
+
+	public void setIdBook(int idBook) {
+		this.idBook = idBook;
+	}
+
+
+
+	public boolean isPeriodicBook() {
+		return periodicBook;
+	}
+
+
+
+	public void setPeriodicBook(boolean periodicBook) {
+		this.periodicBook = periodicBook;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Book [ISBN=" + ISBN + ", bookTitre=" + bookTitre + ", bookDescription=" + bookDescription
-				+ ", imagePath=" + imagePath + ", popularBook=" + popularBook + ", bookPrice=" + bookPrice
-				+ ", publicationDate=" + publicationDate + ", category=" + category + ", editor=" + editor
-				+ ", catalog=" + catalog + ", bookCopy=" + bookCopy + ", author=" + author + "]";
+				+ ", imagePath=" + imagePath + ", popularBook=" + popularBook + ", periodicBook=" + periodicBook
+				+ ", bookPrice=" + bookPrice + ", publicationDate=" + publicationDate + ", category=" + category
+				+ ", editor=" + editor + ", catalog=" + catalog + ", bookCopy=" + bookCopy + ", author=" + author + "]";
 	}
+
+
+
+	
 
 }
