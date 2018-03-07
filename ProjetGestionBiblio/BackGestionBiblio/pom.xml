@@ -4,9 +4,9 @@
 	<artifactId>BackGestionBiblio</artifactId>
 	<packaging>jar</packaging>
 	<parent>
-    <groupId>com.infotel.gestionbiblio</groupId>
-    <artifactId>GestionBiblio</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+	<groupId>com.infotel.gestionbiblio</groupId>
+	<artifactId>GestionBiblio</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
   </parent>
 	<properties>
 

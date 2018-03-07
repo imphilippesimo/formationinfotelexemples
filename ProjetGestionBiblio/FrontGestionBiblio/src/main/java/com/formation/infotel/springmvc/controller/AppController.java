@@ -1,5 +1,7 @@
 package com.formation.infotel.springmvc.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -14,17 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.infotel.config.ConteneurSpringFullJava;
 import com.infotel.gestionbiblio.dao.impl.CommonDaoImpl;
 import com.infotel.gestionbiblio.dao.inter.BookDao;
-import com.infotel.gestionbiblio.entity.Book;
-
+import com.infotel.gestionbiblio.entity.*;
+import com.infotel.config.*;
 
 
 @Controller
 @RequestMapping("/")
 public class AppController 
 {
-	@Autowired
-	SessionFactory sessionFactory;
-
 	@RequestMapping(value = { "/"}, method = RequestMethod.GET)
 	public String homePage(ModelMap model) 
 	{
@@ -36,11 +35,12 @@ public class AppController
 	public String productsPage(ModelMap model) 
 	{
 		
-	/*	List<Book> books = new ArrayList<Book>();
+		List<Book> books = new ArrayList<Book>();
 		books.add(new Book());
 		books.add(new Book());
 		
-		ArrayList<Author> authors = new ArrayList<Author>();
+		List<Author> authors = new ArrayList<Author>();
+		authors.add(new Author());
 		authors.get(0).setAuthorFirstname("Author First name");
 		authors.get(0).setAuthorLastname("Author Last name");
 		authors.get(0).setBook(books);
@@ -48,6 +48,7 @@ public class AppController
 		books.get(0).setAuthor(authors);
 		
 		List<BookCopy> bookCopy = new ArrayList<BookCopy>();
+		bookCopy.add(new BookCopy());
 		bookCopy.get(0).setBook(books.get(0));
 		bookCopy.get(0).setBookCopyTitle("Alice aux pays des merveilles");
 		
@@ -57,34 +58,36 @@ public class AppController
 		books.get(0).setBookPrice(57);
 		books.get(0).setBookTitre(bookCopy.get(0).getBookCopyTitle());
 		
-		Catalog catalog = new catalog
+		Catalog catalog = new Catalog("cata",books);
 		books.get(0).setCatalog(catalog);
-		books.get(0).setEditor(editor);
-		books.get(0).setImagePath(imagePath);
-		books.get(0).setISBN(iSBN);
-		books.get(0).setPopularBook(popularBook);
-		books.get(0).setPublicationDate(publicationDate);
+		books.get(0).setEditor(new Editor("eni","2 rue du machin", books));
+		books.get(0).setImagePath("/");
+		books.get(0).setISBN(1245784518);
+		books.get(0).setPopularBook(true);
+		books.get(0).setPublicationDate(new Date());
 		
-		books.get(1).setAuthor(author);
+		catalog.setBookCatalog(books);
+		authors.get(0).setBook(books);
+		bookCopy.get(0).setBook(books.get(0));
+		
+		books.get(1).setAuthor(authors);
 		books.get(1).setBookCopy(bookCopy);
-		books.get(1).setBookDescription(bookDescription);
-		books.get(1).setBookPrice(bookPrice);
-		books.get(1).setBookTitre(bookTitre);
+		books.get(1).setBookDescription("ceci est un description");
+		books.get(1).setBookPrice(58.4f);
+		books.get(1).setBookTitre("un autre livre!!");
 		books.get(1).setCatalog(catalog);
-		books.get(1).setEditor(editor);
-		books.get(1).setImagePath(imagePath);
-		books.get(1).setISBN(iSBN);
-		books.get(1).setPopularBook(popularBook);
-		books.get(1).setPublicationDate(publicationDate);
-		*/
+		books.get(1).setEditor(new Editor("eni2","3 rue du machin", books));
+		books.get(1).setImagePath("/");
+		books.get(1).setISBN(54879541);
+		books.get(1).setPopularBook(true);
+		books.get(1).setPublicationDate(new Date());
 		
-		//model.addAttribute();
 		
-		ApplicationContext ctx = new AnnotationConfigApplicationContext(ConteneurSpringFullJava.class);
+		model.addAttribute("books",books);
 		
-		BookDao book = (BookDao) ctx.getBean("bookDaoImpl");
+	/*	ApplicationContext ctx = new AnnotationConfigApplicationContext(ConteneurSpringFullJava.class);
 		
-		model.addAttribute("books", (List<Book>)((CommonDaoImpl) book).getList());
+		BookDao book = (BookDao) ctx.getBean("bookDaoImpl");*/
 		
 		
 		return "products";
