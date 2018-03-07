@@ -24,11 +24,11 @@
 <body>
 	<header id="header">
 		<tiles:insertAttribute name="header" />
-	</header>
-	<section id="sidemenu">
-		<tiles:insertAttribute name="menu" />
+	</header><tiles:insertAttribute name="menu" />
+<!-- 	<section id="sidemenu">
+	
 	</section>
-	<section id="site-content">
+-->	<section id="site-content">
 		<tiles:insertAttribute name="body" />
 	</section>
 	<footer id="footer">

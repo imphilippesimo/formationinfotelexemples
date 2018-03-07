@@ -6,7 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Gestionnaire de bibliotheque</a>
+     <!-- <a class="navbar-brand" href="#">Gestionnaire de bibliotheque</a>-->
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
