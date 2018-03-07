@@ -24,6 +24,7 @@ public class CategoryDaoImpl extends CommonDaoImpl<Category> implements Category
 	private SessionFactory sessionFactory;
 
 
+	
 	@Override
 	public Category getObjectByName(String nom) 
 	{

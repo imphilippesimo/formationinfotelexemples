@@ -22,6 +22,7 @@ public class MemberDaoImpl extends CommonDaoImpl<Member> implements MemberDao {
 	private SessionFactory sessionFactory;
 
 
+	
 	@Override
 	public Member getObjectByName(String nom) 
 	{

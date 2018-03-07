@@ -22,6 +22,7 @@ public class BookshelfDaoImpl extends CommonDaoImpl<Bookshelf> implements Booksh
 	private SessionFactory sessionFactory;
 
 
+	
 	@Override
 	public Bookshelf getObjectByName(String nom) 
 	{

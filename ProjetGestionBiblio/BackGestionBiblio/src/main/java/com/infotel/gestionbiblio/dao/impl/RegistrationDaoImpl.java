@@ -20,6 +20,7 @@ public class RegistrationDaoImpl extends CommonDaoImpl<Registration> implements 
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	
 
 	@Override
 	public Registration getObjectByName(String nom) {

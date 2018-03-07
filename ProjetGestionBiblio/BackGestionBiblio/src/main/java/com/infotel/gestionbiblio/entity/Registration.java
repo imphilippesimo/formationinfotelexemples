@@ -15,6 +15,7 @@ import javax.persistence.TemporalType;
 @Entity
 public class Registration  implements Serializable
 {
+	
 	/**
 	 * 
 	 */

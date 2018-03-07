@@ -22,6 +22,7 @@ public class LibraryDaoImpl extends CommonDaoImpl<Library> implements LibraryDao
 	private SessionFactory sessionFactory;
 
 
+	
 	@Override
 	public Library getObjectByName(String nom) 
 	{

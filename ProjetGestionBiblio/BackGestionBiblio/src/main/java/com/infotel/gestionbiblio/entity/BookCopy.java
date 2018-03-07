@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 
 
 
+
 @Entity
 public class BookCopy implements Serializable
 {

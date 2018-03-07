@@ -20,6 +20,7 @@ public class BookDaoImpl extends CommonDaoImpl<Book> implements BookDao {
 	Book book;
 	List<Book> bookList;
 	
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 

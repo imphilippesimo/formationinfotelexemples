@@ -21,6 +21,7 @@ public class CatalogDaoImpl extends CommonDaoImpl<Catalog> implements CatalogDao
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	
 
 	@Override
 	public Catalog getObjectByName(String nom) 

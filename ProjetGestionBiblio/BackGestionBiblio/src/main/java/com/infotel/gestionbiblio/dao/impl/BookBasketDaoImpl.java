@@ -20,6 +20,7 @@ public class BookBasketDaoImpl extends CommonDaoImpl<BookBasket> implements Book
 	BookBasket bookBasket;
 	List<BookBasket> bookBasketList;
 	
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 

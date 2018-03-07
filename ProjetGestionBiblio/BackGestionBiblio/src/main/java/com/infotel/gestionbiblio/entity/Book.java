@@ -27,6 +27,7 @@ import javax.persistence.OneToMany;
 //@NamedQuery(name="book.listOrderRecent", query="from Book order by publicationDate ASC")
 public class Book  implements Serializable
 {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idBook;

@@ -22,6 +22,7 @@ public class EditorDaoImpl extends CommonDaoImpl<Editor> implements EditorDao {
 	private SessionFactory sessionFactory;
 
 
+	
 	@Override
 	public Editor getObjectByName(String nom) 
 	{

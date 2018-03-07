@@ -8,6 +8,7 @@ import com.infotel.gestionbiblio.entity.Category;
 
 public interface BookDao {
 
+	
 	public List<Book>getBookRecommandes();
 	public List<Book>getBookByCat(Category cat);
 	public List<Book>getPeriodique();

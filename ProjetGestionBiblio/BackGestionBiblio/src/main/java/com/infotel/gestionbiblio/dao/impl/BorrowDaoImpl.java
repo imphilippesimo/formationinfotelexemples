@@ -23,6 +23,7 @@ public class BorrowDaoImpl extends CommonDaoImpl<Borrow> implements BorrowDao
 	private SessionFactory sessionFactory;
 
 	
+	
 
 	@Override
 	public Borrow getObjectByName(String nom) {

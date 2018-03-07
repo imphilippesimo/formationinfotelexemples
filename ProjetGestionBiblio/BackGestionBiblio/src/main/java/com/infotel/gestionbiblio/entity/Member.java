@@ -11,6 +11,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 
+
 @Entity
 @NamedQueries({
 	@NamedQuery(name="member.isAdmin", query="FROM Member WHERE administrateur=1 AND memberEmail=:email AND memberPassword=:password"),

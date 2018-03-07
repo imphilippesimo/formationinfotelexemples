@@ -24,6 +24,7 @@ public class BookCopyDaoImpl extends CommonDaoImpl<BookCopy> implements BookCopy
 	private SessionFactory sessionFactory;
 
 
+	
 	@Override
 	public BookCopy getObjectByName(String nom) 
 	{

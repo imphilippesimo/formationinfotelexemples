@@ -23,6 +23,7 @@ public class CommonDaoImpl<T> implements CommonDAO<T>
 	private Class<T> type;
 	
 	
+	
     public CommonDaoImpl() 
     {
    /*     Type t = getClass().getGenericSuperclass();
