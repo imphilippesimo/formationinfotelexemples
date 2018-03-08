@@ -23,7 +23,12 @@ public class Member  implements Serializable
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idMember")
 	private int idMember;
-	private String memberLastname, memberFirstname, memberEmail, memberPassword, memberAddress, memberCity,
+	private String memberLastname, memberFirstname;
+	
+	@Column(unique=true)
+	private String  memberEmail;
+	
+	private String memberPassword, memberAddress, memberCity,
 			memberPostalCode, memberPhone;
 	
 	private boolean administrateur=false;
