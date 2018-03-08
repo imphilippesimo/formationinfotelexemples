@@ -1,5 +1,8 @@
 package com.infotel.gestionbiblio.service.inter;
 
-public interface BookCopyService {
+
+import com.infotel.gestionbiblio.entity.BookCopy;
+
+public interface BookCopyService extends CommonService<BookCopy>{
 
 }

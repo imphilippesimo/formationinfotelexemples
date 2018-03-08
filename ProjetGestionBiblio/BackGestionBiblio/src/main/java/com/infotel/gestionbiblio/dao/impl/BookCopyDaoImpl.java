@@ -29,7 +29,7 @@ public class BookCopyDaoImpl extends CommonDaoImpl<BookCopy> implements BookCopy
 	public BookCopy getObjectByName(String nom) 
 	{
 		Query query= sessionFactory.getCurrentSession().
-		        createQuery("from Author where bookCopyTitle=:name");
+		        createQuery("from BookCopy where bookCopyTitle=:name");
 		query.setParameter("name", nom);
 		bookCopy = (BookCopy) query.uniqueResult();
 		

@@ -13,10 +13,6 @@ import javax.persistence.NamedQuery;
 
 
 @Entity
-@NamedQueries({
-	@NamedQuery(name="member.isAdmin", query="FROM Member WHERE administrateur=1 AND memberEmail=:email AND memberPassword=:password"),
-	@NamedQuery(name="member.isMember", query="FROM Member WHERE administrateur=0 AND memberEmail=:email AND memberPassword=:password")
-})
 public class Member  implements Serializable
 {
 	/**

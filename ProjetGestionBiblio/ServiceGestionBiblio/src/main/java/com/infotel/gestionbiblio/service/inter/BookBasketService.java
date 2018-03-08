@@ -1,5 +1,8 @@
 package com.infotel.gestionbiblio.service.inter;
 
-public interface BookBasketService {
+
+import com.infotel.gestionbiblio.entity.BookBasket;
+
+public interface BookBasketService extends CommonService<BookBasket>{
 
 }

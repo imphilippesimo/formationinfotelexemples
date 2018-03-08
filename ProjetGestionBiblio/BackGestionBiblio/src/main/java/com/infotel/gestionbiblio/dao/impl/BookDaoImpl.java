@@ -28,7 +28,7 @@ public class BookDaoImpl extends CommonDaoImpl<Book> implements BookDao {
 	public Book getObjectByName(String nom) 
 	{
 		Query query= sessionFactory.getCurrentSession().
-		        createQuery("from Author where bookTitle=:name");
+		        createQuery("from Book where bookTitle=:name");
 		query.setParameter("name", nom);
 		book = (Book) query.uniqueResult();
 		
@@ -63,13 +63,13 @@ public class BookDaoImpl extends CommonDaoImpl<Book> implements BookDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Book>getBookByAuthor(Author author){
-		return(List<Book>)sessionFactory.getCurrentSession().createQuery("FROM Book B WHERE L.author=:author ORDER BY L.bookTitre").setParameter("author", author).getResultList();
+		return(List<Book>)sessionFactory.getCurrentSession().createQuery("FROM Book B WHERE B.author=:author ORDER BY B.bookTitre").setParameter("author", author).getResultList();
 		
 	}
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Book>getBookByRecherche(String recherche){
-		return(List<Book>)sessionFactory.getCurrentSession().createQuery("FROM Book B WHERE L.bookTitre LIKE :recherche OR L.bookDescription LIKE :recherche").setParameter("recherche", "%" + recherche + "%").getResultList();
+		return(List<Book>)sessionFactory.getCurrentSession().createQuery("FROM Book B WHERE B.bookTitre LIKE :recherche OR B.bookDescription LIKE :recherche").setParameter("recherche", "%" + recherche + "%").getResultList();
 	}
 }
  

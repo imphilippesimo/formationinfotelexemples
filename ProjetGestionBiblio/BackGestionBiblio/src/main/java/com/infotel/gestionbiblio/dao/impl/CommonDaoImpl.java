@@ -61,8 +61,7 @@ public class CommonDaoImpl<T> implements CommonDAO<T>
 
 	public List<T> getList() 
 	{
-		List<T> list=sessionFactory.getCurrentSession().createQuery("from Product").getResultList();
-		return list;
+		return null;
 	}
 	
 	

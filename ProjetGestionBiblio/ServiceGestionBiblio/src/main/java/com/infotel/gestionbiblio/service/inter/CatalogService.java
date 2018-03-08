@@ -1,5 +1,8 @@
 package com.infotel.gestionbiblio.service.inter;
 
-public interface CatalogService {
+
+import com.infotel.gestionbiblio.entity.Catalog;
+
+public interface CatalogService extends CommonService<Catalog>{
 
 }

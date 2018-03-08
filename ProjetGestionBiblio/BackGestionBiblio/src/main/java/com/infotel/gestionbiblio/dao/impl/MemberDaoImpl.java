@@ -27,7 +27,7 @@ public class MemberDaoImpl extends CommonDaoImpl<Member> implements MemberDao {
 	public Member getObjectByName(String nom) 
 	{
 		Query query= sessionFactory.getCurrentSession().
-		        createQuery("from Author where memberName=:name");
+		        createQuery("from Member where memberName=:name");
 		query.setParameter("name", nom);
 		member = (Member) query.uniqueResult();
 		

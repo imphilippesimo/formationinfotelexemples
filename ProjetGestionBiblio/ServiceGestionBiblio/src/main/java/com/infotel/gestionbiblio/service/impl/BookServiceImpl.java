@@ -14,7 +14,7 @@ import com.infotel.gestionbiblio.service.inter.BookService;
 
 @Service
 @Transactional
-public class BookServiceImpl implements BookService{
+public class BookServiceImpl extends CommonServiceImpl<Book> implements BookService{
 	
 	@Autowired
 	private BookDao bookDao;

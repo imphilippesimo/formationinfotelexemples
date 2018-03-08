@@ -1,5 +1,7 @@
 package com.infotel.gestionbiblio.service.inter;
 
-public interface AuthorService {
+import com.infotel.gestionbiblio.entity.Author;
+
+public interface AuthorService extends CommonService<Author> {
 
 }

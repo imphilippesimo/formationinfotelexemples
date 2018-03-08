@@ -1,5 +1,8 @@
 package com.infotel.gestionbiblio.service.inter;
 
-public interface BookselfService {
+
+import com.infotel.gestionbiblio.entity.Bookshelf;
+
+public interface BookselfService extends CommonService<Bookshelf>{
 
 }

@@ -16,15 +16,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQueries({
-    //@NamedQuery(name="member.isAdmin", query="FROM Member WHERE administrateur=1 AND memberEmail=:email AND memberPassword=:password"),
-    //@NamedQuery(name="member.isMember", query="FROM Member WHERE administrateur=0 AND memberEmail=:email AND memberPassword=:password")
-	//@NamedQuery(name="book.selectCatRecommended", query="FROM Book b,Catalog c WHERE catalog=recommended")non
-	//@NamedQuery(name="book.listOrderAlpha", query="from Book order by publicationDate ASC")
-	@NamedQuery(name="book.selectPopular", query="FROM book WHERE popularBook=true"),
-	@NamedQuery(name="book.selectRecommandes", query="FROM book WHERE catalog.catalogName='recommandés'")
-})
-//@NamedQuery(name="book.listOrderRecent", query="from Book order by publicationDate ASC")
 public class Book  implements Serializable
 {
 	

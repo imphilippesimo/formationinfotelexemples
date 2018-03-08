@@ -1,5 +1,8 @@
 package com.infotel.gestionbiblio.service.inter;
 
-public interface MemberService {
+
+import com.infotel.gestionbiblio.entity.Member;
+
+public interface MemberService extends CommonService<Member>{
 
 }

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.infotel.gestionbiblio.dao.inter.BorrowDao;
 import com.infotel.gestionbiblio.entity.Author;
+import com.infotel.gestionbiblio.entity.Book;
 import com.infotel.gestionbiblio.entity.Borrow;
 
 @Repository

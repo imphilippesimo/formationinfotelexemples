@@ -27,7 +27,7 @@ public class CatalogDaoImpl extends CommonDaoImpl<Catalog> implements CatalogDao
 	public Catalog getObjectByName(String nom) 
 	{
 		Query query= sessionFactory.getCurrentSession().
-		        createQuery("from Author where catalogName=:name");
+		        createQuery("from Catalog where catalogName=:name");
 		query.setParameter("name", nom);
 		catalog = (Catalog) query.uniqueResult();
 		
