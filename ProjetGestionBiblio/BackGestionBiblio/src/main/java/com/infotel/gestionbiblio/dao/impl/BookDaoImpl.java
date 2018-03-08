@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.infotel.gestionbiblio.dao.inter.BookDao;
 import com.infotel.gestionbiblio.entity.Author;
 import com.infotel.gestionbiblio.entity.Book;
+import com.infotel.gestionbiblio.entity.Catalog;
 import com.infotel.gestionbiblio.entity.Category;
 
 @Repository
@@ -70,6 +71,12 @@ public class BookDaoImpl extends CommonDaoImpl<Book> implements BookDao {
 	@Override
 	public List<Book>getBookByRecherche(String recherche){
 		return(List<Book>)sessionFactory.getCurrentSession().createQuery("FROM Book B WHERE B.bookTitre LIKE :recherche OR B.bookDescription LIKE :recherche").setParameter("recherche", "%" + recherche + "%").getResultList();
+	}
+
+	@Override
+	public List<Book> getookByCatalog(Catalog cata) {
+		// TODO Auto-generated method stub
+		return (List<Book>)sessionFactory.getCurrentSession().createQuery("FROM Book B WHERE B.catalog=:cata").setParameter("cata", cata).getResultList();
 	}
 }
  
