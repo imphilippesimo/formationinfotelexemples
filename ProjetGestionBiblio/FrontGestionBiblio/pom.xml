@@ -72,7 +72,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.infotel.gestionbiblio</groupId>
-			<artifactId>BackGestionBiblio</artifactId>
+			<artifactId>ServiceGestionBiblio</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

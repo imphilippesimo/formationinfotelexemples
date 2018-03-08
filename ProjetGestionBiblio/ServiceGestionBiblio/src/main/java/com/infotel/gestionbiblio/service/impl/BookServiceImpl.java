@@ -9,12 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.infotel.gestionbiblio.dao.inter.BookDao;
 import com.infotel.gestionbiblio.entity.Author;
 import com.infotel.gestionbiblio.entity.Book;
+import com.infotel.gestionbiblio.entity.BookCopy;
 import com.infotel.gestionbiblio.entity.Category;
 import com.infotel.gestionbiblio.service.inter.BookService;
 
 @Service
 @Transactional
-public class BookServiceImpl extends CommonServiceImpl<Book> implements BookService{
+public class BookServiceImpl implements BookService{
 	
 	@Autowired
 	private BookDao bookDao;
@@ -51,7 +52,32 @@ public class BookServiceImpl extends CommonServiceImpl<Book> implements BookServ
 		return bookDao.getBookByRecherche(recherche);
 	}
 
+	public void insert(final Book monObjet)
+	{
+		bookDao.insert(monObjet);
+	}
 	
+	
+	public void delete(final Book object) {
+		bookDao.delete(object);
+	}
+	
+	public void update(final Book object) {
+		bookDao.update(object);
+	}
+	
+	public Book getById(int id) {
+		return bookDao.getById(id);
+	}
+	
+	public Book getObjectByName(String nom) {
+		return bookDao.getObjectByName(nom);
+	}
+	
+	public List<Book> getList(){
+		return bookDao.getList();
+	}
+
 	
 
 }

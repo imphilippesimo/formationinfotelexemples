@@ -1,4 +1,4 @@
-package com.formation.infotel.springmvc.configuration;
+package com.infotel.springmvc.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
  
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.formation.infotel.springmvc")
+@ComponentScan(basePackages = "com.infotel")
 public class AppConfig extends WebMvcConfigurerAdapter{
 
 	/**

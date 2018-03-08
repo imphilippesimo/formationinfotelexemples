@@ -15,9 +15,6 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-//Affiche la liste des périodiques
-@NamedQuery(name="catalog.selectperiodique", query="FROM catalog WHERE name='periodique'")
-
 public class Catalog  implements Serializable
 {
 	/**

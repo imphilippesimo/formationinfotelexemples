@@ -76,7 +76,7 @@ public class Library implements Serializable
 	@Override
 	public String toString() {
 		return "Library [libraryCode=" + libraryCode + ", libraryName=" + libraryName + ", libraryAddress="
-				+ libraryAddress + ", libraryCatalog=" + libraryCatalog + ", registration=" + "]";
+				+ libraryAddress  + "]";
 	}
 
 }

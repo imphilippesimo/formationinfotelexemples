@@ -1,4 +1,4 @@
-package com.formation.infotel.springmvc.configuration;
+package com.infotel.springmvc.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

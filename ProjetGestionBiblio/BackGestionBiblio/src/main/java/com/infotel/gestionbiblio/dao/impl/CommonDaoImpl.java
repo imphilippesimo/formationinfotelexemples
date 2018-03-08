@@ -7,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-
 import com.infotel.gestionbiblio.dao.CommonDAO;
 
 @Repository
@@ -29,6 +26,7 @@ public class CommonDaoImpl<T> implements CommonDAO<T>
    /*     Type t = getClass().getGenericSuperclass();
         ParameterizedType pt = (ParameterizedType) t;*/
         type = (Class) this.getClass();
+        System.out.println(type);
     }
     
     
@@ -61,7 +59,7 @@ public class CommonDaoImpl<T> implements CommonDAO<T>
 
 	public List<T> getList() 
 	{
-		return null;
+		return (List<T>)sessionFactory.getCurrentSession().createQuery( "from " + type.getName() ).getResultList();
 	}
 	
 	
