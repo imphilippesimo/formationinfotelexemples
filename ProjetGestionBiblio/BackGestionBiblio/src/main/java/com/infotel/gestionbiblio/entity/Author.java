@@ -69,8 +69,7 @@ public class Author implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Author [authorLastname=" + authorLastname + ", authorFirstname=" + authorFirstname + ", book=" + book
-				+ "]";
+		return "Author [authorLastname=" + authorLastname + ", authorFirstname=" + authorFirstname + "]";
 	}
 
 }

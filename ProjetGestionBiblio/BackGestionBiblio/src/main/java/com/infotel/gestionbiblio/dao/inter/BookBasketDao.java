@@ -1,6 +1,9 @@
 package com.infotel.gestionbiblio.dao.inter;
 
-public interface BookBasketDao {
+import com.infotel.gestionbiblio.dao.CommonDAO;
+import com.infotel.gestionbiblio.entity.BookBasket;
+
+public interface BookBasketDao extends CommonDAO<BookBasket>{
 
 	
 }

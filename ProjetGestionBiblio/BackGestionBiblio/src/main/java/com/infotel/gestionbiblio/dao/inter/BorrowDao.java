@@ -1,6 +1,9 @@
 package com.infotel.gestionbiblio.dao.inter;
 
-public interface BorrowDao {
+import com.infotel.gestionbiblio.dao.CommonDAO;
+import com.infotel.gestionbiblio.entity.Borrow;
+
+public interface BorrowDao extends CommonDAO<Borrow>{
 
 	
 }

@@ -3,16 +3,16 @@
 	<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
 		<div class="thumbnail">
 			<div class="caption">
-				<h3>${book.getBookTitre()}</h3>
-				<p>book.getAuthor();</p>
-				<p>${book.getBookDescription()}</p>
-				<p>${book.getBookPrice()}</p>
-				<p>${book.getCatalog()}</p>
-				<p>${book.getEditor()}</p>
-				<p>${book.getImagePath()}</p>
-				<p>${book.getISBN()}</p>
-				<p>${book.getPopularBook()}</p>
-				<p>${book.getPublicationDate()}</p>
+				<h3>${book.titre()}</h3>
+				<p>${book.author()}</p>
+				<p>${book.description()}</p>
+				<p>${book.bookPrice()}</p>
+				<p>${book.catalog()}</p>
+				<p>${book.editor()}</p>
+				<p>${book.imagePath()}</p>
+				<p>${book.iSBN()}</p>
+				<p>${book.popularBook()}</p>
+				<p>${book.publicationDate()}</p>
 			</div>
 		</div>
 	</div>

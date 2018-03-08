@@ -1,6 +1,9 @@
 package com.infotel.gestionbiblio.dao.inter;
 
-public interface BookCopyDao {
+import com.infotel.gestionbiblio.dao.CommonDAO;
+import com.infotel.gestionbiblio.entity.BookCopy;
+
+public interface BookCopyDao extends CommonDAO<BookCopy>{
 
 	
 }
