@@ -15,13 +15,11 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 @EnableWebMvc
 @ComponentScan(basePackages = "com.infotel")
 public class AppConfig extends WebMvcConfigurerAdapter{
-
 	/**
      * Configure TilesConfigurer.
      */
 	@Bean
-	public TilesConfigurer tilesConfigurer()
-	{
+	public TilesConfigurer tilesConfigurer(){
 	    TilesConfigurer tilesConfigurer = new TilesConfigurer();
 	    tilesConfigurer.setDefinitions(new String[] {"/WEB-INF/views/**/tiles.xml"});
 	    tilesConfigurer.setCheckRefresh(true);
@@ -32,8 +30,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
      * Configure ViewResolvers to deliver preferred views.
      */
 	@Override
-	public void configureViewResolvers(ViewResolverRegistry registry) 
-	{
+	public void configureViewResolvers(ViewResolverRegistry registry) {
 		TilesViewResolver viewResolver = new TilesViewResolver();
 		registry.viewResolver(viewResolver);
 	}
@@ -43,8 +40,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
      */
 	
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) 
-    {
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
     }
     

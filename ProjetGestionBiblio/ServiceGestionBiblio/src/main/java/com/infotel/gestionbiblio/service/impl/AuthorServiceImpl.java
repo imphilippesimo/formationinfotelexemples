@@ -18,7 +18,7 @@ public class AuthorServiceImpl implements AuthorService{
 	@Autowired
 	private AuthorDao authorDao;
 
-	
+	 
 	public void insert(final Author monObjet)
 	{
 		authorDao.insert(monObjet);

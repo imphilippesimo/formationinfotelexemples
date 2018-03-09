@@ -16,7 +16,7 @@ import com.infotel.gestionbiblio.service.inter.BookBasketService;
 public class BookBasketServiceImpl implements BookBasketService {
 	@Autowired
 	private BookBasketDao bookBasketDao;
-
+ 
 	
 	public void insert(final BookBasket monObjet)
 	{

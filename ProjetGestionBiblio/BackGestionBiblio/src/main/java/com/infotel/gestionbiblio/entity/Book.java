@@ -166,8 +166,6 @@ public class Book  implements Serializable
 		return idBook;
 	}
 
-
-
 	public void setIdBook(int idBook) {
 		this.idBook = idBook;
 	}
@@ -188,10 +186,7 @@ public class Book  implements Serializable
 
 	@Override
 	public String toString() {
-		return "Book [ISBN=" + ISBN + ", bookTitre=" + bookTitre + ", bookDescription=" + bookDescription
-				+ ", imagePath=" + imagePath + ", popularBook=" + popularBook + ", periodicBook=" + periodicBook
-				+ ", bookPrice=" + bookPrice + ", publicationDate=" + publicationDate + ", category=" + category
-				+ ", editor=" + editor + ", catalog=" + catalog + ", bookCopy=" + bookCopy + ", author=" + author + "]";
+		return "Book [ISBN=" + ISBN + ", bookTitre=" + bookTitre + "]";
 	}
 
 
