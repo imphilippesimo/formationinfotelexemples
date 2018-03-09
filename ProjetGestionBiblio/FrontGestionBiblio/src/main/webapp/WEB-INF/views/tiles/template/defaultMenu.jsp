@@ -11,7 +11,7 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li class="active"><a
-					href="${pageContext.request.contextPath}/">Accueil</a></li>
+					href="${pageContext.request.contextPath}/"><i class="glyphicon glyphicon-home"></i></a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown"
 					href="${pageContext.request.contextPath}/products">Livres<span
@@ -21,28 +21,33 @@
 						<li><a href="${pageContext.request.contextPath}/products">Periodiques</a></li>
 						<li><a href="${pageContext.request.contextPath}/products">Auteurs</a></li>
 					</ul></li>
-				<li><a href="${pageContext.request.contextPath}">Panier</a></li>
+				<li><a href="${pageContext.request.contextPath}/panier">Panier</a></li>
 				<!-- Si on est connecté en tant que membre -->
 				<li><a href="${pageContext.request.contextPath}/compte">Mon
 						compte</a></li>
 				<!-- Si on est admin -->
 				<li><a href="${pageContext.request.contextPath}/gestioncompte">Gestion
 						membres et paniers</a></li>
-				<li>
-								<!-- Recherche -->
-					<form class="form-group" action="${pageContext.request.contextPath }/products">
-						<input id="search"	type="text" class="form-control" name="search"	placeholder="Search">
-						<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-					</form>
+				<li style="width: 30%;">
+				<form action="${pageContext.request.contextPath }/search" class="input-group">
+				  <div class="input-group">
+				    <input type="text" class="form-control"  placeholder="Search" id="search" name="search">
+				    <div class="input-group-btn">
+				      <button class="btn btn-default" type="submit">
+				        <i class="glyphicon glyphicon-search"></i>
+				      </button>
+				    </div>
+				  </div>
+				</form>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Si on est pas connect(é -->
 				<li><a href="${pageContext.request.contextPath}/inscription"><span
-						class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+						class="glyphicon glyphicon-user"></span> Inscription</a></li>
 				<!-- Si on est connecté en tant que membre ou admin -->
 				<li><a href="${pageContext.request.contextPath}/login"><span
-						class="glyphicon glyphicon-log-in"></span>Se connecter</a></li>
+						class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
 			</ul>
 		</div>
 	</div>

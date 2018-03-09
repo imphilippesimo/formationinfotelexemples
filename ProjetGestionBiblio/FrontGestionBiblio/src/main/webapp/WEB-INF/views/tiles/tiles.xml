@@ -50,5 +50,10 @@
        <put-attribute name="title" value="Login" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />  
    </definition>  
+         <!-- Panier Page -->
+   <definition name="panier" extends="base-definition">  
+       <put-attribute name="title" value="Panier" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/panier.jsp" />  
+   </definition>  
  
 </tiles-definitions>
