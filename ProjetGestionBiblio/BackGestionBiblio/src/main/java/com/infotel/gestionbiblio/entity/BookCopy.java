@@ -31,7 +31,9 @@ public class BookCopy implements Serializable
 
 	@ManyToOne
 	private Book book;
-
+	
+	
+	
 
 	public BookCopy() {
 		// TODO Auto-generated constructor stub
