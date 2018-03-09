@@ -41,5 +41,12 @@ public class MemberDaoImpl extends CommonDaoImpl<Member> implements MemberDao {
 		return memberList;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public Member getMemberByLogin(String memberEmail, String memberPassword) {
+		// TODO Auto-generated method stub
+		return (Member)sessionFactory.getCurrentSession().createQuery("FROM Member WHERE memberEmail=:email AND memberPassword=:password").setParameter("memberEmail", memberEmail).setParameter("memberPassword", memberPassword).getResultList().stream().findFirst().orElse(null);
+	}
+
 }
  

@@ -14,4 +14,5 @@ public interface MemberService {
 	public Member getById(int id);
 	public Member getObjectByName(String nom) ;
 	public List<Member> getList();
+	public Member getMemberByLogin(String memberEmail, String memberPassword);
 }

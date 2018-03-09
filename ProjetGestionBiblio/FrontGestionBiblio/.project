@@ -3,6 +3,8 @@
 	<name>FrontGestionBiblio</name>
 	<comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
 	<projects>
+		<project>ServiceGestionBiblio</project>
+		<project>BackGestionBiblio</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

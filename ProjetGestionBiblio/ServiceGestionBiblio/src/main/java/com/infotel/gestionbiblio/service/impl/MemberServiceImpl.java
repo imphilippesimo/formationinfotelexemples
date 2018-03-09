@@ -44,4 +44,13 @@ public class MemberServiceImpl implements MemberService{
 	public List<Member> getList(){
 		return memberDao.getList();
 	}
+
+
+	
+
+
+	@Override
+	public Member getMemberByLogin(String memberEmail, String memberPassword) {		
+		return memberDao.getMemberByLogin(memberEmail, memberPassword);
+	}
 }
