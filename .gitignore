@@ -1,0 +1,32 @@
+# A NE PAS SUPPRIMER SURTOUT
+# IL FAUT GARDER CE FICHIER A LA RACINE DU PROJET GIT ET NON PAS ECLIPSE
+# IL SE BASE SUR LE DOSSIER DANS LEQUEL IL EST POUR ALLER IGNORER TEL OU TEL FICHIER
+# IL FAUT DONC DESCENDRE DANS LA HIERARCHIE DES FICHIERS DU PROJET POUR ALLER IGNORER LES BONS FICHIERS
+
+# GestionBiblio
+.classpath
+.project
+.settings/
+
+# ProjetGestionBiblio
+ProjetGestionBiblio/.classpath
+ProjetGestionBiblio/.project
+ProjetGestionBiblio/.settings/
+
+# ProjetGestionBiblio/BackGestionBiblio
+ProjetGestionBiblio/BackGestionBiblio/.classpath
+ProjetGestionBiblio/BackGestionBiblio/.project
+ProjetGestionBiblio/BackGestionBiblio/.settings/
+ProjetGestionBiblio/BackGestionBiblio/target/
+
+# ProjetGestionBiblio/FrontGestionBiblio
+ProjetGestionBiblio/FrontGestionBiblio/.classpath
+ProjetGestionBiblio/FrontGestionBiblio/.project
+ProjetGestionBiblio/FrontGestionBiblio/.settings/
+ProjetGestionBiblio/FrontGestionBiblio/target/
+
+# ProjetGestionBiblio/ServiceGestionBiblio
+ProjetGestionBiblio/ServiceGestionBiblio/.classpath
+ProjetGestionBiblio/ServiceGestionBiblio/.project
+ProjetGestionBiblio/ServiceGestionBiblio/.settings/
+ProjetGestionBiblio/ServiceGestionBiblio/target/
