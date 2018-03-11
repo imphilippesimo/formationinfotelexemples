@@ -1,3 +1,7 @@
 // Ceci est un test pour montrer comment marche Git!
 
+<<<<<<< Upstream, based on develop
 // Modification 5
+=======
+// Modification GWEN
+>>>>>>> 79bab5d [GWEN] Je modifie mon fichier texte pour qu'il y ai conflit
