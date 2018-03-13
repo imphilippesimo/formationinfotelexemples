@@ -40,8 +40,12 @@
                                    <td><img style="max-width: 100px; height: auto;" src=<c:url value="/static/img${book.imagePath}"/> ></td>
                                    <td style="vertical-align: middle;">${book.bookTitre}</td>
                                    <td style="vertical-align: middle;">${book.bookPrice}<i class="Eglyphicon glyphicon-euro"></i></td>
-<%--                                    <td style="vertical-align: middle;"><c:forEach items="${book.author}" var="author"><span> ${author.firstName} ${author.authorLastName} |</span></c:forEach></td> --%>
-<%--                                    <td style="vertical-align: middle;">${book.editor.name}</td> --%>
+                                    <td style="vertical-align: middle;">
+                                    <c:forEach items="${book.author}" var="auteur">
+                                    	<span> ${auteur.firstName} ${auteur.authorLastName} |</span>
+                                    </c:forEach>
+                                    </td>
+                                    <td style="vertical-align: middle;">${book.editor.name}</td> 
                                    <td style="vertical-align: middle;">
                                        <form method="get" action="BookDetail">
                                            <input type="hidden" name="id" value="${book.ISBN}">
