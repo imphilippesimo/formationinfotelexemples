@@ -8,6 +8,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>BackGestionBiblio</module>
+<<<<<<< Upstream, based on develop
 		<module>ServiceGestionBiblio</module>
 		<module>FrontGestionBiblio</module>
 	</modules>
@@ -78,6 +79,11 @@
 			<version>${mysql.version}</version>
 		</dependency>
 	</dependencies>
+=======
+		<module>FrontGestionBiblio</module>
+		<module>ServiceGestionBiblio</module>
+	</modules>
+>>>>>>> 3199bc4 [GWEN] modif sur pom et bookservice?
 	<build>
 		<pluginManagement>
 			<plugins>
