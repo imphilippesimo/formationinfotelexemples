@@ -28,11 +28,8 @@ public class Catalog  implements Serializable
 	private String catalogName;
 
 	@OneToMany
-	@JoinColumn(name="ID_CATALOG", referencedColumnName="catalogId")
 	private List<Book> bookCatalog;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Library library;
+
 
 	public Catalog() {
 		// TODO Auto-generated constructor stub
@@ -68,17 +65,9 @@ public class Catalog  implements Serializable
 		this.bookCatalog = bookCatalog;
 	}
 
-	public Library getLibrary() {
-		return library;
-	}
-
-	public void setLibrary(Library library) {
-		this.library = library;
-	}
-
 	@Override
 	public String toString() {
-		return "Catalog [catalogName=" + catalogName + ", library=" + library + "]";
+		return "Catalog [catalogName=" + catalogName + "]";
 	}
 
 }

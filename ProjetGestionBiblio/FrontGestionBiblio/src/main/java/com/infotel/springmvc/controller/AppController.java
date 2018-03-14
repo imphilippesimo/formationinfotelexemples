@@ -3,8 +3,10 @@ package com.infotel.springmvc.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -18,7 +20,8 @@ import com.infotel.gestionbiblio.service.inter.*;
 
 @Controller
 @Transactional
-public class AppController {
+public class AppController 
+{
 	@Autowired
 	@Qualifier("bookServiceImpl")
 	BookService bookService;
@@ -53,7 +56,6 @@ public class AppController {
 		String[] listeCategoriesId = request.getParameterValues("categoriesId");
 		String titlesearch = request.getParameter("titleSearch");
 		
-		books = bookService.getList();
 		
 		if(listeAuthorsId!=null && listeAuthorsId.length>0)
 		{
@@ -83,9 +85,9 @@ public class AppController {
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String homePage(HttpServletRequest request,ModelMap model) 
 	{
-		model.addAttribute("titrePage","LES LIVRES RECOMMANDES");
-		model.addAttribute("sousTitrePage","# Les livres populaires recommandés");
-		model.addAttribute("books", bookService.getBookRecommandes(bookService.getList()));
+		List<Book> books = bookService.getBookRecommandes(bookService.getList());
+		
+		model = this.initailisationProduct("LISTE DE LIVRES RECHERCHES", "# Resultat de la recherche", books, model, request);
 		
 		return "products";
 	}
@@ -93,10 +95,9 @@ public class AppController {
 	@RequestMapping(value = { "/products" }, method = RequestMethod.GET)
 	public String productsPage(HttpServletRequest request,ModelMap model) 
 	{
-		model.addAttribute("titrePage","LISTE DE TOUS LES LIVRES");
-		model.addAttribute("sousTitrePage","# Tous les livres de la bibliothèque");
-		model.addAttribute("books", bookService.getList());
-		//System.out.println(bookService.getBookRecommandes());
+		List<Book> books = bookService.getList();
+		
+		model = this.initailisationProduct("LISTE DE LIVRES RECHERCHES", "# Resultat de la recherche", books, model, request);
 
 		return "products";
 	}
@@ -105,9 +106,9 @@ public class AppController {
 	public String productsRecherchePage(HttpServletRequest request, ModelMap model) 
 	{
 		String search = request.getParameter("search");
-		
+
 		List<Book> books = bookService.getBookByRecherche(bookService.getList(),search);
-		
+
 		model = this.initailisationProduct("LISTE DE LIVRES RECHERCHES", "# Resultat de la recherche", books , model, request);
 
 		return "products";
@@ -126,6 +127,8 @@ public class AppController {
 	public String productsInscriptionPage(HttpServletRequest request, ModelMap model) 
 	{
 		String nom = request.getParameter("nom");
+	/*	HttpSession session = request.getSession();
+		session.se*/
 		String prenom = request.getParameter("prenom");
 		String adresse = request.getParameter("adresse");
 		String mail = request.getParameter("mail");
@@ -139,7 +142,8 @@ public class AppController {
 		model.addAttribute("sousTitrePage","# Tous les champs sont obligatoires");
 		model.addAttribute("inscription",false);
 		
-		if(nom!=null && prenom!=null && adresse!=null && mail!=null && pwd!=null && ville!=null && codePostal!=null && tel!=null)
+		if(nom!=null && prenom!=null && adresse!=null && mail!=null && pwd!=null && ville!=null && codePostal!=null && tel!=null &&
+				nom.length()>0 && prenom.length()>0 && adresse.length()>0 && mail.length()>0 && pwd.length()>0 && ville.length()>0 && codePostal.length()>0 && tel.length()>0)
 		{
 
 			Member nouveau = new Member(nom,prenom,mail,pwd,adresse,ville,codePostal,tel);
@@ -184,7 +188,13 @@ public class AppController {
 	{
 		model.addAttribute("titrePage","VOTRE PANIER");
 		model.addAttribute("sousTitrePage","# Liste de livre que vous voulez emprunter (limite de 3)");
+		
+		List<Book> books = bookService.getList();
+		
+	//	model.addAttribute("nbAuthors",books.get(0).getAuthor().size());
+		
 		model.addAttribute("books", bookService.getBookRecommandes(bookService.getList()));
+		
 		
 		return "panier";
 	}

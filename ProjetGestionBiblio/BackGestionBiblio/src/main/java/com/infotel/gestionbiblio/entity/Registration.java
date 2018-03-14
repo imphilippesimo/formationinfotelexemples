@@ -28,22 +28,19 @@ public class Registration  implements Serializable
 	@Temporal(TemporalType.DATE)
 	private Date registrationDate;
 	
-	@OneToOne
+	@OneToOne(mappedBy = "registration")
 	private Member registrationMember;
-	
-	@OneToOne
-	private Library registrationLibrary;
+
 
 	public Registration() {
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public Registration(Date registrationDate, Member registrationMember, Library registrationLibrary) {
+	public Registration(Date registrationDate, Member registrationMember) {
 		super();
 		this.registrationDate = registrationDate;
 		this.registrationMember = registrationMember;
-		this.registrationLibrary = registrationLibrary;
 	}
 
 
@@ -71,18 +68,11 @@ public class Registration  implements Serializable
 		this.registrationMember = registrationMember;
 	}
 
-	public Library getRegistrationLibrary() {
-		return registrationLibrary;
-	}
-
-	public void setRegistrationLibrary(Library registrationLibrary) {
-		this.registrationLibrary = registrationLibrary;
-	}
 
 	@Override
 	public String toString() {
 		return "Registration [registrationDate=" + registrationDate + ", registrationMember=" + registrationMember
-				+ ", registrationLibrary=" + registrationLibrary + "]";
+				+ ", registrationLibrary=" + "]";
 	}
 
 }

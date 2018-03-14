@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 
 
 
@@ -32,6 +33,15 @@ public class Member  implements Serializable
 			memberPostalCode, memberPhone;
 	
 	private boolean administrateur=false;
+	
+	@OneToOne
+	private BookBasket bookBasket;
+	
+	@OneToOne
+	private Borrow borrow;
+	
+	@OneToOne
+	private Registration registration;
 
 
 	public Member() {

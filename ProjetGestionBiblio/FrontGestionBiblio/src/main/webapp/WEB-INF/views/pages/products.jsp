@@ -9,23 +9,31 @@
 </div>
 
 <div class="row">
-	<div class="col-sm-2">
-		<input type="text" class="form-control" placeholder="Title" id="title"
-			name="title">
-		<div class="form-check">
+	<div class="">
+	<div>
+		<input type="text" class="form-control" placeholder="Title" id="title" name="Titre">
+		<div class="form-check" id="listAuthors"><label for="listAuthors">Auteurs :</label>
 			<c:forEach items="${authors}" var="author">
-				<input type="checkbox" class="form-check-input" id="exampleCheck1" type="checkbox" name="selection" value="${author.id}">
+				<input type="checkbox" class="form-check-input" id="exampleCheck1" type="checkbox" name="selection" value="${author.authorId}">
+				<label class="form-check-label" for="exampleCheck1">${author.authorLastname} ${author.authorFirstname}</label>
 			</c:forEach>
 		</div>
-		<div class="form-check">
+		</div>
+		<div class="">
+		<div class="form-check" id="listEditors"><label for="listAuthors">Editeurs :</label>
 			<c:forEach items="${editors}" var="editor">
-				<input type="checkbox" class="form-check-input" id="exampleCheck1" type="checkbox" name="selection" value="${editor.id}">
+				<input type="checkbox" class="form-check-input" id="exampleCheck2" type="checkbox" name="selection" value="${editor.editorId}">
+				<label class="form-check-label" for="exampleCheck2">${editor.editorName}</label>
 			</c:forEach>
 		</div>
-		<div class="form-check">
-			<c:forEach items="${categories}" var="category">
-				<input type="checkbox" class="form-check-input" id="exampleCheck1" type="checkbox" name="selection" value="${category.id}">
+		</div>
+		<div class="">
+		<div class="form-check" id="listCategory"><label for="listCategory">Catégories :</label>
+			<c:forEach items="${categories}" var="category"><label for="listAuthors">Editeurs :</label>
+				<input type="checkbox" class="form-check-input" id="exampleCheck3" type="checkbox" name="selection" value="${category.categoryId}">
+				<label class="form-check-label" for="exampleCheck3">${category.categoryName}</label>
 			</c:forEach>
+		</div>
 		</div>
 	</div>
 	<div class="col-sm-1"></div>

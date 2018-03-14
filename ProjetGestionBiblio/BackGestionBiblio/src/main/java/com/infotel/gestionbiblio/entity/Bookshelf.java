@@ -22,7 +22,8 @@ public class Bookshelf implements Serializable
 	private int bookshelfId;
 	private String bookshelfName, bookshelfDescription;
 	private int bookNumber;
-	@OneToMany
+	
+	@OneToMany(mappedBy = "bookshelf")
 	private List<BookCopy> bookshelfBookCopy;
 
 	public Bookshelf() {

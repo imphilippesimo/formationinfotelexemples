@@ -12,25 +12,25 @@
   <strong>Success!</strong> Utilisateur ajouté
 </div></c:if>
 
-<div class="row">
-<div class="col-sm-4"></div>
-<div class="col-sm-4">
-<form class="form-group"
-	action="${pageContext.request.contextPath}/inscription">
-	<input id="nom" type="text" class="form-control" name="nom" placeholder="Nom"> 
-	<input id="prenom" type="text" class="form-control" name="prenom" placeholder="Prenom"> 
-	<input id="mail" type="text" class="form-control" name="mail" placeholder="Mail"> 
-	<input id="pwd" type="text" class="form-control" name="pwd" placeholder="Password"> 
-	<input id="adresse" type="text" class="form-control" name="adresse" placeholder="Adresse"> 
-	<input id="ville" type="text" class="form-control" name="ville" placeholder="Ville"> 
-	<input id="codePostal" type="text" class="form-control" name="codePostal" placeholder="CodePostal"> 
-	<input id="tel" type="text" class="form-control" name="tel" placeholder="Tel"> 
+<!-- <div class="row"> -->
+<!-- <div class="col-sm-4"></div> -->
+<!-- <div class="col-sm-4"> -->
+<!-- <form class="form-group" -->
+<%-- 	action="${pageContext.request.contextPath}/inscription"> --%>
+<!-- 	<input id="nom" type="text" class="form-control" name="nom" placeholder="Nom">  -->
+<!-- 	<input id="prenom" type="text" class="form-control" name="prenom" placeholder="Prenom">  -->
+<!-- 	<input id="mail" type="text" class="form-control" name="mail" placeholder="Mail">  -->
+<!-- 	<input id="pwd" type="text" class="form-control" name="pwd" placeholder="Password">  -->
+<!-- 	<input id="adresse" type="text" class="form-control" name="adresse" placeholder="Adresse">  -->
+<!-- 	<input id="ville" type="text" class="form-control" name="ville" placeholder="Ville">  -->
+<!-- 	<input id="codePostal" type="text" class="form-control" name="codePostal" placeholder="CodePostal">  -->
+<!-- 	<input id="tel" type="text" class="form-control" name="tel" placeholder="Tel">  -->
 
-	<button type="submit" class="btn btn-default">Inscrire</button>
-</form>
-</div>
-<div class="col-sm-4"></div>
-</div>
+<!-- 	<button type="submit" class="btn btn-default">Inscrire</button> -->
+<!-- </form> -->
+<!-- </div> -->
+<!-- <div class="col-sm-4"></div> -->
+<!-- </div> -->
 
 <form>
   <div class="form-row">
@@ -42,7 +42,7 @@
       </div>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationServer01">First name</label>
+      <label for="validationServer01">Nom</label>
       <input type="text" class="form-control is-valid" id="nom" placeholder="Nom" required>
       <div class="valid-feedback">
         Ok
@@ -79,17 +79,6 @@
       <input type="text" class="form-control is-invalid" id="codePostal" placeholder="codePostal" required>
       <div class="invalid-feedback">
         Entrez un code postal valide svp.
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
-      <label class="form-check-label" for="invalidCheck3">
-        Agree to terms and conditions
-      </label>
-      <div class="invalid-feedback">
-        You must agree before submitting.
       </div>
     </div>
   </div>

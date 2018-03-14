@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -23,22 +24,26 @@ public class BookBasket implements Serializable
 	private int bookBasketId;
 	private Date bookBasketCreationDate, bookBasketDeliveryDate;
 
-	@OneToMany
+	@OneToMany(mappedBy = "bookBasket")
 	private List<BookCopy> bookBasketBookCopy;
-	@OneToMany
-	private List<Member> bookBasketMember;
+	
+	@OneToOne(mappedBy = "bookBasket")
+	private Member member;
 
 	public BookBasket() {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public BookBasket(Date bookBasketCreationDate, Date bookBasketDeliveryDate, List<BookCopy> bookBasketBookCopy,
-			List<Member> bookBasketMember) {
+			Member member) {
+		super();
 		this.bookBasketCreationDate = bookBasketCreationDate;
 		this.bookBasketDeliveryDate = bookBasketDeliveryDate;
 		this.bookBasketBookCopy = bookBasketBookCopy;
-		this.bookBasketMember = bookBasketMember;
+		this.member = member;
 	}
+
 
 	public int getBookBasketId() {
 		return bookBasketId;
@@ -72,19 +77,25 @@ public class BookBasket implements Serializable
 		this.bookBasketBookCopy = bookBasketBookCopy;
 	}
 
-	public List<Member> getBookBasketMember() {
-		return bookBasketMember;
+
+	public Member getMember() {
+		return member;
 	}
 
-	public void setBookBasketMember(List<Member> bookBasketMember) {
-		this.bookBasketMember = bookBasketMember;
+
+	public void setMember(Member member) {
+		this.member = member;
 	}
+
 
 	@Override
 	public String toString() {
-		return "BookBasket [bookBasketCreationDate=" + bookBasketCreationDate + ", bookBasketDeliveryDate="
-				+ bookBasketDeliveryDate + ", bookBasketBookCopy=" + bookBasketBookCopy + ", bookBasketMember="
-				+ bookBasketMember + "]";
+		return "BookBasket [bookBasketId=" + bookBasketId + ", bookBasketCreationDate=" + bookBasketCreationDate
+				+ ", bookBasketDeliveryDate=" + bookBasketDeliveryDate + ", bookBasketBookCopy=" + bookBasketBookCopy
+				+ ", member=" + member + "]";
 	}
+
+
+
 
 }

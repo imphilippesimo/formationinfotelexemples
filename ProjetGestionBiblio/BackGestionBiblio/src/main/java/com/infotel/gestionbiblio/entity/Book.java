@@ -15,28 +15,31 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Book  implements Serializable
 {
-	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idBook;
-	private static final long serialVersionUID = 1L;
 	private int ISBN;
 	private String bookTitre, bookDescription, imagePath;
 	private boolean popularBook, periodicBook;
 	private float bookPrice;
+	
+	@Temporal(TemporalType.DATE)
 	private Date publicationDate;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private Category category;
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private Editor editor;
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private Catalog catalog;
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "book")
+	@OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
 	private List<BookCopy> bookCopy;
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Author> author = new ArrayList<Author>();

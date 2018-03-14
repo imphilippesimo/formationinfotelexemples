@@ -152,4 +152,21 @@ public class BookServiceImpl implements BookService {
 		return listeFiltre;
 	}
 
+	@Override
+	public int getNbBookDispo() {
+		return 0;
+	}
+
+	@Override
+	public boolean bookIsDispo() {
+		
+		return false;
+	}
+
+	@Override
+	public int getIdBookDispo() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

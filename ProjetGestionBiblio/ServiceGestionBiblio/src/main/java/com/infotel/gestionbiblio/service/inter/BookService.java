@@ -21,4 +21,8 @@ public interface BookService {
 	public List<Book> getListLivreAuthorFilter(List<Book> listBook, String[] listeAuthorsId);
 	public List<Book> getListLivreCategoryFilter(List<Book> listBook, String[] listeIdCategory);
 	public List<Book> getListLivreEditorFilter(List<Book> listBook, String[] listeIdEditor);
+	
+	public int getNbBookDispo();
+	public boolean bookIsDispo();
+	public int getIdBookDispo();
 }

@@ -33,13 +33,11 @@ public class Borrow implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int idBorrow;
 	
-	@OneToOne
-    @JoinColumn(name = "member", referencedColumnName = "idMember")    
+	@OneToOne(mappedBy = "borrow")
     private Member member;
     
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "bookCopy", referencedColumnName = "idBorrow")
-     private List<BookCopy> bookCopys=new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "borrow")
+    private List<BookCopy> bookCopys=new ArrayList<>();
 	
 	
 	

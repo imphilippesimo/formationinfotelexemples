@@ -26,12 +26,20 @@ public class BookCopy implements Serializable
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="idBookCopy")
 	private int idBookCopy;
 	private String bookCopyTitle;
+	
+	@ManyToOne
+	private Bookshelf bookshelf;
+	
+	@ManyToOne
+	private BookBasket bookBasket;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private Book book;
+	
+	@ManyToOne
+	Borrow borrow;
 	
 	
 	
