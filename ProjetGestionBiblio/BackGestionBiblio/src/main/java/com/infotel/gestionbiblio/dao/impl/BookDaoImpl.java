@@ -43,40 +43,8 @@ public class BookDaoImpl extends CommonDaoImpl<Book> implements BookDao {
 		return bookList;
 	}
 	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Book>getBookRecommandes(){
-		return (List<Book>)sessionFactory.getCurrentSession().createQuery("FROM Book B WHERE B.popularBook=1").getResultList();
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Book>getBookByCat(Category cat){
-		return (List<Book>)sessionFactory.getCurrentSession().createQuery("FROM Book B WHERE B.category=:cat").setParameter("cat", cat).getResultList();
-		
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Book>getPeriodique(){
-		return(List<Book>)sessionFactory.getCurrentSession().createQuery("FROM Book B WHERE B.periodicBook=1").getResultList();
-	}
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Book>getBookByAuthor(Author author){
-		return(List<Book>)sessionFactory.getCurrentSession().createQuery("FROM Book B WHERE B.author=:author ORDER BY B.bookTitre").setParameter("author", author).getResultList();
-		
-	}
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Book>getBookByRecherche(String recherche){
-		return(List<Book>)sessionFactory.getCurrentSession().createQuery("FROM Book B WHERE B.bookTitre LIKE :recherche OR B.bookDescription LIKE :recherche").setParameter("recherche", "%" + recherche + "%").getResultList();
-	}
 
-	@Override
-	public List<Book> getookByCatalog(Catalog cata) {
-		// TODO Auto-generated method stub
-		return (List<Book>)sessionFactory.getCurrentSession().createQuery("FROM Book B WHERE B.catalog=:cata").setParameter("cata", cata).getResultList();
-	}
+	
+
 }
  

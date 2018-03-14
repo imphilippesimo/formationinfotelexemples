@@ -16,10 +16,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
-
 @Entity
-public class Borrow implements Serializable{
+public class Borrow implements Serializable {
 
 	/**
 	 * 
@@ -30,8 +28,9 @@ public class Borrow implements Serializable{
 	private Date borrowDate, returnDate;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int idBorrow;
+<<<<<<< Upstream, based on develop
 	
 	@OneToOne
     @JoinColumn(name = "member", referencedColumnName = "idMember")    
@@ -43,12 +42,20 @@ public class Borrow implements Serializable{
 	
 	
 	
+=======
+
+	@JoinColumn(name = "member", referencedColumnName = "idMember")
+	@OneToOne
+	private Member member;
+
+	@OneToMany
+	@JoinColumn(name = "bookCopy", referencedColumnName = "idBorrow")
+	private List<BookCopy> bookCopys = new ArrayList<>();
+>>>>>>> 4654b12 [Mickael] push modif JSP formulaire recherche + DAO Book + Service Book et leurs implémentations.
 
 	public Borrow() {
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 	public Borrow(Date borrowDate, Date returnDate, Member member, List<BookCopy> bookCopys) {
 		super();
@@ -57,8 +64,6 @@ public class Borrow implements Serializable{
 		this.member = member;
 		this.bookCopys = bookCopys;
 	}
-
-
 
 	public Date getBorrowDate() {
 		return borrowDate;
@@ -76,19 +81,13 @@ public class Borrow implements Serializable{
 		this.returnDate = returnDate;
 	}
 
-
-
 	public List<BookCopy> getBookCopys() {
 		return bookCopys;
 	}
 
-
-
 	public void setBookCopys(List<BookCopy> bookCopys) {
 		this.bookCopys = bookCopys;
 	}
-
-
 
 	public Member getBorrowMember() {
 		return member;
@@ -98,8 +97,6 @@ public class Borrow implements Serializable{
 		this.member = borrowMember;
 	}
 
-	
-	
 	public Member getMember() {
 		return member;
 	}
@@ -108,16 +105,10 @@ public class Borrow implements Serializable{
 		this.member = member;
 	}
 
-
-	
-
 	@Override
 	public String toString() {
-		return "Borrow [borrowDate=" + borrowDate + ", returnDate=" + returnDate 
-				+ ", member=" + member + ", bookCopy=" + bookCopys + "]";
+		return "Borrow [borrowDate=" + borrowDate + ", returnDate=" + returnDate + ", member=" + member + ", bookCopy="
+				+ bookCopys + "]";
 	}
-
-
-
 
 }
