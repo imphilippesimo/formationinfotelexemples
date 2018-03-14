@@ -46,8 +46,9 @@
 				<li><a href="${pageContext.request.contextPath}/inscription"><span
 						class="glyphicon glyphicon-user"></span> Inscription</a></li>
 				<!-- Si on est connecté en tant que membre ou admin -->
-				<li><a href="${pageContext.request.contextPath}/login"><span
-						class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
+				<li><a href="${pageContext.request.contextPath}/login">
+					<span class="glyphicon glyphicon-log-in"></span> Se connecter</a>
+				</li>
 			</ul>
 		</div>
 	</div>

@@ -1,5 +1,7 @@
 package com.infotel.springmvc.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
@@ -10,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.infotel.gestionbiblio.entity.Book;
 import com.infotel.gestionbiblio.entity.Member;
 import com.infotel.gestionbiblio.service.inter.*;
 
@@ -23,13 +26,66 @@ public class AppController {
 	@Autowired
 	@Qualifier("memberServiceImpl")
 	MemberService memberService;
+	
+	@Autowired
+	@Qualifier("categoryServiceImpl")
+	CategoryService categoryService;
+	
+	@Autowired
+	@Qualifier("authorServiceImpl")
+	AuthorService authorService;
+	
+	@Autowired
+	@Qualifier("editorServiceImpl")
+	EditorService editorService;
+	
+	private ModelMap initailisationProduct(String titrePage, String sousTitrePage,List<Book> books, ModelMap model, HttpServletRequest request)
+	{
+		model.addAttribute("titrePage",titrePage);
+		model.addAttribute("sousTitrePage",sousTitrePage);
+		
+		model.addAttribute("authors",authorService.getList());
+		model.addAttribute("editors",editorService.getList());
+		model.addAttribute("categories",categoryService.getList());
+		
+		String[] listeAuthorsId = request.getParameterValues("authorsId");
+		String[] listeEditorsId = request.getParameterValues("editorsId");
+		String[] listeCategoriesId = request.getParameterValues("categoriesId");
+		String titlesearch = request.getParameter("titleSearch");
+		
+		books = bookService.getList();
+		
+		if(listeAuthorsId!=null && listeAuthorsId.length>0)
+		{
+			books = bookService.getListLivreAuthorFilter(books, listeAuthorsId);
+		}
+		
+		if(listeEditorsId!=null && listeEditorsId.length>0)
+		{
+			books = bookService.getListLivreEditorFilter(books, listeEditorsId);
+		}
+		
+		if(listeCategoriesId!=null && listeCategoriesId.length>0)
+		{
+			books = bookService.getListLivreCategoryFilter(books, listeCategoriesId);
+		}
+		
+		if(titlesearch!=null && !titlesearch.isEmpty())
+		{
+			books = bookService.getListLivreTitreFilter(books, titlesearch);
+		}
+		
+		model.addAttribute("books",books);
+		
+		return model;
+	}
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String homePage(HttpServletRequest request,ModelMap model) 
 	{
 		model.addAttribute("titrePage","LES LIVRES RECOMMANDES");
-		model.addAttribute("sousTitrePage","# Les livres populaires recommandés");
-		model.addAttribute("books", bookService.getBookRecommandes());
+		model.addAttribute("sousTitrePage","# Les livres populaires recommandÃ©s");
+		model.addAttribute("books", bookService.getBookRecommandes(bookService.getList()));
 		
 		return "products";
 	}
@@ -38,22 +94,31 @@ public class AppController {
 	public String productsPage(HttpServletRequest request,ModelMap model) 
 	{
 		model.addAttribute("titrePage","LISTE DE TOUS LES LIVRES");
-		model.addAttribute("sousTitrePage","# Tous les livres de la bibliothèque");
+		model.addAttribute("sousTitrePage","# Tous les livres de la bibliothÃ¨que");
 		model.addAttribute("books", bookService.getList());
 		//System.out.println(bookService.getBookRecommandes());
 
 		return "products";
 	}
 	
-
 	@RequestMapping(value = { "/search" }, method = RequestMethod.GET)
 	public String productsRecherchePage(HttpServletRequest request, ModelMap model) 
 	{
 		String search = request.getParameter("search");
-		model.addAttribute("titrePage","LISTE DE LIVRES RECHERCHES");
-		model.addAttribute("sousTitrePage","# Livres filtrés par recherche de : '"+search+"'");
-		model.addAttribute("books", bookService.getBookByRecherche(search));
+		
+		List<Book> books = bookService.getBookByRecherche(bookService.getList(),search);
+		
+		model = this.initailisationProduct("LISTE DE LIVRES RECHERCHES", "# Resultat de la recherche", books , model, request);
 
+		return "products";
+	}
+	
+	@RequestMapping(value = { "/search2" }, method = RequestMethod.GET)
+	public String productsRecherche2Page(HttpServletRequest request, ModelMap model) 
+	{
+		List<Book> books = bookService.getList();
+		model = this.initailisationProduct("LISTE DE LIVRES RECHERCHES", "# Resultat de la recherche", books, model, request);
+		
 		return "products";
 	}
 	
@@ -61,27 +126,32 @@ public class AppController {
 	public String productsInscriptionPage(HttpServletRequest request, ModelMap model) 
 	{
 		String nom = request.getParameter("nom");
+		String prenom = request.getParameter("prenom");
+		String adresse = request.getParameter("adresse");
+		String mail = request.getParameter("mail");
+		String pwd = request.getParameter("pwd");
+		String ville = request.getParameter("ville");
+		String codePostal = request.getParameter("codePostal");
+		String tel = request.getParameter("tel");
+		
 
 		model.addAttribute("titrePage","CREATION DE COMPTE");
-		model.addAttribute("sousTitrePage","# Formulaire de création de comptes");
+		model.addAttribute("sousTitrePage","# Tous les champs sont obligatoires");
 		model.addAttribute("inscription",false);
 		
-		if(nom!=null)
+		if(nom!=null && prenom!=null && adresse!=null && mail!=null && pwd!=null && ville!=null && codePostal!=null && tel!=null)
 		{
-			String prenom = request.getParameter("prenom");
-			String adresse = request.getParameter("adresse");
-			String mail = request.getParameter("mail");
-			String pwd = request.getParameter("pwd");
-			String ville = request.getParameter("ville");
-			String codePostal = request.getParameter("codePostal");
-			String tel = request.getParameter("tel");
-			
+
 			Member nouveau = new Member(nom,prenom,mail,pwd,adresse,ville,codePostal,tel);
 			
 			memberService.insert(nouveau);
 			
 			model.addAttribute("inscription",true);
 		
+		}
+		else
+		{
+			model.addAttribute("error","Verifiez le(s) champ(s) non remplis");
 		}
 
 		nom = null;
@@ -114,7 +184,7 @@ public class AppController {
 	{
 		model.addAttribute("titrePage","VOTRE PANIER");
 		model.addAttribute("sousTitrePage","# Liste de livre que vous voulez emprunter (limite de 3)");
-		model.addAttribute("books", bookService.getBookRecommandes());
+		model.addAttribute("books", bookService.getBookRecommandes(bookService.getList()));
 		
 		return "panier";
 	}
@@ -132,7 +202,7 @@ public class AppController {
 		{
 			String password = request.getParameter("password");
 
-			/*Member member = memberService.getByLogin(email,password);
+			Member member = memberService.getMemberByLogin(email,password);
 			
 
 			if(member.isAdministrateur())
@@ -141,7 +211,7 @@ public class AppController {
 			}
 			
 			model.addAttribute("inscription",true);
-		*/
+		
 		}
 
 		return "login";

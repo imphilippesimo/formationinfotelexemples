@@ -2,17 +2,13 @@
 
 import java.util.List;
 
-import com.infotel.gestionbiblio.entity.Author;
 import com.infotel.gestionbiblio.entity.Book;
-import com.infotel.gestionbiblio.entity.BookCopy;
-import com.infotel.gestionbiblio.entity.Category;
 
 public interface BookService {
-	public List<Book> getBookRecommandes();
-	public List<Book> getBookByCat(Category cat);
-	public List<Book> getPeriodique();
-	public List<Book> getBookByAuthor(Author author);
-	public List<Book> getBookByRecherche(String recherche);
+
+	public List<Book> getBookRecommandes(List<Book> listBook); 
+	public List<Book> getPeriodique(List<Book> listBook); 
+	public List<Book> getBookByRecherche(List<Book> listBook, String recherche); 
 	
 	public void insert(final Book monObjet);
 	public void delete(final Book object);
@@ -20,4 +16,9 @@ public interface BookService {
 	public Book getById(int id);
 	public Book getObjectByName(String nom) ;
 	public List<Book> getList();
+
+	public List<Book> getListLivreTitreFilter(List<Book> listBook, String titre);
+	public List<Book> getListLivreAuthorFilter(List<Book> listBook, String[] listeAuthorsId);
+	public List<Book> getListLivreCategoryFilter(List<Book> listBook, String[] listeIdCategory);
+	public List<Book> getListLivreEditorFilter(List<Book> listBook, String[] listeIdEditor);
 }
