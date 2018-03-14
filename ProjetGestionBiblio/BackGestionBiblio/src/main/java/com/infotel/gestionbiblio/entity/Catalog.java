@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,7 +31,7 @@ public class Catalog  implements Serializable
 	@JoinColumn(name="ID_CATALOG", referencedColumnName="catalogId")
 	private List<Book> bookCatalog;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Library library;
 
 	public Catalog() {

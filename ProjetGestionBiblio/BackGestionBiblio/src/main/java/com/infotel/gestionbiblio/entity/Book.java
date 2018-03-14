@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,15 +30,15 @@ public class Book  implements Serializable
 	private float bookPrice;
 	private Date publicationDate;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Category category;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Editor editor;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Catalog catalog;
-	@OneToMany(mappedBy = "book")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "book")
 	private List<BookCopy> bookCopy;
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Author> author = new ArrayList<Author>();
 
 	public Book() {

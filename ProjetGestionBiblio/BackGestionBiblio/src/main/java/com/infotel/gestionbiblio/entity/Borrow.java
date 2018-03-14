@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,12 +33,11 @@ public class Borrow implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int idBorrow;
 	
-	
-    @JoinColumn(name = "member", referencedColumnName = "idMember")
-    @OneToOne
+	@OneToOne
+    @JoinColumn(name = "member", referencedColumnName = "idMember")    
     private Member member;
     
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "bookCopy", referencedColumnName = "idBorrow")
      private List<BookCopy> bookCopys=new ArrayList<>();
 	

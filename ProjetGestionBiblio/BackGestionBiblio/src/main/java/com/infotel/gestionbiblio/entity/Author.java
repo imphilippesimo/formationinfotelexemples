@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ public class Author implements Serializable {
 	private int authorId;
 	private String authorLastname, authorFirstname;
 
-	@ManyToMany(mappedBy = "author")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "author")
 	private List<Book> book = new ArrayList<Book>();
 
 	public Author() {
