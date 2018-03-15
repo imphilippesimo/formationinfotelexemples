@@ -3,8 +3,6 @@
 
 import java.util.List;
 
-import com.infotel.gestionbiblio.entity.Book;
-import com.infotel.gestionbiblio.entity.Bookshelf;
 import com.infotel.gestionbiblio.entity.Member;
 
 public interface MemberService {

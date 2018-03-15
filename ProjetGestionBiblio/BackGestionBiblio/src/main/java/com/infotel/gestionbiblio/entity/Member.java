@@ -1,14 +1,14 @@
 package com.infotel.gestionbiblio.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -34,11 +34,11 @@ public class Member  implements Serializable
 	
 	private boolean administrateur=false;
 	
-	@OneToOne
-	private BookBasket bookBasket;
+	@OneToMany(mappedBy = "member")
+	private List<BookBasket> bookBasket;
 	
-	@OneToOne
-	private Borrow borrow;
+	@OneToMany(mappedBy = "member")
+	private List<Borrow> borrow;
 	
 	@OneToOne
 	private Registration registration;
@@ -138,6 +138,30 @@ public class Member  implements Serializable
 
 	public void setAdministrateur(boolean administrateur) {
 		this.administrateur = administrateur;
+	}
+
+	public List<BookBasket> getBookBasket() {
+		return bookBasket;
+	}
+
+	public void setBookBasket(List<BookBasket> bookBasket) {
+		this.bookBasket = bookBasket;
+	}
+
+	public List<Borrow> getBorrow() {
+		return borrow;
+	}
+
+	public void setBorrow(List<Borrow> borrow) {
+		this.borrow = borrow;
+	}
+
+	public Registration getRegistration() {
+		return registration;
+	}
+
+	public void setRegistration(Registration registration) {
+		this.registration = registration;
 	}
 
 	@Override

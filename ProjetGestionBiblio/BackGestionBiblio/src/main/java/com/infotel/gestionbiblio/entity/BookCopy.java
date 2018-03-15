@@ -1,18 +1,14 @@
 package com.infotel.gestionbiblio.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 
 
@@ -32,17 +28,45 @@ public class BookCopy implements Serializable
 	@ManyToOne
 	private Bookshelf bookshelf;
 	
-	@ManyToOne
-	private BookBasket bookBasket;
+	@ManyToMany
+	private List<BookBasket> bookBaskets;
 
 	@ManyToOne
 	private Book book;
 	
-	@ManyToOne
-	Borrow borrow;
+	@ManyToMany
+	List<Borrow> borrows;
 	
 	
 	
+
+	public Bookshelf getBookshelf() {
+		return bookshelf;
+	}
+
+	public void setBookshelf(Bookshelf bookshelf) {
+		this.bookshelf = bookshelf;
+	}
+
+	public List<BookBasket> getBookBasket() {
+		return bookBaskets;
+	}
+
+	public void setBookBasket(List<BookBasket> bookBaskets) {
+		this.bookBaskets = bookBaskets;
+	}
+
+	public List<Borrow> getBorrows() {
+		return borrows;
+	}
+
+	public void setBorrows(List<Borrow> borrows) {
+		this.borrows = borrows;
+	}
+
+	public void setIdBookCopy(int idBookCopy) {
+		this.idBookCopy = idBookCopy;
+	}
 
 	public BookCopy() {
 		// TODO Auto-generated constructor stub
@@ -80,7 +104,8 @@ public class BookCopy implements Serializable
 
 	@Override
 	public String toString() {
-		return "BookCopy [bookCopyTitle=" + bookCopyTitle 	+ "]";
+		return "BookCopy [idBookCopy=" + idBookCopy + ", bookCopyTitle=" + bookCopyTitle + ", bookshelf=" + bookshelf
+				+ ", bookBasket=" + bookBaskets + ", book=" + book + ", borrows=" + borrows + "]";
 	}
 
 }

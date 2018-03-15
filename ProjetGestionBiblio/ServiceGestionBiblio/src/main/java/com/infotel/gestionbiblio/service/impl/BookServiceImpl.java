@@ -10,8 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.infotel.gestionbiblio.dao.inter.BookDao;
 import com.infotel.gestionbiblio.entity.Author;
 import com.infotel.gestionbiblio.entity.Book;
-import com.infotel.gestionbiblio.entity.Catalog;
-import com.infotel.gestionbiblio.entity.Category;
 import com.infotel.gestionbiblio.service.inter.BookService;
 
 @Service

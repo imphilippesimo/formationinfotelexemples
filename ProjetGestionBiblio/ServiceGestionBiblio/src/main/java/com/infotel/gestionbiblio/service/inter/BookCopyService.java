@@ -3,8 +3,6 @@
 
 import java.util.List;
 
-import com.infotel.gestionbiblio.entity.Book;
-import com.infotel.gestionbiblio.entity.BookBasket;
 import com.infotel.gestionbiblio.entity.BookCopy;
 
 public interface BookCopyService {

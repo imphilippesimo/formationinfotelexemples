@@ -10,9 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -33,19 +32,25 @@ public class Borrow implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int idBorrow;
 	
-	@OneToOne(mappedBy = "borrow")
+	@ManyToOne
     private Member member;
     
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "borrow")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "borrows")
     private List<BookCopy> bookCopys=new ArrayList<>();
-	
-	
-	
 
+    
 	public Borrow() {
 		// TODO Auto-generated constructor stub
 	}
+	public int getIdBorrow() {
+		return idBorrow;
+	}
 
+
+
+	public void setIdBorrow(int idBorrow) {
+		this.idBorrow = idBorrow;
+	}
 
 
 	public Borrow(Date borrowDate, Date returnDate, Member member, List<BookCopy> bookCopys) {

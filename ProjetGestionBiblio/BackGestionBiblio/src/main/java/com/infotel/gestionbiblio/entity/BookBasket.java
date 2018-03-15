@@ -8,8 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -24,10 +24,10 @@ public class BookBasket implements Serializable
 	private int bookBasketId;
 	private Date bookBasketCreationDate, bookBasketDeliveryDate;
 
-	@OneToMany(mappedBy = "bookBasket")
+	@ManyToMany(mappedBy = "bookBaskets")
 	private List<BookCopy> bookBasketBookCopy;
 	
-	@OneToOne(mappedBy = "bookBasket")
+	@ManyToOne
 	private Member member;
 
 	public BookBasket() {
