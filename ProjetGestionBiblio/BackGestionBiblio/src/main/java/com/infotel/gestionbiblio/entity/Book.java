@@ -35,12 +35,12 @@ public class Book  implements Serializable
 	private Category category;
 	@ManyToOne
 	private Editor editor;
-	@ManyToOne
-	private Catalog catalog;
 	@OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
 	private List<BookCopy> bookCopy;
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Author> author = new ArrayList<Author>();
+	@ManyToOne
+	Library library;
 
 	public Book() {
 		// TODO Auto-generated constructor stub
@@ -50,7 +50,7 @@ public class Book  implements Serializable
 
 	public Book(int iSBN, String bookTitre, String bookDescription, String imagePath, boolean popularBook,
 			boolean periodicBook, float bookPrice, Date publicationDate, Category category, Editor editor,
-			Catalog catalog, List<BookCopy> bookCopy, List<Author> author) {
+			 List<BookCopy> bookCopy, List<Author> author) {
 		ISBN = iSBN;
 		this.bookTitre = bookTitre;
 		this.bookDescription = bookDescription;
@@ -61,7 +61,6 @@ public class Book  implements Serializable
 		this.publicationDate = publicationDate;
 		this.category = category;
 		this.editor = editor;
-		this.catalog = catalog;
 		this.bookCopy = bookCopy;
 		this.author = author;
 	}
@@ -138,14 +137,6 @@ public class Book  implements Serializable
 
 	public void setEditor(Editor editor) {
 		this.editor = editor;
-	}
-
-	public Catalog getCatalog() {
-		return catalog;
-	}
-
-	public void setCatalog(Catalog catalog) {
-		this.catalog = catalog;
 	}
 
 	public List<BookCopy> getBookCopy() {

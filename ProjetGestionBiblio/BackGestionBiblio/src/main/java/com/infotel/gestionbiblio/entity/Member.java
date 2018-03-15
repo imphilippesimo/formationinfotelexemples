@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 
 
@@ -40,8 +39,8 @@ public class Member  implements Serializable
 	@OneToMany(mappedBy = "member")
 	private List<Borrow> borrow;
 	
-	@OneToOne
-	private Registration registration;
+	@OneToMany(mappedBy = "registrationMember")
+	private List<Registration> registrations;
 
 
 	public Member() {
@@ -156,12 +155,12 @@ public class Member  implements Serializable
 		this.borrow = borrow;
 	}
 
-	public Registration getRegistration() {
-		return registration;
+	public List<Registration> getRegistration() {
+		return registrations;
 	}
 
-	public void setRegistration(Registration registration) {
-		this.registration = registration;
+	public void setRegistration(List<Registration> registrations) {
+		this.registrations = registrations;
 	}
 
 	@Override

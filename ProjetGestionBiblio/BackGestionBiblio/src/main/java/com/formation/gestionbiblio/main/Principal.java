@@ -61,8 +61,8 @@ public class Principal
 	//	Borrow borrow = new Borrow(madate,madate,bookCopy,member);
 		
 
-		CatalogDao catalog = (CatalogDao) ctx.getBean("catalogDaoImpl");
-		CatalogDao catalog2 = (CatalogDao) ctx.getBean("catalogDaoImpl");
+//		CatalogDao catalog = (CatalogDao) ctx.getBean("catalogDaoImpl");
+//		CatalogDao catalog2 = (CatalogDao) ctx.getBean("catalogDaoImpl");
 	//	Catalog catalog = new Catalog("catalogue",books);
 	//	Catalog catalog2 = new Catalog("catalogue",books);
 	//	List<Catalog> catalogs = new ArrayList<Catalog>();

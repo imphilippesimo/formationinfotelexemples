@@ -2,11 +2,14 @@ package com.infotel.gestionbiblio.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -26,8 +29,13 @@ public class Registration  implements Serializable
 	@Temporal(TemporalType.DATE)
 	private Date registrationDate;
 	
-	@OneToOne(mappedBy = "registration")
+	@ManyToOne
 	private Member registrationMember;
+	
+	@ManyToMany(mappedBy = "registrations")
+	private List<Library> libraries;
+	
+	
 
 
 	public Registration() {
@@ -49,6 +57,16 @@ public class Registration  implements Serializable
 	public void setRegistrationId(int registrationId) {
 		this.registrationId = registrationId;
 	}
+
+	public List<Library> getLibraries() {
+		return libraries;
+	}
+
+
+	public void setLibraries(List<Library> libraries) {
+		this.libraries = libraries;
+	}
+
 
 	public Date getRegistrationDate() {
 		return registrationDate;
