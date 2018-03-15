@@ -14,8 +14,6 @@ import com.infotel.gestionbiblio.dto.BookDto;
 import com.infotel.gestionbiblio.entity.Author;
 import com.infotel.gestionbiblio.entity.Book;
 import com.infotel.gestionbiblio.entity.BookCopy;
-import com.infotel.gestionbiblio.entity.Category;
-import com.infotel.gestionbiblio.entity.Library;
 import com.infotel.gestionbiblio.service.inter.AuthorService;
 import com.infotel.gestionbiblio.service.inter.BookCopyService;
 import com.infotel.gestionbiblio.service.inter.BookService;
