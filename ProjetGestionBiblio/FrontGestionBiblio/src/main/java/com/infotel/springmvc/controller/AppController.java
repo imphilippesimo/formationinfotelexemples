@@ -21,23 +21,18 @@ import com.infotel.gestionbiblio.service.inter.*;
 public class AppController 
 {
 	@Autowired
-	@Qualifier("bookServiceImpl")
 	BookService bookService;
 	
 	@Autowired
-	@Qualifier("memberServiceImpl")
 	MemberService memberService;
 	
 	@Autowired
-	@Qualifier("categoryServiceImpl")
 	CategoryService categoryService;
 	
 	@Autowired
-	@Qualifier("authorServiceImpl")
 	AuthorService authorService;
 	
 	@Autowired
-	@Qualifier("editorServiceImpl")
 	EditorService editorService;
 	
 	private ModelMap initailisationProduct(String titrePage, String sousTitrePage,List<Book> books, ModelMap model, HttpServletRequest request)

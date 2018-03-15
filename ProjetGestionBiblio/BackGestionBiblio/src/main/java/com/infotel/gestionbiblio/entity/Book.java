@@ -46,11 +46,11 @@ public class Book  implements Serializable
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
 	public Book(int iSBN, String bookTitre, String bookDescription, String imagePath, boolean popularBook,
 			boolean periodicBook, float bookPrice, Date publicationDate, Category category, Editor editor,
-			 List<BookCopy> bookCopy, List<Author> author) {
+			List<BookCopy> bookCopy, List<Author> author, Library library) 
+	{
+		super();
 		ISBN = iSBN;
 		this.bookTitre = bookTitre;
 		this.bookDescription = bookDescription;
@@ -63,9 +63,21 @@ public class Book  implements Serializable
 		this.editor = editor;
 		this.bookCopy = bookCopy;
 		this.author = author;
+		this.library = library;
 	}
-
-
+	
+	public Book(int iSBN, String bookTitre, String bookDescription, String imagePath, boolean popularBook,
+			boolean periodicBook, float bookPrice, Date publicationDate) {
+		super();
+		ISBN = iSBN;
+		this.bookTitre = bookTitre;
+		this.bookDescription = bookDescription;
+		this.imagePath = imagePath;
+		this.popularBook = popularBook;
+		this.periodicBook = periodicBook;
+		this.bookPrice = bookPrice;
+		this.publicationDate = publicationDate;
+	}
 
 	public int getISBN() {
 		return ISBN;
@@ -176,6 +188,14 @@ public class Book  implements Serializable
 	}
 
 
+
+	public Library getLibrary() {
+		return library;
+	}
+
+	public void setLibrary(Library library) {
+		this.library = library;
+	}
 
 	@Override
 	public String toString() {
