@@ -32,15 +32,19 @@ public class Library implements Serializable
 	@OneToMany(mappedBy = "library")
 	List<Book> books;
 
-
 	public Library() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Library(int libraryCode, String libraryName, String libraryAddress) {
+	public Library(int libraryCode, String libraryName, String libraryAddress, List<Registration> registrations,
+			List<Book> books) {
+		super();
 		this.libraryCode = libraryCode;
 		this.libraryName = libraryName;
 		this.libraryAddress = libraryAddress;
+		this.registrations = registrations;
+		this.books = books;
 	}
 
 	public int getLibraryCode() {
@@ -67,15 +71,6 @@ public class Library implements Serializable
 		this.libraryAddress = libraryAddress;
 	}
 
-
-	public int getIdLibrary() {
-		return idLibrary;
-	}
-
-	public void setIdLibrary(int idLibrary) {
-		this.idLibrary = idLibrary;
-	}
-
 	public List<Registration> getRegistrations() {
 		return registrations;
 	}
@@ -84,10 +79,24 @@ public class Library implements Serializable
 		this.registrations = registrations;
 	}
 
-	@Override
-	public String toString() {
-		return "Library [libraryCode=" + libraryCode + ", libraryName=" + libraryName + ", libraryAddress="
-				+ libraryAddress  + "]";
+	public List<Book> getBooks() {
+		return books;
 	}
 
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
+
+	public int getIdLibrary() {
+		return idLibrary;
+	}
+
+	@Override
+	public String toString() {
+		return "Library [idLibrary=" + idLibrary + ", libraryCode=" + libraryCode + ", libraryName=" + libraryName
+				+ ", libraryAddress=" + libraryAddress + ", registrations=" + registrations + ", books=" + books + "]";
+	}
+
+
+	
 }

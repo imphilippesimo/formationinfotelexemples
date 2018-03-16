@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,13 +43,33 @@ public class Member  implements Serializable
 	@OneToMany(mappedBy = "registrationMember")
 	private List<Registration> registrations;
 
-
 	public Member() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Member(String memberLastname, String memberFirstname, String memberEmail, String memberPassword,
-			String memberAddress, String memberCity, String memberPostalCode, String memberPhone) {
+			String memberAddress, String memberCity, String memberPostalCode, String memberPhone,
+			boolean administrateur, List<BookBasket> bookBasket, List<Borrow> borrow,
+			List<Registration> registrations) {
+		super();
+		this.memberLastname = memberLastname;
+		this.memberFirstname = memberFirstname;
+		this.memberEmail = memberEmail;
+		this.memberPassword = memberPassword;
+		this.memberAddress = memberAddress;
+		this.memberCity = memberCity;
+		this.memberPostalCode = memberPostalCode;
+		this.memberPhone = memberPhone;
+		this.administrateur = administrateur;
+		this.bookBasket = bookBasket;
+		this.borrow = borrow;
+		this.registrations = registrations;
+	}
+
+	public Member(String memberLastname, String memberFirstname, String memberEmail, String memberPassword,
+			String memberAddress, String memberCity, String memberPostalCode, String memberPhone) 
+	{
 		this.memberLastname = memberLastname;
 		this.memberFirstname = memberFirstname;
 		this.memberEmail = memberEmail;
@@ -123,14 +144,6 @@ public class Member  implements Serializable
 		this.memberPhone = memberPhone;
 	}
 
-	public int getIdMember() {
-		return idMember;
-	}
-
-	public void setIdMember(int memberId) {
-		this.idMember = memberId;
-	}
-
 	public boolean isAdministrateur() {
 		return administrateur;
 	}
@@ -155,12 +168,16 @@ public class Member  implements Serializable
 		this.borrow = borrow;
 	}
 
-	public List<Registration> getRegistration() {
+	public List<Registration> getRegistrations() {
 		return registrations;
 	}
 
-	public void setRegistration(List<Registration> registrations) {
+	public void setRegistrations(List<Registration> registrations) {
 		this.registrations = registrations;
+	}
+
+	public int getIdMember() {
+		return idMember;
 	}
 
 	@Override
@@ -168,8 +185,12 @@ public class Member  implements Serializable
 		return "Member [idMember=" + idMember + ", memberLastname=" + memberLastname + ", memberFirstname="
 				+ memberFirstname + ", memberEmail=" + memberEmail + ", memberPassword=" + memberPassword
 				+ ", memberAddress=" + memberAddress + ", memberCity=" + memberCity + ", memberPostalCode="
-				+ memberPostalCode + ", memberPhone=" + memberPhone + ", administrateur=" + administrateur + "]";
+				+ memberPostalCode + ", memberPhone=" + memberPhone + ", administrateur=" + administrateur
+				+ ", bookBasket=" + bookBasket + ", borrow=" + borrow + ", registrations=" + registrations + "]";
 	}
+
+
+
 
 
 

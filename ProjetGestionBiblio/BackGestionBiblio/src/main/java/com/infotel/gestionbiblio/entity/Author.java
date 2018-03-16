@@ -27,21 +27,15 @@ public class Author implements Serializable {
 	private List<Book> book = new ArrayList<Book>();
 
 	public Author() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Author(String authorLastname, String authorFirstname, List<Book> book) {
+		super();
 		this.authorLastname = authorLastname;
 		this.authorFirstname = authorFirstname;
 		this.book = book;
-	}
-
-	public int getAuthorId() {
-		return authorId;
-	}
-
-	public void setAuthorId(int authorId) {
-		this.authorId = authorId;
 	}
 
 	public String getAuthorLastname() {
@@ -68,9 +62,15 @@ public class Author implements Serializable {
 		this.book = book;
 	}
 
-	@Override
-	public String toString() {
-		return "Author [authorLastname=" + authorLastname + ", authorFirstname=" + authorFirstname + "]";
+	public int getAuthorId() {
+		return authorId;
 	}
 
+	@Override
+	public String toString() {
+		return "Author [authorId=" + authorId + ", authorLastname=" + authorLastname + ", authorFirstname="
+				+ authorFirstname + ", book=" + book + "]";
+	}
+
+	
 }

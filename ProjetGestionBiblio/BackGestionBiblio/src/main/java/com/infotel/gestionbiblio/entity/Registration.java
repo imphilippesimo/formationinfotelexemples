@@ -34,39 +34,18 @@ public class Registration  implements Serializable
 	
 	@ManyToMany(mappedBy = "registrations")
 	private List<Library> libraries;
-	
-	
-
 
 	public Registration() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public Registration(Date registrationDate, Member registrationMember) {
+	public Registration(Date registrationDate, Member registrationMember, List<Library> libraries) {
 		super();
 		this.registrationDate = registrationDate;
 		this.registrationMember = registrationMember;
-	}
-
-
-	public int getRegistrationId() {
-		return registrationId;
-	}
-
-	public void setRegistrationId(int registrationId) {
-		this.registrationId = registrationId;
-	}
-
-	public List<Library> getLibraries() {
-		return libraries;
-	}
-
-
-	public void setLibraries(List<Library> libraries) {
 		this.libraries = libraries;
 	}
-
 
 	public Date getRegistrationDate() {
 		return registrationDate;
@@ -84,11 +63,23 @@ public class Registration  implements Serializable
 		this.registrationMember = registrationMember;
 	}
 
+	public List<Library> getLibraries() {
+		return libraries;
+	}
+
+	public void setLibraries(List<Library> libraries) {
+		this.libraries = libraries;
+	}
+
+	public int getRegistrationId() {
+		return registrationId;
+	}
 
 	@Override
 	public String toString() {
-		return "Registration [registrationDate=" + registrationDate + ", registrationMember=" + registrationMember
-				+ ", registrationLibrary=" + "]";
+		return "Registration [registrationId=" + registrationId + ", registrationDate=" + registrationDate
+				+ ", registrationMember=" + registrationMember + ", libraries=" + libraries + "]";
 	}
-
+	
+	
 }

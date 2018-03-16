@@ -119,6 +119,14 @@ public class Book  implements Serializable
 		this.popularBook = popularBook;
 	}
 
+	public boolean isPeriodicBook() {
+		return periodicBook;
+	}
+
+	public void setPeriodicBook(boolean periodicBook) {
+		this.periodicBook = periodicBook;
+	}
+
 	public float getBookPrice() {
 		return bookPrice;
 	}
@@ -167,28 +175,6 @@ public class Book  implements Serializable
 		this.author = author;
 	}
 
-	public int getIdBook() {
-		return idBook;
-	}
-
-	public void setIdBook(int idBook) {
-		this.idBook = idBook;
-	}
-
-
-
-	public boolean isPeriodicBook() {
-		return periodicBook;
-	}
-
-
-
-	public void setPeriodicBook(boolean periodicBook) {
-		this.periodicBook = periodicBook;
-	}
-
-
-
 	public Library getLibrary() {
 		return library;
 	}
@@ -197,13 +183,16 @@ public class Book  implements Serializable
 		this.library = library;
 	}
 
-	@Override
-	public String toString() {
-		return "Book [ISBN=" + ISBN + ", bookTitre=" + bookTitre + "]";
+	public int getIdBook() {
+		return idBook;
 	}
 
+	@Override
+	public String toString() {
+		return "Book [idBook=" + idBook + ", bookTitre=" + bookTitre + ", bookDescription=" + bookDescription
+				+ ", imagePath=" + imagePath + ", popularBook=" + popularBook + ", periodicBook=" + periodicBook
+				+ ", bookPrice=" + bookPrice + ", publicationDate=" + publicationDate + "]";
+	}
 
-
-	
 
 }

@@ -31,9 +31,9 @@ public class BookBasket implements Serializable
 	private Member member;
 
 	public BookBasket() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
-
 
 	public BookBasket(Date bookBasketCreationDate, Date bookBasketDeliveryDate, List<BookCopy> bookBasketBookCopy,
 			Member member) {
@@ -42,15 +42,6 @@ public class BookBasket implements Serializable
 		this.bookBasketDeliveryDate = bookBasketDeliveryDate;
 		this.bookBasketBookCopy = bookBasketBookCopy;
 		this.member = member;
-	}
-
-
-	public int getBookBasketId() {
-		return bookBasketId;
-	}
-
-	public void setBookBasketId(int bookBasketId) {
-		this.bookBasketId = bookBasketId;
 	}
 
 	public Date getBookBasketCreationDate() {
@@ -77,16 +68,17 @@ public class BookBasket implements Serializable
 		this.bookBasketBookCopy = bookBasketBookCopy;
 	}
 
-
 	public Member getMember() {
 		return member;
 	}
-
 
 	public void setMember(Member member) {
 		this.member = member;
 	}
 
+	public int getBookBasketId() {
+		return bookBasketId;
+	}
 
 	@Override
 	public String toString() {
@@ -95,7 +87,5 @@ public class BookBasket implements Serializable
 				+ ", member=" + member + "]";
 	}
 
-
-
-
+	
 }

@@ -43,10 +43,19 @@ public class MemberDaoImpl extends CommonDaoImpl<Member> implements MemberDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Member getMemberByLogin(String memberEmail, String memberPassword) {
+	public Member getMemberByLogin(String memberEmail, String memberPassword) 
+	{
 		// TODO Auto-generated method stub
 		return (Member)sessionFactory.getCurrentSession().createQuery("FROM Member WHERE memberEmail=:email AND memberPassword=:password").setParameter("email", memberEmail).setParameter("password", memberPassword).getResultList().stream().findFirst().orElse(null);
 	}
+	
+	/*@SuppressWarnings("unchecked")
+	@Override
+	public boolean isMemberByLoginExist(String memberEmail, String memberPassword) 
+	{
+
+		return (Member)sessionFactory.getCurrentSession().createQuery("FROM Member WHERE memberEmail=:email AND memberPassword=:password").setParameter("email", memberEmail).setParameter("password", memberPassword).getResultList().stream().findFirst().orElse(null);
+	}*/
 
 }
  

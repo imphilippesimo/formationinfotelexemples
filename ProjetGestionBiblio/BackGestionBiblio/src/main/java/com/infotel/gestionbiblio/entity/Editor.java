@@ -26,21 +26,15 @@ public class Editor implements Serializable {
 	private List<Book> bookEditor;
 
 	public Editor() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Editor(String editorName, String editorAddress, List<Book> bookEditor) {
+		super();
 		this.editorName = editorName;
 		this.editorAddress = editorAddress;
 		this.bookEditor = bookEditor;
-	}
-
-	public int getEditorId() {
-		return editorId;
-	}
-
-	public void setEditorId(int editorId) {
-		this.editorId = editorId;
 	}
 
 	public String getEditorName() {
@@ -67,9 +61,20 @@ public class Editor implements Serializable {
 		this.bookEditor = bookEditor;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public int getEditorId() {
+		return editorId;
+	}
+
 	@Override
 	public String toString() {
-		return "Editor [editorName=" + editorName + ", editorAddress=" + editorAddress + "]";
+		return "Editor [editorId=" + editorId + ", editorName=" + editorName + ", editorAddress=" + editorAddress
+				+ ", bookEditor=" + bookEditor + "]";
 	}
+
+
 
 }

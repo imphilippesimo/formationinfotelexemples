@@ -30,28 +30,18 @@ public class Borrow implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int idBorrow;
+	private int idBorrow;
 	
 	@ManyToOne
     private Member member;
     
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "borrows")
+    @ManyToMany(mappedBy = "borrows")
     private List<BookCopy> bookCopys=new ArrayList<>();
 
-    
 	public Borrow() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
-	public int getIdBorrow() {
-		return idBorrow;
-	}
-
-
-
-	public void setIdBorrow(int idBorrow) {
-		this.idBorrow = idBorrow;
-	}
-
 
 	public Borrow(Date borrowDate, Date returnDate, Member member, List<BookCopy> bookCopys) {
 		super();
@@ -60,8 +50,6 @@ public class Borrow implements Serializable{
 		this.member = member;
 		this.bookCopys = bookCopys;
 	}
-
-
 
 	public Date getBorrowDate() {
 		return borrowDate;
@@ -79,30 +67,6 @@ public class Borrow implements Serializable{
 		this.returnDate = returnDate;
 	}
 
-
-
-	public List<BookCopy> getBookCopys() {
-		return bookCopys;
-	}
-
-
-
-	public void setBookCopys(List<BookCopy> bookCopys) {
-		this.bookCopys = bookCopys;
-	}
-
-
-
-	public Member getBorrowMember() {
-		return member;
-	}
-
-	public void setBorrowMember(Member borrowMember) {
-		this.member = borrowMember;
-	}
-
-	
-	
 	public Member getMember() {
 		return member;
 	}
@@ -111,16 +75,18 @@ public class Borrow implements Serializable{
 		this.member = member;
 	}
 
-
-	
-
-	@Override
-	public String toString() {
-		return "Borrow [borrowDate=" + borrowDate + ", returnDate=" + returnDate 
-				+ ", member=" + member + ", bookCopy=" + bookCopys + "]";
+	public List<BookCopy> getBookCopys() {
+		return bookCopys;
 	}
 
+	public void setBookCopys(List<BookCopy> bookCopys) {
+		this.bookCopys = bookCopys;
+	}
 
+	public int getIdBorrow() {
+		return idBorrow;
+	}
 
+    
 
 }

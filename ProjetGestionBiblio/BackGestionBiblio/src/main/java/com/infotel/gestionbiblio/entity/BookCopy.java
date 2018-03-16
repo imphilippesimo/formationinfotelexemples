@@ -36,53 +36,20 @@ public class BookCopy implements Serializable
 	
 	@ManyToMany
 	List<Borrow> borrows;
-	
-	
-	
-
-	public Bookshelf getBookshelf() {
-		return bookshelf;
-	}
-
-	public void setBookshelf(Bookshelf bookshelf) {
-		this.bookshelf = bookshelf;
-	}
-
-	public List<BookBasket> getBookBasket() {
-		return bookBaskets;
-	}
-
-	public void setBookBasket(List<BookBasket> bookBaskets) {
-		this.bookBaskets = bookBaskets;
-	}
-
-	public List<Borrow> getBorrows() {
-		return borrows;
-	}
-
-	public void setBorrows(List<Borrow> borrows) {
-		this.borrows = borrows;
-	}
-
-	public void setIdBookCopy(int idBookCopy) {
-		this.idBookCopy = idBookCopy;
-	}
 
 	public BookCopy() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public BookCopy(String bookCopyTitle, Book book) {
+	public BookCopy(String bookCopyTitle, Bookshelf bookshelf, List<BookBasket> bookBaskets, Book book,
+			List<Borrow> borrows) {
+		super();
 		this.bookCopyTitle = bookCopyTitle;
+		this.bookshelf = bookshelf;
+		this.bookBaskets = bookBaskets;
 		this.book = book;
-	}
-
-	public int getIdBookCopy() {
-		return idBookCopy;
-	}
-
-	public void setBookCopyId(int bookCopyId) {
-		this.idBookCopy = bookCopyId;
+		this.borrows = borrows;
 	}
 
 	public String getBookCopyTitle() {
@@ -93,6 +60,22 @@ public class BookCopy implements Serializable
 		this.bookCopyTitle = bookCopyTitle;
 	}
 
+	public Bookshelf getBookshelf() {
+		return bookshelf;
+	}
+
+	public void setBookshelf(Bookshelf bookshelf) {
+		this.bookshelf = bookshelf;
+	}
+
+	public List<BookBasket> getBookBaskets() {
+		return bookBaskets;
+	}
+
+	public void setBookBaskets(List<BookBasket> bookBaskets) {
+		this.bookBaskets = bookBaskets;
+	}
+
 	public Book getBook() {
 		return book;
 	}
@@ -101,11 +84,23 @@ public class BookCopy implements Serializable
 		this.book = book;
 	}
 
+	public List<Borrow> getBorrows() {
+		return borrows;
+	}
+
+	public void setBorrows(List<Borrow> borrows) {
+		this.borrows = borrows;
+	}
+
+	public int getIdBookCopy() {
+		return idBookCopy;
+	}
 
 	@Override
 	public String toString() {
 		return "BookCopy [idBookCopy=" + idBookCopy + ", bookCopyTitle=" + bookCopyTitle + ", bookshelf=" + bookshelf
-				+ ", bookBasket=" + bookBaskets + ", book=" + book + ", borrows=" + borrows + "]";
+				+ ", bookBaskets=" + bookBaskets + ", book=" + book + ", borrows=" + borrows + "]";
 	}
-
+	
+	
 }

@@ -4,6 +4,7 @@
 import java.util.List;
 
 import com.infotel.gestionbiblio.entity.Member;
+import com.infotel.gestionbiblio.exception.ServiceException;
 
 public interface MemberService {
 	public void insert(final Member monObjet);
@@ -12,5 +13,5 @@ public interface MemberService {
 	public Member getById(int id);
 	public Member getObjectByName(String nom) ;
 	public List<Member> getList();
-	public Member getMemberByLogin(String memberEmail, String memberPassword);
+	public Member getMemberByLogin(String memberEmail, String memberPassword) throws ServiceException;
 }

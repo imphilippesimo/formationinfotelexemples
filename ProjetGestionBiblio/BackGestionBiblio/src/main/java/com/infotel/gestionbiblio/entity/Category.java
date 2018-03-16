@@ -27,21 +27,15 @@ public class Category  implements Serializable
 	private List<Book> bookCategory;
 
 	public Category() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Category(String categoryName, String categoryDescription, List<Book> bookCategory) {
+		super();
 		this.categoryName = categoryName;
 		CategoryDescription = categoryDescription;
 		this.bookCategory = bookCategory;
-	}
-
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
 	}
 
 	public String getCategoryName() {
@@ -68,9 +62,15 @@ public class Category  implements Serializable
 		this.bookCategory = bookCategory;
 	}
 
+	public int getCategoryId() {
+		return categoryId;
+	}
+
 	@Override
 	public String toString() {
-		return "Category [categoryName=" + categoryName + ", CategoryDescription=" + CategoryDescription + "]";
+		return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", CategoryDescription="
+				+ CategoryDescription + ", bookCategory=" + bookCategory + "]";
 	}
+
 
 }
