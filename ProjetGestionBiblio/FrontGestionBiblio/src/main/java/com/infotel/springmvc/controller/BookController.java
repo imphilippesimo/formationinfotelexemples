@@ -65,6 +65,37 @@ public class BookController {
 			bookCopies.add(bookCopyService.getById(authorId));
 		}
 		book.setBookCopy(bookCopies);
+		
+		bookService.insert(book);
+	}
+	
+	@PostMapping("/update")
+	public void updateBook(@RequestBody BookDto bookDto) {
+
+		/*Book book = new Book(bookDto.getISBN(), bookDto.getBookTitre(), bookDto.getBookDescription(),
+				bookDto.getImagePath(), bookDto.isPopularBook(), bookDto.isPeriodicBook(), bookDto.getBookPrice(),
+				bookDto.getPublicationDate());*/
+		
+		Book book = bookService.getById(bookDto.getIdBook());
+		
+
+		book.setEditor(editorService.getById(bookDto.getIdEditor()));
+		book.setLibrary(libraryService.getById(bookDto.getIdLibrary()));
+		book.setCategory(categoryService.getById(bookDto.getIdCategory()));
+
+		List<Author> authors = new ArrayList<Author>();
+		for (int authorId : bookDto.getIdAuthor()) {
+			authors.add(authorService.getById(authorId));
+		}
+		book.setAuthor(authors);
+
+		List<BookCopy> bookCopies = new ArrayList<BookCopy>();
+		for (int authorId : bookDto.getIdBookCopy()) {
+			bookCopies.add(bookCopyService.getById(authorId));
+		}
+		book.setBookCopy(bookCopies);
+		
+		bookService.insert(book);
 	}
 
 	@GetMapping("/getlist")
@@ -72,6 +103,8 @@ public class BookController {
 		List<BookDto> viewBooks = new ArrayList<BookDto>();
 
 		List<Book> books = bookService.getList();
+		
+		System.out.println(books);
 
 		for (Book book : books) {
 			List<Integer> auhtorIds = new ArrayList<Integer>();
@@ -82,9 +115,9 @@ public class BookController {
 
 			List<Integer> bookCopies = new ArrayList<Integer>();
 
-			for (BookCopy bookCopy : book.getBookCopy()) {
-				bookCopies.add(bookCopy.getIdBookCopy());
-			}
+//			for (BookCopy bookCopy : book.getBookCopy()) {
+//				bookCopies.add(bookCopy.getIdBookCopy());
+//			}
 			
 			viewBooks.add(new BookDto(book.getISBN(), book.getBookTitre(), book.getBookDescription(),
 					book.getImagePath(), book.isPopularBook(), book.isPeriodicBook(), book.getBookPrice(),

@@ -7,6 +7,7 @@ import java.util.List;
 public class BookDto 
 {
 	//Attibuts simple
+	private int idBook;
 	private int ISBN;
 	private String bookTitre, bookDescription, imagePath;
 	private boolean popularBook, periodicBook;
@@ -139,4 +140,9 @@ public class BookDto
 	public void setIdAuthor(List<Integer> idAuthor) {
 		this.authorIds = idAuthor;
 	}
+	public int getIdBook() {
+		return idBook;
+	}
+
+	
 }
