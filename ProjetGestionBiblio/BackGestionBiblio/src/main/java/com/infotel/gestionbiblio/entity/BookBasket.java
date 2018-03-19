@@ -26,22 +26,17 @@ public class BookBasket implements Serializable
 
 	@ManyToMany(mappedBy = "bookBaskets")
 	private List<BookCopy> bookBasketBookCopy;
-	
-	@ManyToOne
-	private Member member;
 
 	public BookBasket() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public BookBasket(Date bookBasketCreationDate, Date bookBasketDeliveryDate, List<BookCopy> bookBasketBookCopy,
-			Member member) {
+	public BookBasket(Date bookBasketCreationDate, Date bookBasketDeliveryDate, List<BookCopy> bookBasketBookCopy) {
 		super();
 		this.bookBasketCreationDate = bookBasketCreationDate;
 		this.bookBasketDeliveryDate = bookBasketDeliveryDate;
 		this.bookBasketBookCopy = bookBasketBookCopy;
-		this.member = member;
 	}
 
 	public Date getBookBasketCreationDate() {
@@ -68,14 +63,6 @@ public class BookBasket implements Serializable
 		this.bookBasketBookCopy = bookBasketBookCopy;
 	}
 
-	public Member getMember() {
-		return member;
-	}
-
-	public void setMember(Member member) {
-		this.member = member;
-	}
-
 	public int getBookBasketId() {
 		return bookBasketId;
 	}
@@ -83,8 +70,7 @@ public class BookBasket implements Serializable
 	@Override
 	public String toString() {
 		return "BookBasket [bookBasketId=" + bookBasketId + ", bookBasketCreationDate=" + bookBasketCreationDate
-				+ ", bookBasketDeliveryDate=" + bookBasketDeliveryDate + ", bookBasketBookCopy=" + bookBasketBookCopy
-				+ ", member=" + member + "]";
+				+ ", bookBasketDeliveryDate=" + bookBasketDeliveryDate + "]";
 	}
 
 	

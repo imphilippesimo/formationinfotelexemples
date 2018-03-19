@@ -17,8 +17,6 @@ import com.infotel.gestionbiblio.service.inter.CategoryService;
 import com.infotel.gestionbiblio.service.inter.EditorService;
 import com.infotel.gestionbiblio.service.inter.LibraryService;
 
-
-
 @Component
 public class BookMapper {
 
@@ -40,51 +38,34 @@ public class BookMapper {
 	@Autowired
 	BookCopyService bookCopyService;
 
-    public Book dtoToBook(BookDto bookDto) 
-    {
+	public Book dtoToBook(BookDto bookDto) {
 		List<Author> authors = new ArrayList<Author>();
-		for (int authorId : bookDto.getIdAuthor()) {
+		for (int authorId : bookDto.getAuthorIds()) {
 			authors.add(authorService.getById(authorId));
 		}
 
 
-		List<BookCopy> bookCopies = new ArrayList<BookCopy>();
-		for (int bookCopiesId : bookDto.getIdBookCopy()) 
-		{
-			bookCopies.add(bookCopyService.getById(bookCopiesId));
-		}
-    	
 		Book book = new Book(bookDto.getISBN(), bookDto.getBookTitre(), bookDto.getBookDescription(),
 				bookDto.getImagePath(), bookDto.isPopularBook(), bookDto.isPeriodicBook(), bookDto.getBookPrice(),
-				bookDto.getPublicationDate(),categoryService.getById(bookDto.getIdCategory()),editorService.getById(bookDto.getIdEditor()),bookCopies,authors,libraryService.getById(bookDto.getIdLibrary()));
+				bookDto.getPublicationDate());
 
 		book.setEditor(editorService.getById(bookDto.getIdEditor()));
-		book.setLibrary(libraryService.getById(bookDto.getIdLibrary()));
 		book.setCategory(categoryService.getById(bookDto.getIdCategory()));
+		book.setAuthors(authors);
 
-        return book;
-    }
-    
-    public BookDto bookToDto(Book book)
-    {
-			List<Integer> auhtorIds = new ArrayList<Integer>();
+		return book;
+	}
 
-			for (Author author : book.getAuthor()) 
-			{
-				auhtorIds.add(author.getAuthorId());
-			}
+	public BookDto bookToDto(Book book) {
+		List<Integer> auhtorIds = new ArrayList<Integer>();
 
-			List<Integer> bookCopies = new ArrayList<Integer>();
+		for (Author author : book.getAuthors()) {
+			auhtorIds.add(author.getAuthorId());
+		}
 
-			for (BookCopy bookCopy : book.getBookCopy()) 
-			{
-				bookCopies.add(bookCopy.getIdBookCopy());
-			}
-			
-    	return new BookDto(book.getISBN(), book.getBookTitre(), book.getBookDescription(),
-				book.getImagePath(), book.isPopularBook(), book.isPeriodicBook(), book.getBookPrice(),
-				book.getPublicationDate(), book.getCategory().getCategoryId(), book.getEditor().getEditorId(),
-				book.getLibrary().getIdLibrary(), bookCopies, auhtorIds);
-    }
-    
+		return new BookDto(book.getISBN(), book.getBookTitre(), book.getBookDescription(), book.getImagePath(),
+				book.isPopularBook(), book.isPeriodicBook(), book.getBookPrice(), book.getPublicationDate(),
+				book.getCategory().getCategoryId(), book.getEditor().getEditorId(),auhtorIds);
+	}
+
 }

@@ -60,7 +60,7 @@ public class BookServiceImpl implements BookService {
 		List<Book> listeFiltre = new ArrayList<Book>();
 
 		for (Book book : listBook) {
-			for (Author author : book.getAuthor()) {
+			for (Author author : book.getAuthors()) {
 				for (String id : listeIdAuthor) {
 					if (author.getAuthorId() == Integer.parseInt(id)) {
 						listeFiltre.add(book);

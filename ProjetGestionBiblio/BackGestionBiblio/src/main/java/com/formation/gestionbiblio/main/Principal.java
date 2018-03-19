@@ -21,73 +21,73 @@ public class Principal
 	{
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(ConteneurSpringFullJava.class);
 		
-		Date madate = new Date();
+//		Date madate = new Date();
 		
-		Book book = new Book();
+//		Book book = new Book();
 		BookDao bookDao = (BookDao) ctx.getBean("bookDaoImpl");
-		Book book2 = new Book();
-		List<Book> books = new ArrayList<Book>();
+//		Book book2 = new Book();
+//		List<Book> books = new ArrayList<Book>();
 		
-		books.add((Book) book);
-		books.add((Book) book2);
+//		books.add((Book) book);
+//		books.add((Book) book2);
 		
 		MemberDao memberDao = (MemberDao) ctx.getBean("memberDaoImpl");
 		MemberDao memberDao2 = (MemberDao) ctx.getBean("memberDaoImpl");
-		Member member = new Member();
-		Member member2 = new Member();
-		List<Member> members = new ArrayList<Member>();
+//		Member member = new Member();
+//		Member member2 = new Member();
+//		List<Member> members = new ArrayList<Member>();
 		
-		members.add((Member) member);
-		members.add((Member) member2);
+//		members.add((Member) member);
+//		members.add((Member) member2);
 		
 		
 		BookCopyDao bookCopyDao = (BookCopyDao) ctx.getBean("bookCopyDaoImpl");
 		BookCopyDao bookCopyDao2 = (BookCopyDao) ctx.getBean("bookCopyDaoImpl");
-		BookCopy bookCopy = new BookCopy();
-		BookCopy bookCopy2 = new BookCopy();
-		List<BookCopy> bookCopys = new ArrayList<BookCopy>();
+//		BookCopy bookCopy = new BookCopy();
+//		BookCopy bookCopy2 = new BookCopy();
+//		List<BookCopy> bookCopys = new ArrayList<BookCopy>();
 		
-		bookCopys.add((BookCopy) bookCopy);
-		bookCopys.add((BookCopy) bookCopy2);
+//		bookCopys.add((BookCopy) bookCopy);
+//		bookCopys.add((BookCopy) bookCopy2);
 		
 		
 		AuthorDao authorDao = (AuthorDao) ctx.getBean("authorDaoImpl");
-		Author author = new Author();
-		Author author2 = new Author();
-		List<Author> authors = new ArrayList<Author>();
+//		Author author = new Author();
+//		Author author2 = new Author();
+//		List<Author> authors = new ArrayList<Author>();
 		
-		BookBasket bookBasket = new BookBasket();
+////		BookBasket bookBasket = new BookBasket();
 		BookBasketDao bookBasketDao = (BookBasketDao) ctx.getBean("bookBasketDaoImpl");
 		
 
 		BookshelfDao bookshelfDao = (BookshelfDao) ctx.getBean("bookshelfDaoImpl");
-		Bookshelf bookshelf = new Bookshelf("etagere 1","c'est la premiere",2,bookCopys);
+//		Bookshelf bookshelf = new Bookshelf("etagere 1","c'est la premiere",2,bookCopys);
 		
 		BorrowDao borrowDao = (BorrowDao) ctx.getBean("borrowDaoImpl");
-		Borrow borrow = new Borrow();
+//		Borrow borrow = new Borrow();
 		
 		
 
 
 		RegistrationDao registrationDao = (RegistrationDao) ctx.getBean("registrationDaoImpl");
-		Registration registration = new Registration();
-		Registration registration2 = new Registration();
-		List<Registration> registrations = new ArrayList<Registration>();
-		registrations.add(registration);
-		registrations.add(registration2);
+//		Registration registration = new Registration();
+//		Registration registration2 = new Registration();
+//		List<Registration> registrations = new ArrayList<Registration>();
+//		registrations.add(registration);
+//		registrations.add(registration2);
 		
 		
 		LibraryDao libraryDao = (LibraryDao) ctx.getBean("libraryDaoImpl");
-		Library library = new Library();
+//		Library library = new Library();
 		
 		CategoryDao categoryDao = (CategoryDao) ctx.getBean("categoryDaoImpl");
-		Category category = new Category();
+//		Category category = new Category();
 		
 		EditorDao editorDao = (EditorDao) ctx.getBean("editorDaoImpl");
-		Editor editor = new Editor();
+//		Editor editor = new Editor();
 
 
-		books.get(0).setBookDescription("Description du livre 1");
+/*		books.get(0).setBookDescription("Description du livre 1");
 		books.get(0).setBookPrice(57.1f);
 		books.get(0).setBookTitre("Titre1");
 		books.get(0).setImagePath("/");
@@ -106,11 +106,11 @@ public class Principal
 		books.get(1).setPopularBook(true);
 		books.get(1).setPublicationDate(madate);
 		
-		
+		*/
 		
 
 		
-		editor.setBookEditor(books);
+	/*	editor.setBookEditor(books);
 		editor.setEditorAddress("16 rue de l'editeur");
 		editor.setEditorName("ENI");
 		
@@ -120,7 +120,7 @@ public class Principal
 		
 		category.setBookCategory(books);
 		category.setCategoryDescription("Cat Divers");
-		category.setCategoryName("1ere catégorie");
+		category.setCategoryName("1ere catégorie");*/
 		
 	/*	member.setAdministrateur(true);
 		member.setBookBasket(bookBaskets);
@@ -135,7 +135,7 @@ public class Principal
 		member.setMemberPostalCode(memberPostalCode);
 		member.setRegistration(registrations);*/
 		
-		registrationDao.insert(registration);
+	/*	registrationDao.insert(registration);
 		registrationDao.insert(registration2);
 		
 		library.setLibraryAddress("84 rue de la bibliotheque");
@@ -153,7 +153,7 @@ public class Principal
 		books.get(1).setBookCopy(bookCopys);
 		books.get(1).setCategory(category);
 		books.get(1).setEditor(editor);
-		books.get(1).setLibrary(library);
+		books.get(1).setLibrary(library);*/
 		/*
 		libraryDao.insert(library);
 		
@@ -161,8 +161,8 @@ public class Principal
 		
 		categoryDao.insert(category);*/
 		
-		bookDao.insert(books.get(0));
-		bookDao.insert(books.get(1));
+	/*	bookDao.insert(books.get(0));
+		bookDao.insert(books.get(1));*/
 	
 		
 		System.out.println("ok");

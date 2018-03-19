@@ -34,14 +34,10 @@ public class Member  implements Serializable
 	
 	private boolean administrateur=false;
 	
-	@OneToMany(mappedBy = "member")
-	private List<BookBasket> bookBasket;
-	
-	@OneToMany(mappedBy = "member")
-	private List<Borrow> borrow;
-	
-	@OneToMany(mappedBy = "registrationMember")
-	private List<Registration> registrations;
+	@OneToMany
+	private List<Borrow> borrows;
+	@OneToMany
+	private List<BookBasket> bookBaskets;
 
 	public Member() {
 		super();
@@ -50,7 +46,7 @@ public class Member  implements Serializable
 
 	public Member(String memberLastname, String memberFirstname, String memberEmail, String memberPassword,
 			String memberAddress, String memberCity, String memberPostalCode, String memberPhone,
-			boolean administrateur, List<BookBasket> bookBasket, List<Borrow> borrow,
+			boolean administrateur, List<BookBasket> bookBasket, List<Borrow> borrows,
 			List<Registration> registrations) {
 		super();
 		this.memberLastname = memberLastname;
@@ -62,9 +58,8 @@ public class Member  implements Serializable
 		this.memberPostalCode = memberPostalCode;
 		this.memberPhone = memberPhone;
 		this.administrateur = administrateur;
-		this.bookBasket = bookBasket;
-		this.borrow = borrow;
-		this.registrations = registrations;
+		this.bookBaskets = bookBasket;
+		this.borrows = borrows;
 	}
 
 	public Member(String memberLastname, String memberFirstname, String memberEmail, String memberPassword,
@@ -153,28 +148,22 @@ public class Member  implements Serializable
 	}
 
 	public List<BookBasket> getBookBasket() {
-		return bookBasket;
+		return bookBaskets;
 	}
 
-	public void setBookBasket(List<BookBasket> bookBasket) {
-		this.bookBasket = bookBasket;
+	public void setBookBasket(List<BookBasket> bookBaskets) {
+		this.bookBaskets = bookBaskets;
 	}
 
-	public List<Borrow> getBorrow() {
-		return borrow;
+	public List<Borrow> getBorrows() {
+		return borrows;
 	}
 
-	public void setBorrow(List<Borrow> borrow) {
-		this.borrow = borrow;
+	public void setBorrows(List<Borrow> borrows) {
+		this.borrows = borrows;
 	}
 
-	public List<Registration> getRegistrations() {
-		return registrations;
-	}
 
-	public void setRegistrations(List<Registration> registrations) {
-		this.registrations = registrations;
-	}
 
 	public int getIdMember() {
 		return idMember;
@@ -185,8 +174,7 @@ public class Member  implements Serializable
 		return "Member [idMember=" + idMember + ", memberLastname=" + memberLastname + ", memberFirstname="
 				+ memberFirstname + ", memberEmail=" + memberEmail + ", memberPassword=" + memberPassword
 				+ ", memberAddress=" + memberAddress + ", memberCity=" + memberCity + ", memberPostalCode="
-				+ memberPostalCode + ", memberPhone=" + memberPhone + ", administrateur=" + administrateur
-				+ ", bookBasket=" + bookBasket + ", borrow=" + borrow + ", registrations=" + registrations + "]";
+				+ memberPostalCode + ", memberPhone=" + memberPhone + ", administrateur=" + administrateur	+ "]";
 	}
 
 

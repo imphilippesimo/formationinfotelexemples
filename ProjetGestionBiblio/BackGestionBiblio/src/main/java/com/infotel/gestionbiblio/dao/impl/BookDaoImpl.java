@@ -2,6 +2,7 @@ package com.infotel.gestionbiblio.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +36,13 @@ public class BookDaoImpl extends CommonDaoImpl<Book> implements BookDao {
 	
 	@Override
 	public List<Book> getList()
-	{
+	{		
 		bookList = super.getList();
+	
+		for (Book book : bookList) {
+		Hibernate.initialize(book.getAuthors());
+	
+	}
 		return bookList;
 	}
 	

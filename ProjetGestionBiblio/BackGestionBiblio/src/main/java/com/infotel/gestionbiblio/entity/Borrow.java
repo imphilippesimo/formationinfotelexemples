@@ -1,16 +1,11 @@
 package com.infotel.gestionbiblio.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,24 +26,24 @@ public class Borrow implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idBorrow;
-	
+	/*
 	@ManyToOne
     private Member member;
-    
-    @ManyToMany(mappedBy = "borrows")
-    private List<BookCopy> bookCopys=new ArrayList<>();
+    */
+    @ManyToOne
+    private BookCopy bookCopy;
 
 	public Borrow() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Borrow(Date borrowDate, Date returnDate, Member member, List<BookCopy> bookCopys) {
+	public Borrow(Date borrowDate, Date returnDate, BookCopy bookCopy) {
 		super();
 		this.borrowDate = borrowDate;
 		this.returnDate = returnDate;
-		this.member = member;
-		this.bookCopys = bookCopys;
+	//	this.member = member;
+		this.bookCopy = bookCopy;
 	}
 
 	public Date getBorrowDate() {
@@ -67,20 +62,20 @@ public class Borrow implements Serializable{
 		this.returnDate = returnDate;
 	}
 
-	public Member getMember() {
+/*	public Member getMember() {
 		return member;
 	}
 
 	public void setMember(Member member) {
 		this.member = member;
+	}*/
+
+	public BookCopy getBookCopy() {
+		return bookCopy;
 	}
 
-	public List<BookCopy> getBookCopys() {
-		return bookCopys;
-	}
-
-	public void setBookCopys(List<BookCopy> bookCopys) {
-		this.bookCopys = bookCopys;
+	public void setBookCopy(BookCopy bookCopy) {
+		this.bookCopy = bookCopy;
 	}
 
 	public int getIdBorrow() {

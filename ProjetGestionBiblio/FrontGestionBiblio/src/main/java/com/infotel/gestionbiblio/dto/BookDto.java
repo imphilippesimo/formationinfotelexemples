@@ -17,8 +17,6 @@ public class BookDto
 	//Id attributs complexes
 	private int categoryId;
 	private int editorId;
-	private int idLibrary;
-	private List<Integer> idBookCopy;
 	private List<Integer> authorIds;
 	
 	public BookDto() 
@@ -26,8 +24,8 @@ public class BookDto
 		super();
 	}
 	public BookDto(int iSBN, String bookTitre, String bookDescription, String imagePath, boolean popularBook,
-			boolean periodicBook, float bookPrice, Date publicationDate, int idCategory, int idEditor, int idLibrary,
-			List<Integer> idBookCopy, List<Integer> idAuthor) 
+			boolean periodicBook, float bookPrice, Date publicationDate, int idCategory, int idEditor,
+			List<Integer> authorIds) 
 	{
 		super();
 		this.ISBN = iSBN;
@@ -40,13 +38,11 @@ public class BookDto
 		this.publicationDate = publicationDate;
 		this.categoryId = idCategory;
 		this.editorId = idEditor;
-		this.idLibrary = idLibrary;
-		this.idBookCopy = idBookCopy;
-		this.authorIds = idAuthor;
+		this.authorIds = authorIds;
 	}
 	
 	public BookDto(int iSBN, String bookTitre, String bookDescription, String imagePath, boolean popularBook,
-			boolean periodicBook, float bookPrice, Date publicationDate, int categoryId, int editorId, int idLibrary) {
+			boolean periodicBook, float bookPrice, Date publicationDate, int categoryId, int editorId) {
 		super();
 		ISBN = iSBN;
 		this.bookTitre = bookTitre;
@@ -58,7 +54,6 @@ public class BookDto
 		this.publicationDate = publicationDate;
 		this.categoryId = categoryId;
 		this.editorId = editorId;
-		this.idLibrary = idLibrary;
 	}
 	
 
@@ -122,22 +117,10 @@ public class BookDto
 	public void setIdEditor(int idEditor) {
 		this.editorId = idEditor;
 	}
-	public int getIdLibrary() {
-		return idLibrary;
-	}
-	public void setIdLibrary(int idLibrary) {
-		this.idLibrary = idLibrary;
-	}
-	public List<Integer> getIdBookCopy() {
-		return idBookCopy;
-	}
-	public void setIdBookCopy(List<Integer> idBookCopy) {
-		this.idBookCopy = idBookCopy;
-	}
-	public List<Integer> getIdAuthor() {
+	public List<Integer> getAuthorIds() {
 		return authorIds;
 	}
-	public void setIdAuthor(List<Integer> idAuthor) {
+	public void setAuthorIds(List<Integer> idAuthor) {
 		this.authorIds = idAuthor;
 	}
 	public int getIdBook() {

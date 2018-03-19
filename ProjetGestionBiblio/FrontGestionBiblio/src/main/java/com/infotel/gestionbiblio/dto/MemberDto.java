@@ -9,7 +9,7 @@ public class MemberDto
 	private String memberLastname;
 	private String memberFirstname;
 	
-	private String  memberEmail;
+	private String memberEmail;
 
 	private String memberPassword;
 	private String memberAddress;
@@ -22,6 +22,7 @@ public class MemberDto
 	private List<Integer> bookBasketsIds;
 	private List<Integer> borrowsIds;
 	private List<Integer> registrationsIds;
+	
 	public MemberDto() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -29,7 +30,8 @@ public class MemberDto
 	public MemberDto(String memberLastname, String memberFirstname, String memberEmail, String memberPassword,
 			String memberAddress, String memberCity, String memberPostalCode, String memberPhone,
 			boolean administrateur, List<Integer> bookBasketsIds, List<Integer> borrowsIds,
-			List<Integer> registrationsIds) {
+			List<Integer> registrationsIds) 
+	{
 		super();
 		this.memberLastname = memberLastname;
 		this.memberFirstname = memberFirstname;

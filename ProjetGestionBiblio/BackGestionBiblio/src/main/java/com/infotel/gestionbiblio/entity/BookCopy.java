@@ -34,22 +34,21 @@ public class BookCopy implements Serializable
 	@ManyToOne
 	private Book book;
 	
-	@ManyToMany
-	List<Borrow> borrows;
+	/*@ManyToOne
+	Borrow borrow;*/
 
 	public BookCopy() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public BookCopy(String bookCopyTitle, Bookshelf bookshelf, List<BookBasket> bookBaskets, Book book,
-			List<Borrow> borrows) {
+	public BookCopy(String bookCopyTitle, Bookshelf bookshelf, List<BookBasket> bookBaskets, Book book) {
 		super();
 		this.bookCopyTitle = bookCopyTitle;
 		this.bookshelf = bookshelf;
 		this.bookBaskets = bookBaskets;
 		this.book = book;
-		this.borrows = borrows;
+	//	this.borrow = borrow;
 	}
 
 	public String getBookCopyTitle() {
@@ -84,23 +83,17 @@ public class BookCopy implements Serializable
 		this.book = book;
 	}
 
-	public List<Borrow> getBorrows() {
-		return borrows;
+/*	public Borrow getBorrow() {
+		return borrow;
 	}
 
-	public void setBorrows(List<Borrow> borrows) {
-		this.borrows = borrows;
-	}
+	public void setBorrows(Borrow borrow) {
+		this.borrow = borrow;
+	}*/
 
 	public int getIdBookCopy() {
 		return idBookCopy;
 	}
 
-	@Override
-	public String toString() {
-		return "BookCopy [idBookCopy=" + idBookCopy + ", bookCopyTitle=" + bookCopyTitle + ", bookshelf=" + bookshelf
-				+ ", bookBaskets=" + bookBaskets + ", book=" + book + ", borrows=" + borrows + "]";
-	}
-	
 	
 }

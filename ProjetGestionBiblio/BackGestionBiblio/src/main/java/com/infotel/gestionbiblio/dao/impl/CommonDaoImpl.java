@@ -52,7 +52,8 @@ public class CommonDaoImpl<T> implements CommonDAO<T>
 
 	@SuppressWarnings("unchecked")
 	public List<T> getList() 
-	{
+	{ 
+	
 		return (List<T>)sessionFactory.getCurrentSession().createQuery( "from " + getEntityName().getSimpleName()  ).getResultList();
 	}
 	

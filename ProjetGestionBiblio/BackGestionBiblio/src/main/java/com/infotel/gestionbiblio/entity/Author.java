@@ -23,19 +23,19 @@ public class Author implements Serializable {
 	private int authorId;
 	private String authorLastname, authorFirstname;
 
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "author")
-	private List<Book> book = new ArrayList<Book>();
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "authors")
+	private List<Book> books;
 
 	public Author() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Author(String authorLastname, String authorFirstname, List<Book> book) {
+	public Author(String authorLastname, String authorFirstname, List<Book> books) {
 		super();
 		this.authorLastname = authorLastname;
 		this.authorFirstname = authorFirstname;
-		this.book = book;
+		this.books = books;
 	}
 
 	public String getAuthorLastname() {
@@ -54,12 +54,12 @@ public class Author implements Serializable {
 		this.authorFirstname = authorFirstname;
 	}
 
-	public List<Book> getBook() {
-		return book;
+	public List<Book> getBooks() {
+		return books;
 	}
 
-	public void setBook(List<Book> book) {
-		this.book = book;
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 
 	public int getAuthorId() {
@@ -69,7 +69,7 @@ public class Author implements Serializable {
 	@Override
 	public String toString() {
 		return "Author [authorId=" + authorId + ", authorLastname=" + authorLastname + ", authorFirstname="
-				+ authorFirstname + ", book=" + book + "]";
+				+ authorFirstname + "]";
 	}
 
 	

@@ -23,19 +23,15 @@ public class Category  implements Serializable
 	private int categoryId;
 	private String categoryName, CategoryDescription;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "category")
-	private List<Book> bookCategory;
-
 	public Category() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Category(String categoryName, String categoryDescription, List<Book> bookCategory) {
+	public Category(String categoryName, String categoryDescription) {
 		super();
 		this.categoryName = categoryName;
 		CategoryDescription = categoryDescription;
-		this.bookCategory = bookCategory;
 	}
 
 	public String getCategoryName() {
@@ -54,14 +50,6 @@ public class Category  implements Serializable
 		CategoryDescription = categoryDescription;
 	}
 
-	public List<Book> getBookCategory() {
-		return bookCategory;
-	}
-
-	public void setBookCategory(List<Book> bookCategory) {
-		this.bookCategory = bookCategory;
-	}
-
 	public int getCategoryId() {
 		return categoryId;
 	}
@@ -69,7 +57,7 @@ public class Category  implements Serializable
 	@Override
 	public String toString() {
 		return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", CategoryDescription="
-				+ CategoryDescription + ", bookCategory=" + bookCategory + "]";
+				+ CategoryDescription + "]";
 	}
 
 

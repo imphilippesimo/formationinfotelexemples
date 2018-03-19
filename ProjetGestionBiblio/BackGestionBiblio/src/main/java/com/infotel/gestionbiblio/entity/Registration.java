@@ -30,21 +30,30 @@ public class Registration  implements Serializable
 	private Date registrationDate;
 	
 	@ManyToOne
-	private Member registrationMember;
+	private Member member;
 	
-	@ManyToMany(mappedBy = "registrations")
-	private List<Library> libraries;
+	@ManyToOne
+	private Library library;
 
-	public Registration() {
+	public Registration() 
+	{
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Registration(Date registrationDate, Member registrationMember, List<Library> libraries) {
+	public Registration( Date registrationDate, Member member, Library library) {
 		super();
 		this.registrationDate = registrationDate;
-		this.registrationMember = registrationMember;
-		this.libraries = libraries;
+		this.member = member;
+		this.library = library;
+	}
+
+	public int getRegistrationId() {
+		return registrationId;
+	}
+
+	public void setRegistrationId(int registrationId) {
+		this.registrationId = registrationId;
 	}
 
 	public Date getRegistrationDate() {
@@ -55,31 +64,20 @@ public class Registration  implements Serializable
 		this.registrationDate = registrationDate;
 	}
 
-	public Member getRegistrationMember() {
-		return registrationMember;
+	public Member getMember() {
+		return member;
 	}
 
-	public void setRegistrationMember(Member registrationMember) {
-		this.registrationMember = registrationMember;
+	public void setMember(Member member) {
+		this.member = member;
 	}
 
-	public List<Library> getLibraries() {
-		return libraries;
+	public Library getLibrary() {
+		return library;
 	}
 
-	public void setLibraries(List<Library> libraries) {
-		this.libraries = libraries;
+	public void setLibrary(Library library) {
+		this.library = library;
 	}
 
-	public int getRegistrationId() {
-		return registrationId;
-	}
-
-	@Override
-	public String toString() {
-		return "Registration [registrationId=" + registrationId + ", registrationDate=" + registrationDate
-				+ ", registrationMember=" + registrationMember + ", libraries=" + libraries + "]";
-	}
-	
-	
 }

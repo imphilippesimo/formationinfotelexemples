@@ -27,22 +27,9 @@ public class BookController {
 	@Autowired
 	BookService bookService;
 
-	@Autowired
-	CategoryService categoryService;
-
-	@Autowired
-	EditorService editorService;
-
-	@Autowired
-	LibraryService libraryService;
-
-	@Autowired
-	AuthorService authorService;
-
-	@Autowired
-	BookCopyService bookCopyService;
 	
-	BookMapper bookMapper = new BookMapper();
+	@Autowired
+	BookMapper bookMapper;
 
 	@PostMapping("/add")
 	public void addBook(@RequestBody BookDto bookDto) {

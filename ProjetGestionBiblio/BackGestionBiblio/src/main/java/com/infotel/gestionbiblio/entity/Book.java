@@ -35,20 +35,15 @@ public class Book  implements Serializable
 	private Category category;
 	@ManyToOne
 	private Editor editor;
-	@OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
-	private List<BookCopy> bookCopy;
-	@ManyToMany(fetch = FetchType.EAGER)
-	private List<Author> author = new ArrayList<Author>();
-	@ManyToOne
-	Library library;
+	@ManyToMany
+	private List<Author> authors;
 
 	public Book() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Book(int iSBN, String bookTitre, String bookDescription, String imagePath, boolean popularBook,
-			boolean periodicBook, float bookPrice, Date publicationDate, Category category, Editor editor,
-			List<BookCopy> bookCopy, List<Author> author, Library library) 
+			boolean periodicBook, float bookPrice, Date publicationDate, Category category, Editor editor, List<Author> authors) 
 	{
 		super();
 		ISBN = iSBN;
@@ -61,9 +56,7 @@ public class Book  implements Serializable
 		this.publicationDate = publicationDate;
 		this.category = category;
 		this.editor = editor;
-		this.bookCopy = bookCopy;
-		this.author = author;
-		this.library = library;
+		this.authors = authors;
 	}
 	
 	public Book(int iSBN, String bookTitre, String bookDescription, String imagePath, boolean popularBook,
@@ -159,29 +152,14 @@ public class Book  implements Serializable
 		this.editor = editor;
 	}
 
-	public List<BookCopy> getBookCopy() {
-		return bookCopy;
+	public List<Author> getAuthors() {
+		return authors;
 	}
 
-	public void setBookCopy(List<BookCopy> bookCopy) {
-		this.bookCopy = bookCopy;
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
 	}
 
-	public List<Author> getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(List<Author> author) {
-		this.author = author;
-	}
-
-	public Library getLibrary() {
-		return library;
-	}
-
-	public void setLibrary(Library library) {
-		this.library = library;
-	}
 
 	public int getIdBook() {
 		return idBook;

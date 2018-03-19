@@ -26,10 +26,10 @@ public class Library implements Serializable
 	private int libraryCode;
 	private String libraryName, libraryAddress;
 
-	@ManyToMany
+	@OneToMany(mappedBy = "library")
 	private List<Registration> registrations;
 	
-	@OneToMany(mappedBy = "library")
+	@OneToMany
 	List<Book> books;
 
 	public Library() {
@@ -94,7 +94,7 @@ public class Library implements Serializable
 	@Override
 	public String toString() {
 		return "Library [idLibrary=" + idLibrary + ", libraryCode=" + libraryCode + ", libraryName=" + libraryName
-				+ ", libraryAddress=" + libraryAddress + ", registrations=" + registrations + ", books=" + books + "]";
+				+ ", libraryAddress=" + libraryAddress + "]";
 	}
 
 

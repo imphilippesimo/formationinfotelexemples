@@ -61,13 +61,9 @@ public class MemberController {
 		for (int borrowId : memberDto.getBorrowsIds()) {
 			borrows.add(borrowService.getById(borrowId));
 		}
-		member.setBorrow(borrows);
+		member.setBorrows(borrows);
 		
-		List<Registration> registrations = new ArrayList<Registration>();
-		for (int registrationId : memberDto.getRegistrationsIds()) {
-			borrows.add(borrowService.getById(registrationId));
-		}
-		member.setRegistrations(registrations);
+
 		
 		
 		memberService.insert(member);         
@@ -89,13 +85,9 @@ public class MemberController {
 		for (int borrowId : memberDto.getBorrowsIds()) {
 			borrows.add(borrowService.getById(borrowId));
 		}
-		member.setBorrow(borrows);
+		member.setBorrows(borrows);
 		
-		List<Registration> registrations = new ArrayList<Registration>();
-		for (int registrationId : memberDto.getRegistrationsIds()) {
-			borrows.add(borrowService.getById(registrationId));
-		}
-		member.setRegistrations(registrations);
+
 		
 		memberService.update(member);
 	}

@@ -1,6 +1,7 @@
 package com.infotel.gestionbiblio.dao.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
@@ -35,8 +36,7 @@ public class MemberDaoImpl extends CommonDaoImpl<Member> implements MemberDao {
 	public List<Member> getList() {
 		memberList = super.getList();
 		for (Member member : memberList) {
-			Hibernate.initialize(member.getRegistrations());
-			Hibernate.initialize(member.getBorrow());
+			Hibernate.initialize(member.getBorrows());
 			Hibernate.initialize(member.getBookBasket());
 		}
 		return memberList;
@@ -46,27 +46,19 @@ public class MemberDaoImpl extends CommonDaoImpl<Member> implements MemberDao {
 	@Override
 	public Member getMemberByLogin(String memberEmail, String memberPassword) {
 		// TODO Auto-generated method stub
-		Member member = (Member) sessionFactory.getCurrentSession()
+		Optional<Member> omember = sessionFactory.getCurrentSession()
 				.createQuery("FROM Member WHERE memberEmail=:email AND memberPassword=:password")
 				.setParameter("email", memberEmail).setParameter("password", memberPassword).getResultList().stream()
-				.findFirst().orElse(null);
-		Hibernate.initialize(member.getRegistrations());
-		Hibernate.initialize(member.getBorrow());
-		Hibernate.initialize(member.getBookBasket());
+				.findFirst();
+		Member member = omember.get();
+		if(member!=null)
+		{
+			Hibernate.initialize(member.getBorrows());
+			Hibernate.initialize(member.getBookBasket());
+		}
 
 		return member;
 	}
 
-	/*
-	 * @SuppressWarnings("unchecked")
-	 * 
-	 * @Override public boolean isMemberByLoginExist(String memberEmail, String
-	 * memberPassword) {
-	 * 
-	 * return (Member)sessionFactory.getCurrentSession().
-	 * createQuery("FROM Member WHERE memberEmail=:email AND memberPassword=:password"
-	 * ).setParameter("email", memberEmail).setParameter("password",
-	 * memberPassword).getResultList().stream().findFirst().orElse(null); }
-	 */
 
 }
