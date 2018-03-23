@@ -1,6 +1,5 @@
 package com.infotel.gestionbiblio.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.infotel.gestionbiblio.dao.inter.CategoryDao;
-import com.infotel.gestionbiblio.entity.Author;
 import com.infotel.gestionbiblio.entity.Category;
 
 @Repository

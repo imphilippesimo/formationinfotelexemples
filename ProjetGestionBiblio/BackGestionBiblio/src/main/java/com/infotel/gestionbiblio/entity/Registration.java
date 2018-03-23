@@ -8,7 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,24 +29,24 @@ public class Registration  implements Serializable
 	@Temporal(TemporalType.DATE)
 	private Date registrationDate;
 	
-	@OneToOne
-	private Member registrationMember;
+	@ManyToOne
+	private Member member;
 	
-	@OneToOne
-	private Library registrationLibrary;
+	@ManyToOne
+	private Library library;
 
-	public Registration() {
+	public Registration() 
+	{
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public Registration(Date registrationDate, Member registrationMember, Library registrationLibrary) {
+	public Registration( Date registrationDate, Member member, Library library) {
 		super();
 		this.registrationDate = registrationDate;
-		this.registrationMember = registrationMember;
-		this.registrationLibrary = registrationLibrary;
+		this.member = member;
+		this.library = library;
 	}
-
 
 	public int getRegistrationId() {
 		return registrationId;
@@ -63,26 +64,20 @@ public class Registration  implements Serializable
 		this.registrationDate = registrationDate;
 	}
 
-	public Member getRegistrationMember() {
-		return registrationMember;
+	public Member getMember() {
+		return member;
 	}
 
-	public void setRegistrationMember(Member registrationMember) {
-		this.registrationMember = registrationMember;
+	public void setMember(Member member) {
+		this.member = member;
 	}
 
-	public Library getRegistrationLibrary() {
-		return registrationLibrary;
+	public Library getLibrary() {
+		return library;
 	}
 
-	public void setRegistrationLibrary(Library registrationLibrary) {
-		this.registrationLibrary = registrationLibrary;
-	}
-
-	@Override
-	public String toString() {
-		return "Registration [registrationDate=" + registrationDate + ", registrationMember=" + registrationMember
-				+ ", registrationLibrary=" + registrationLibrary + "]";
+	public void setLibrary(Library library) {
+		this.library = library;
 	}
 
 }

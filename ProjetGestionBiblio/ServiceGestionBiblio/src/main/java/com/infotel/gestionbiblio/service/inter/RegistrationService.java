@@ -3,7 +3,6 @@
 
 import java.util.List;
 
-import com.infotel.gestionbiblio.entity.Bookshelf;
 import com.infotel.gestionbiblio.entity.Registration;
 
 public interface RegistrationService {

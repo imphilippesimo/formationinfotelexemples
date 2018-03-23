@@ -3,7 +3,6 @@
 import java.util.List;
 
 import com.infotel.gestionbiblio.entity.Author;
-import com.infotel.gestionbiblio.entity.Book;
 
 public interface AuthorService {
 	public void insert(final Author monObjet);

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,25 +22,17 @@ public class Editor implements Serializable {
 	private int editorId;
 	private String editorName, editorAddress;
 
-	@OneToMany(mappedBy = "editor")
-	private List<Book> bookEditor;
+
 
 	public Editor() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Editor(String editorName, String editorAddress, List<Book> bookEditor) {
+	public Editor(String editorName, String editorAddress) {
+		super();
 		this.editorName = editorName;
 		this.editorAddress = editorAddress;
-		this.bookEditor = bookEditor;
-	}
-
-	public int getEditorId() {
-		return editorId;
-	}
-
-	public void setEditorId(int editorId) {
-		this.editorId = editorId;
 	}
 
 	public String getEditorName() {
@@ -58,17 +51,21 @@ public class Editor implements Serializable {
 		this.editorAddress = editorAddress;
 	}
 
-	public List<Book> getBookEditor() {
-		return bookEditor;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setBookEditor(List<Book> bookEditor) {
-		this.bookEditor = bookEditor;
+	public int getEditorId() {
+		return editorId;
 	}
 
 	@Override
 	public String toString() {
-		return "Editor [editorName=" + editorName + ", editorAddress=" + editorAddress + "]";
+		return "Editor [editorId=" + editorId + ", editorName=" + editorName + ", editorAddress=" + editorAddress
+				+  "]";
 	}
+
+
 
 }

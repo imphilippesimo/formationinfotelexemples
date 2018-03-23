@@ -8,7 +8,11 @@
 	</div>
 </div>
 
+<div class="row">
+<div class="col-sm-4"></div>
+<div class="col-sm-4">
 <form action="${pageContext.request.contextPath}/login">
+
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
     <input id="email" type="text" class="form-control" name="email" placeholder="Email">
@@ -18,4 +22,9 @@
     <input id="password" type="password" class="form-control" name="password" placeholder="Password">
   </div>
 	<button type="submit" class="btn btn-default">Connexion</button>
+
 </form>
+	</div>
+	<div class="col-sm-4"></div>
+	</div>
+	

@@ -1,1 +1,1 @@
-<h2>deconnexion</h2>
+<h2>déconnexion</h2>

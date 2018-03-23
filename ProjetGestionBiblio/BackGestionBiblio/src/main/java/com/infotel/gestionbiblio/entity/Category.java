@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,25 +23,15 @@ public class Category  implements Serializable
 	private int categoryId;
 	private String categoryName, CategoryDescription;
 
-	@OneToMany(mappedBy = "category")
-	private List<Book> bookCategory;
-
 	public Category() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Category(String categoryName, String categoryDescription, List<Book> bookCategory) {
+	public Category(String categoryName, String categoryDescription) {
+		super();
 		this.categoryName = categoryName;
 		CategoryDescription = categoryDescription;
-		this.bookCategory = bookCategory;
-	}
-
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
 	}
 
 	public String getCategoryName() {
@@ -59,17 +50,15 @@ public class Category  implements Serializable
 		CategoryDescription = categoryDescription;
 	}
 
-	public List<Book> getBookCategory() {
-		return bookCategory;
-	}
-
-	public void setBookCategory(List<Book> bookCategory) {
-		this.bookCategory = bookCategory;
+	public int getCategoryId() {
+		return categoryId;
 	}
 
 	@Override
 	public String toString() {
-		return "Category [categoryName=" + categoryName + ", CategoryDescription=" + CategoryDescription + "]";
+		return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", CategoryDescription="
+				+ CategoryDescription + "]";
 	}
+
 
 }

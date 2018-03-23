@@ -22,27 +22,22 @@ public class Bookshelf implements Serializable
 	private int bookshelfId;
 	private String bookshelfName, bookshelfDescription;
 	private int bookNumber;
-	@OneToMany
+	
+	@OneToMany(mappedBy = "bookshelf")
 	private List<BookCopy> bookshelfBookCopy;
 
 	public Bookshelf() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Bookshelf(String bookshelfName, String bookshelfDescription, int bookNumber,
 			List<BookCopy> bookshelfBookCopy) {
+		super();
 		this.bookshelfName = bookshelfName;
 		this.bookshelfDescription = bookshelfDescription;
 		this.bookNumber = bookNumber;
 		this.bookshelfBookCopy = bookshelfBookCopy;
-	}
-
-	public int getBookshelfId() {
-		return bookshelfId;
-	}
-
-	public void setBookshelfId(int bookshelfId) {
-		this.bookshelfId = bookshelfId;
 	}
 
 	public String getBookshelfName() {
@@ -77,10 +72,17 @@ public class Bookshelf implements Serializable
 		this.bookshelfBookCopy = bookshelfBookCopy;
 	}
 
+	public int getBookshelfId() {
+		return bookshelfId;
+	}
+
 	@Override
 	public String toString() {
-		return "Bookshelf [bookshelfName=" + bookshelfName + ", bookshelfDescription=" + bookshelfDescription
-				+ ", bookNumber=" + bookNumber + ", bookshelfBookCopy=" + bookshelfBookCopy + "]";
+		return "Bookshelf [bookshelfId=" + bookshelfId + ", bookshelfName=" + bookshelfName + ", bookshelfDescription="
+				+ bookshelfDescription + ", bookNumber=" + bookNumber + ", bookshelfBookCopy=" + bookshelfBookCopy
+				+ "]";
 	}
+
+	
 
 }

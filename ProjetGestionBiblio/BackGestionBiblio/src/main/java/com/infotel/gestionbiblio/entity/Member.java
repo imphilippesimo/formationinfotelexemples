@@ -1,14 +1,15 @@
 package com.infotel.gestionbiblio.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 
 
@@ -32,14 +33,38 @@ public class Member  implements Serializable
 			memberPostalCode, memberPhone;
 	
 	private boolean administrateur=false;
-
+	
+	@OneToMany
+	private List<Borrow> borrows;
+	@OneToMany
+	private List<BookBasket> bookBaskets;
 
 	public Member() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Member(String memberLastname, String memberFirstname, String memberEmail, String memberPassword,
-			String memberAddress, String memberCity, String memberPostalCode, String memberPhone) {
+			String memberAddress, String memberCity, String memberPostalCode, String memberPhone,
+			boolean administrateur, List<BookBasket> bookBasket, List<Borrow> borrows,
+			List<Registration> registrations) {
+		super();
+		this.memberLastname = memberLastname;
+		this.memberFirstname = memberFirstname;
+		this.memberEmail = memberEmail;
+		this.memberPassword = memberPassword;
+		this.memberAddress = memberAddress;
+		this.memberCity = memberCity;
+		this.memberPostalCode = memberPostalCode;
+		this.memberPhone = memberPhone;
+		this.administrateur = administrateur;
+		this.bookBaskets = bookBasket;
+		this.borrows = borrows;
+	}
+
+	public Member(String memberLastname, String memberFirstname, String memberEmail, String memberPassword,
+			String memberAddress, String memberCity, String memberPostalCode, String memberPhone) 
+	{
 		this.memberLastname = memberLastname;
 		this.memberFirstname = memberFirstname;
 		this.memberEmail = memberEmail;
@@ -114,14 +139,6 @@ public class Member  implements Serializable
 		this.memberPhone = memberPhone;
 	}
 
-	public int getIdMember() {
-		return idMember;
-	}
-
-	public void setIdMember(int memberId) {
-		this.idMember = memberId;
-	}
-
 	public boolean isAdministrateur() {
 		return administrateur;
 	}
@@ -130,13 +147,38 @@ public class Member  implements Serializable
 		this.administrateur = administrateur;
 	}
 
+	public List<BookBasket> getBookBasket() {
+		return bookBaskets;
+	}
+
+	public void setBookBasket(List<BookBasket> bookBaskets) {
+		this.bookBaskets = bookBaskets;
+	}
+
+	public List<Borrow> getBorrows() {
+		return borrows;
+	}
+
+	public void setBorrows(List<Borrow> borrows) {
+		this.borrows = borrows;
+	}
+
+
+
+	public int getIdMember() {
+		return idMember;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [idMember=" + idMember + ", memberLastname=" + memberLastname + ", memberFirstname="
 				+ memberFirstname + ", memberEmail=" + memberEmail + ", memberPassword=" + memberPassword
 				+ ", memberAddress=" + memberAddress + ", memberCity=" + memberCity + ", memberPostalCode="
-				+ memberPostalCode + ", memberPhone=" + memberPhone + ", administrateur=" + administrateur + "]";
+				+ memberPostalCode + ", memberPhone=" + memberPhone + ", administrateur=" + administrateur	+ "]";
 	}
+
+
+
 
 
 

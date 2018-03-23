@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 
@@ -26,18 +27,24 @@ public class Library implements Serializable
 	private String libraryName, libraryAddress;
 
 	@OneToMany(mappedBy = "library")
-	private List<Catalog> libraryCatalog;
-
+	private List<Registration> registrations;
+	
+	@OneToMany
+	List<Book> books;
 
 	public Library() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Library(int libraryCode, String libraryName, String libraryAddress, List<Catalog> libraryCatalog) {
+	public Library(int libraryCode, String libraryName, String libraryAddress, List<Registration> registrations,
+			List<Book> books) {
+		super();
 		this.libraryCode = libraryCode;
 		this.libraryName = libraryName;
 		this.libraryAddress = libraryAddress;
-		this.libraryCatalog = libraryCatalog;
+		this.registrations = registrations;
+		this.books = books;
 	}
 
 	public int getLibraryCode() {
@@ -64,19 +71,32 @@ public class Library implements Serializable
 		this.libraryAddress = libraryAddress;
 	}
 
-	public List<Catalog> getLibraryCatalog() {
-		return libraryCatalog;
+	public List<Registration> getRegistrations() {
+		return registrations;
 	}
 
-	public void setLibraryCatalog(List<Catalog> libraryCatalog) {
-		this.libraryCatalog = libraryCatalog;
+	public void setRegistrations(List<Registration> registrations) {
+		this.registrations = registrations;
 	}
 
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
+
+	public int getIdLibrary() {
+		return idLibrary;
+	}
 
 	@Override
 	public String toString() {
-		return "Library [libraryCode=" + libraryCode + ", libraryName=" + libraryName + ", libraryAddress="
-				+ libraryAddress  + "]";
+		return "Library [idLibrary=" + idLibrary + ", libraryCode=" + libraryCode + ", libraryName=" + libraryName
+				+ ", libraryAddress=" + libraryAddress + "]";
 	}
 
+
+	
 }

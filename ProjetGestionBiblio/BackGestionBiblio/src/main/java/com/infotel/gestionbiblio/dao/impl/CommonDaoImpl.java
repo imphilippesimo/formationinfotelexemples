@@ -1,5 +1,6 @@
 package com.infotel.gestionbiblio.dao.impl;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -16,17 +17,9 @@ public class CommonDaoImpl<T> implements CommonDAO<T>
 	 
 	@Autowired
 	SessionFactory sessionFactory;
-	
-	private Class<T> type;
-	
-	
-	
+		
     public CommonDaoImpl() 
     {
-   /*     Type t = getClass().getGenericSuperclass();
-        ParameterizedType pt = (ParameterizedType) t;*/
-        type = (Class) this.getClass();
-        System.out.println(type);
     }
     
     
@@ -49,7 +42,7 @@ public class CommonDaoImpl<T> implements CommonDAO<T>
 
 	public T getById(int id) 
 	{
-		return sessionFactory.getCurrentSession().get(type, id);
+		return sessionFactory.getCurrentSession().get(getEntityName() , id);
 	}
 
 	public T getObjectByName(String nom)
@@ -57,9 +50,16 @@ public class CommonDaoImpl<T> implements CommonDAO<T>
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<T> getList() 
-	{
-		return (List<T>)sessionFactory.getCurrentSession().createQuery( "from " + type.getName() ).getResultList();
+	{ 
+	
+		return (List<T>)sessionFactory.getCurrentSession().createQuery( "from " + getEntityName().getSimpleName()  ).getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	private Class<T> getEntityName() {
+		return ((Class<T>) ((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
 	}
 	
 	

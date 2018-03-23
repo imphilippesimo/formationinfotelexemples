@@ -6,49 +6,46 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Book  implements Serializable
 {
-	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idBook;
-	private static final long serialVersionUID = 1L;
 	private int ISBN;
 	private String bookTitre, bookDescription, imagePath;
 	private boolean popularBook, periodicBook;
 	private float bookPrice;
+	
+	@Temporal(TemporalType.DATE)
 	private Date publicationDate;
 
 	@ManyToOne
 	private Category category;
 	@ManyToOne
 	private Editor editor;
-	@ManyToOne
-	private Catalog catalog;
-	@OneToMany(mappedBy = "book")
-	private List<BookCopy> bookCopy;
 	@ManyToMany
-	private List<Author> author = new ArrayList<Author>();
+	private List<Author> authors;
 
 	public Book() {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
 	public Book(int iSBN, String bookTitre, String bookDescription, String imagePath, boolean popularBook,
-			boolean periodicBook, float bookPrice, Date publicationDate, Category category, Editor editor,
-			Catalog catalog, List<BookCopy> bookCopy, List<Author> author) {
+			boolean periodicBook, float bookPrice, Date publicationDate, Category category, Editor editor, List<Author> authors) 
+	{
+		super();
 		ISBN = iSBN;
 		this.bookTitre = bookTitre;
 		this.bookDescription = bookDescription;
@@ -59,12 +56,21 @@ public class Book  implements Serializable
 		this.publicationDate = publicationDate;
 		this.category = category;
 		this.editor = editor;
-		this.catalog = catalog;
-		this.bookCopy = bookCopy;
-		this.author = author;
+		this.authors = authors;
 	}
-
-
+	
+	public Book(int iSBN, String bookTitre, String bookDescription, String imagePath, boolean popularBook,
+			boolean periodicBook, float bookPrice, Date publicationDate) {
+		super();
+		ISBN = iSBN;
+		this.bookTitre = bookTitre;
+		this.bookDescription = bookDescription;
+		this.imagePath = imagePath;
+		this.popularBook = popularBook;
+		this.periodicBook = periodicBook;
+		this.bookPrice = bookPrice;
+		this.publicationDate = publicationDate;
+	}
 
 	public int getISBN() {
 		return ISBN;
@@ -106,6 +112,14 @@ public class Book  implements Serializable
 		this.popularBook = popularBook;
 	}
 
+	public boolean isPeriodicBook() {
+		return periodicBook;
+	}
+
+	public void setPeriodicBook(boolean periodicBook) {
+		this.periodicBook = periodicBook;
+	}
+
 	public float getBookPrice() {
 		return bookPrice;
 	}
@@ -138,59 +152,25 @@ public class Book  implements Serializable
 		this.editor = editor;
 	}
 
-	public Catalog getCatalog() {
-		return catalog;
+	public List<Author> getAuthors() {
+		return authors;
 	}
 
-	public void setCatalog(Catalog catalog) {
-		this.catalog = catalog;
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
 	}
 
-	public List<BookCopy> getBookCopy() {
-		return bookCopy;
-	}
-
-	public void setBookCopy(List<BookCopy> bookCopy) {
-		this.bookCopy = bookCopy;
-	}
-
-	public List<Author> getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(List<Author> author) {
-		this.author = author;
-	}
 
 	public int getIdBook() {
 		return idBook;
 	}
 
-	public void setIdBook(int idBook) {
-		this.idBook = idBook;
-	}
-
-
-
-	public boolean isPeriodicBook() {
-		return periodicBook;
-	}
-
-
-
-	public void setPeriodicBook(boolean periodicBook) {
-		this.periodicBook = periodicBook;
-	}
-
-
-
 	@Override
 	public String toString() {
-		return "Book [ISBN=" + ISBN + ", bookTitre=" + bookTitre + "]";
+		return "Book [idBook=" + idBook + ", bookTitre=" + bookTitre + ", bookDescription=" + bookDescription
+				+ ", imagePath=" + imagePath + ", popularBook=" + popularBook + ", periodicBook=" + periodicBook
+				+ ", bookPrice=" + bookPrice + ", publicationDate=" + publicationDate + "]";
 	}
 
-
-
-	
 
 }
