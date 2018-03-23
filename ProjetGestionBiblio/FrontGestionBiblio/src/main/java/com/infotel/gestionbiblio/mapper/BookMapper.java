@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import com.infotel.gestionbiblio.dto.BookDto;
 import com.infotel.gestionbiblio.entity.Author;
 import com.infotel.gestionbiblio.entity.Book;
-import com.infotel.gestionbiblio.entity.BookCopy;
 import com.infotel.gestionbiblio.service.inter.AuthorService;
 import com.infotel.gestionbiblio.service.inter.BookCopyService;
 import com.infotel.gestionbiblio.service.inter.BookService;
@@ -20,52 +19,49 @@ import com.infotel.gestionbiblio.service.inter.LibraryService;
 @Component
 public class BookMapper {
 
-	@Autowired
-	BookService bookService;
+    @Autowired
+    BookService     bookService;
 
-	@Autowired
-	CategoryService categoryService;
+    @Autowired
+    CategoryService categoryService;
 
-	@Autowired
-	EditorService editorService;
+    @Autowired
+    EditorService   editorService;
 
-	@Autowired
-	LibraryService libraryService;
+    @Autowired
+    LibraryService  libraryService;
 
-	@Autowired
-	AuthorService authorService;
+    @Autowired
+    AuthorService   authorService;
 
-	@Autowired
-	BookCopyService bookCopyService;
+    @Autowired
+    BookCopyService bookCopyService;
 
-	public Book dtoToBook(BookDto bookDto) {
-		List<Author> authors = new ArrayList<Author>();
-		for (int authorId : bookDto.getAuthorIds()) {
-			authors.add(authorService.getById(authorId));
-		}
-
-
-		Book book = new Book(bookDto.getISBN(), bookDto.getBookTitre(), bookDto.getBookDescription(),
-				bookDto.getImagePath(), bookDto.isPopularBook(), bookDto.isPeriodicBook(), bookDto.getBookPrice(),
-				bookDto.getPublicationDate());
-
-		book.setEditor(editorService.getById(bookDto.getIdEditor()));
-		book.setCategory(categoryService.getById(bookDto.getIdCategory()));
-		book.setAuthors(authors);
-
-		return book;
+    public Book dtoToBook(BookDto bookDto) {
+	List<Author> authors = new ArrayList<Author>();
+	for (int authorId : bookDto.getAuthorIds()) {
+	    authors.add(authorService.getById(authorId));
 	}
 
-	public BookDto bookToDto(Book book) {
-		List<Integer> auhtorIds = new ArrayList<Integer>();
+	Book book = new Book(bookDto.getISBN(), bookDto.getBookTitre(), bookDto.getBookDescription(), bookDto.getImagePath(), bookDto.isPopularBook(), bookDto.isPeriodicBook(),
+	        bookDto.getBookPrice(), bookDto.getPublicationDate());
 
-		for (Author author : book.getAuthors()) {
-			auhtorIds.add(author.getAuthorId());
-		}
+	book.setEditor(editorService.getById(bookDto.getIdEditor()));
+	book.setCategory(categoryService.getById(bookDto.getIdCategory()));
+	book.setAuthors(authors);
 
-		return new BookDto(book.getISBN(), book.getBookTitre(), book.getBookDescription(), book.getImagePath(),
-				book.isPopularBook(), book.isPeriodicBook(), book.getBookPrice(), book.getPublicationDate(),
-				book.getCategory().getCategoryId(), book.getEditor().getEditorId(),auhtorIds);
+	return book;
+    }
+
+    public BookDto bookToDto(Book book) {
+	List<Integer> auhtorIds = new ArrayList<Integer>();
+
+	for (Author author : book.getAuthors()) {
+	    auhtorIds.add(author.getAuthorId());
 	}
+
+	return new BookDto(book.getISBN(), book.getBookTitre(), book.getBookDescription(), book.getImagePath(), book.isPopularBook(), book.isPeriodicBook(), book.getBookPrice(),
+	        book.getPublicationDate(), book.getCategory().getCategoryId(), book.getEditor().getEditorId(), auhtorIds);
+    }
 
 }

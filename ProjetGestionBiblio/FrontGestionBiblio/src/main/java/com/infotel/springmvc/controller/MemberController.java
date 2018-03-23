@@ -18,6 +18,7 @@ import com.infotel.gestionbiblio.exception.ServiceException;
 import com.infotel.gestionbiblio.service.inter.BookBasketService;
 import com.infotel.gestionbiblio.service.inter.BorrowService;
 import com.infotel.gestionbiblio.service.inter.MemberService;
+import com.infotel.gestionbiblio.service.inter.NotificationService;
 import com.infotel.gestionbiblio.service.inter.RegistrationService;
 import com.infotel.gestionbiblio.utils.ControllerConstante;
 import com.infotel.gestionbiblio.utils.Resultat;
@@ -37,6 +38,9 @@ public class MemberController {
 
     @Autowired
     RegistrationService registrationDto;
+
+    @Autowired
+    NotificationService notificationService;
 
     @PostMapping("/add")
     public void addMember(@RequestBody MemberDto memberDto) {
@@ -106,7 +110,7 @@ public class MemberController {
     public Resultat loginPage(@RequestBody IndentifiantsVM identifiant) {
 	Resultat result = new Resultat();
 	System.out.println("PASSAGE PAR LA METHODE LOGIN DE MEMBERCTRL");
-
+	notificationService.sendNotification();
 	try {
 	    result.setPayload(memberService.getMemberByLogin(identifiant.getEmail(), identifiant.getPassword()));
 	    result.setMessage(ControllerConstante.LOGIN_SUCCESS);
